@@ -1,0 +1,400 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{epstopdf}
+\usepackage{url}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{natbib}
+%\usepackage{xspace}
+\usepackage{hyperref}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{graphicx}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{amssymb}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{balance}
+
+\newif\ifanswers
+
+% uncomment if you want answers to appear
+\answerstrue
+% uncomment if you want answers to be suppressed
+% \answersfalse
+
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{orange}{rgb}{.8,.4,0}
+\lstset{ 
+  language=Lisp, 
+  basicstyle=\small\ttfamily, 
+  keywordstyle={}, 
+  %commentstyle=\em \color{green}, 
+  %frame=L,
+  %float=tbph,
+ % captionpos=b,
+  showstringspaces=false, 
+  keywordstyle=[3]\bf\color{orange},
+  keywords=[3]{<>},
+  keywordstyle=[2]\bf\color{darkgreen},
+  keywords=[2]{predict,observe,assume,observe-csv},
+  mathescape=true,
+  stringstyle={},
+           } 
+\renewcommand*{\lstlistingname}{Program}
+
+\lstnewenvironment{bodycode}[2]{\small\lstset{caption=#1,label=#2,basicstyle=\small\ttfamily}}{}
+%\lstnewenvironment{code}[1][]{\lstset{caption=#1,label=#1}}{}
+\lstnewenvironment{code}[2]{\small\lstset{caption=#1,label=#2}}{}
+
+\newcommand{\+}[1]{\ensuremath{{\mathbf{#1}}}}
+
+\newenvironment{inline}[1]{{\small\ttfamily #1}}{}
+
+\renewcommand\vdots{%
+  \vbox{\baselineskip2pt\lineskiplimit0pt\kern1pt\hbox{.}\hbox{.}\hbox{.}\kern-1pt}}
+
+\newcommand{\bx}{{\bf x}}
+
+\newcommand{\bz}{{\bf z}}
+
+\title{Coding Dirichlet Process Models Via Probabilistic Programming}
+\author{Frank Wood and Yura Perov}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+{\bf Introduction}
+\vspace{.5cm}
+
+Dirichlet process mixtures, reviewed in depth in \citep{teh2010dirichlet,orbanz2010bayesian} and the subject of excellent tutorial presentations by \citet{teh2007dirichlet}, are widely used in Bayesian unsupervised clustering and density estimation tasks.  In particular the infinite Gaussian mixture model \cite{rasmussen1999infinite} has been widely used.  A canonical example application is neural spike sorting \cite{wood2008nonparametric} (this latter applied work also highlights efficient sequential inference).  
+
+Stick-breaking constructions \citep{ishwaran2001gibbs} make coding some Bayesian nonparametric primitives in probabilistic programming systems relatively straightforward.  Additionally there is an interesting and deep (in not fully or even well described in the literature) connection between the action of  Dirichlet-like stochastic processes and relaxations of the programming languages technique called memoization \citep{michie1968memo}.  The latter, simply put, is the idea of wrapping a function in a hashmap so that it remembers and thus never needs to recompute a return value if called again with the same arguments.  Memoization can sometimes give rise to very simple dynamic programming algorithms.
+
+%\section{}
+%\subsection{}
+
+
+
+\vspace{.5cm}
+
+\noindent {\bf Questions : }
+\vspace{.5cm}
+
+\vspace{1cm}
+{\bf (1)} Generalize the DPmem code below to default to duplicate the functionality of \inline{mem} if the concentration is $0$.
+\newline
+
+Read the following code very carefully as it generalizes the Dirichlet process in a way that is natural in probabilistic programming -- namely the base distribution of the Dirichlet process is a procedure.  In probabilistic programming applying a procedure produces a {\em sample} so it is possible to use any procedure as the base distribution in any Dirichlet process.   What is more, the calling interface to the Dirichlet process is the same as \inline{mem}, i.e. it is a function that takes a function and returns a function that calls the inner function when certain conditions are met (like in \inline{mem}, for instance, if there doesn't already exist a return value for the specific provided arguments; or, like in a DP-based model, if a sample is generated from the base distribution rather than simply returning  one of the already generated base-distribution samples).  The original Church paper \citep{goodman2008church} introduced this idea and called it stochastic memoization, a powerful realisation that the Dirichlet process and its ilk provide a stochastic generalisation of \inline{mem}.  These ideas and their connection to deeper ideas about computability have also been discussed in a short workshop paper \citep{roy2008stochastic}.
+
+\begin{code}{}{}
+; sample-stick-index is a procedure that samples an index from
+; a potentially infinite dimensional discrete distribution 
+; lazily constructed by a stick breaking rule
+[assume sample-stick-index (lambda (breaking-rule index)
+  (if (flip (breaking-rule index))
+      index
+      (sample-stick-index breaking-rule (+ index 1))))]
+
+
+; sethuraman-stick-picking-procedure returns a procedure 
+; that picks a stick each time its called from the set of sticks
+; lazily constructed via the closed-over one-parameter stick breaking
+; rule
+[assume make-sethuraman-stick-picking-procedure (lambda (concentration)
+  (begin (define V (mem (lambda (x) (beta 1.0 concentration))))
+    (lambda () (sample-stick-index V 1))))] 
+
+
+; DPmem is a procedure that takes two arguments -- the concentration
+; to a Dirichlet process and a base sampling procedure
+; DPmem returns a procedure 
+[assume DPmem (lambda (concentration base)
+  (begin 
+    (define get-value-from-cache-or-sample 
+                           (mem (lambda (args stick-index) 
+                                        (apply base args))))
+    (define get-stick-picking-procedure-from-cache 
+                            (mem (lambda (args) 
+              (make-sethuraman-stick-picking-procedure concentration))))
+    (lambda varargs
+        ; when the returned function is called, the first thing 
+        ; it does is get  the cached stick breaking 
+        ; procedure for the passed in arguments
+        ; and _calls_ it to get an index
+        (begin 
+           (define index ((get-stick-picking-procedure-from-cache varargs)))
+            ; if, for the given set of arguments and 
+            ; just sampled index a return value has already
+            ; been computed, get it from the cache
+            ; and return it, otherwise sample a new value
+            (get-value-from-cache-or-sample varargs index)))))]
+
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/1_1.anglican}{(See this code online.)}
+
+\ifanswers
+\begin{quotation}
+ {\bf Answer } 
+ An answer can be obtained by adding a condition ({\tt if} statement) to the procedure {\tt make-sethuraman-stick-picking-procedure}.
+ We should deterministically return a stick index $1$ if the concentration parameter is equal to zero.
+ Procedures {\tt sample-stick-index} and {\tt DPmem} remain untouched.
+ \end{quotation}
+ 
+\begin{code}{}{} 
+[assume make-sethuraman-stick-picking-procedure (lambda (concentration)
+  (if (= (double concentration) 0.0)
+    (lambda () 1)
+    (begin (define V (mem (lambda (x) (beta 1.0 concentration))))
+      (lambda () (sample-stick-index V 1)))))] 
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/1_2.anglican}{(See this code online.)}
+
+\fi
+
+
+\vspace{1cm}
+{\bf (2)} Generalize the code above such so that  it uses the two parameter stick breaking construction and define \inline{DPmem} in terms of currying this new function.  The suggested route is to generalize \inline{make-sethuraman-stick-picking-procedure} so that it uses the more general Pitman-Yor stick breaking in the code on
+\url{http://www.robots.ox.ac.uk/~fwood/anglican/examples/dp_mixture_model/index.html}.
+
+
+
+
+\ifanswers
+\begin{quotation}
+ {\bf Answer } 
+ The answer is to replace \inline{make-sethuraman-stick-picking-procedure}
+ by \inline{make-pitman-yor-stick-picking-procedure}. The difference is
+ in the breaking rule, i.e. in the procedure {\tt V}. The Pitman-Yor correspondent
+ breaking-rule procedure {\tt V} is located on the web page the link above was directed to
+ (see the first code example on that page).
+ 
+ Obviously the procedure {\tt DPmem} was renamed to {\tt PYmem}, its number of arguments
+ became 3, and internal call to \inline{make-pitman-yor-stick-picking-procedure} started to
+ provide an additional argument {\tt discount}.
+\end{quotation}
+ 
+\begin{code}{}{}
+; sample-stick-index is a procedure that samples an index from
+; a potentially infinite dimensional discrete distribution 
+; lazily constructed by a stick breaking rule
+[assume sample-stick-index (lambda (breaking-rule index)
+  (if (flip (breaking-rule index))
+      index
+      (sample-stick-index breaking-rule (+ index 1))))]
+
+
+; pitman-yor-stick-picking-procedure returns a procedure 
+; that picks a stick each time its called from the set of sticks
+; lazily constructed via the closed-over two-parameters stick breaking
+; rule
+[assume make-pitman-yor-stick-picking-procedure
+  (lambda (concentration discount)
+    (begin
+      (define V (mem (lambda (index) (beta (- 1 discount)
+                                           (+ concentration (* index discount))))))
+      (lambda () (sample-stick-index V 1))))] 
+
+
+; PYmem is a procedure that takes three arguments --
+; the concentration and the discount
+; to a Pitman-Yor process and a base sampling procedure.
+; PYmem returns a procedure 
+[assume PYmem (lambda (concentration discount base)
+  (begin 
+    (define get-value-from-cache-or-sample 
+                           (mem (lambda (args stick-index) 
+                                        (apply base args))))
+    (define get-stick-picking-procedure-from-cache 
+                            (mem (lambda (args) 
+              (make-pitman-yor-stick-picking-procedure
+                 concentration discount))))
+    (lambda varargs
+        ; when the returned function is called, the first thing 
+        ; it does is get the cached stick breaking 
+        ; procedure for the passed in arguments
+        ; and _calls_ it to get an index
+        (begin 
+           (define index ((get-stick-picking-procedure-from-cache varargs)))
+            ; if, for the given set of arguments and 
+            ; just sampled index a return value has already
+            ; been computed, get it from the cache
+            ; and return it, otherwise sample a new value
+            (get-value-from-cache-or-sample varargs index)))))]
+
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/2_1.anglican}{(See this code online.)}
+
+This is worth to mention that now {\tt DPmem} can be defined via {\tt PYmem} as follows:
+
+\begin{code}{}{}
+[assume DPmem (lambda (concentration base) (PYmem concentration 0 base))]
+\end{code}
+\fi
+
+\vspace{1cm}
+{\bf (3)} Implement a Pitman-Yor process mixture model.
+
+% Indicators:
+% Time to import (days)
+% Expense (% of GDP)
+% GDP per capita, PPP (current international $)
+% CO2 emissions (kg per PPP $ of GDP)
+% Population growth (annual %)
+% Unemployment, local (% of total labor force) (modeled ILO estimate)
+
+Use the data (one of six World Bank economic indicators) located at \url{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data.csv}. Please, find file columns description at \url{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data_description.txt}.
+
+Cluster countries by a Pitnam-Yor process mixture model in a \href{http://en.wikipedia.org/wiki/Naive_Bayes_classifier}{na\"{i}ve Bayes way}. That is, your base distribution should return a pair (an Anglican list) with independently drawn mean and standard deviation of this cluster for the correspondent economic indicator.
+
+The observations (data) can be loaded via \texttt{observe-csv} directive (see description on \href{http://www.robots.ox.ac.uk/~fwood/anglican/language/index.html}{Anglican syntax reference page}):
+
+\begin{code}{}{}
+[observe-csv
+  "http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data.csv"
+  (apply normal (country-parameters $\$1$)) $\$4$]
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/3_1.anglican}{(See this code online.)}
+
+Here $\$1$ is the country name (from CSV), $\$4$ is the indicator ``GDP per capita, PPP (current international $\$$)''.
+
+Choose any two countries on the same continent by your interest, and compare
+how close they are by comparing whether they were assigned to the same cluster or not.
+
+{\it Hint:} due to the fact that the support of the base distribution is continuous, you can do this comparison
+by just simply checking whether two countries have the same parameter.
+
+\ifanswers
+\begin{quotation}
+ {\bf Answer } 
+\end{quotation}
+
+Using the $PYmem$ code from above, we can specify the base distribution $H$. $H$ samples hyperparameters for the cluster, i.e. $mean$ and $standard\ deviation$, which should be in some sensible correspondence to the selected economic indicator data.
+We also specify some concentration ($1.0$) and discount ($0.0001$) for Pitman-Yor process.
+
+\begin{code}{}{}
+[assume H (lambda () (list (normal 50000.00 30000.0) (* (gamma 1 1) 3000.0)))]
+                         
+[assume concentration 3.0]
+[assume discount 0.0001]
+[assume process (PYmem concentration discount H)]
+                         
+[assume get-country-parameters (mem (lambda (country) (process)))]
+
+[observe-csv
+  "http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data.csv"
+  (apply normal (get-country-parameters $\$1$)) $\$4$]
+  
+[predict (= (get-country-parameters "Iceland")
+            (get-country-parameters "Germany"))]
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/3_2.anglican}{(See this code online.)}
+
+We also define the procedure \texttt{country-parameters}, which memoizes the sample from Pitman-Yor process for countries.
+After observing one economic indicator data from the CSV file, we predict whether Germany and France
+belong to the same cluster or not.
+
+\fi
+
+\vspace{1cm}
+{\bf (4)} Implement a hierarchical Dirichlet process mixture model as described in \citep{teh2004sharing} (see \href{http://en.wikipedia.org/wiki/Hierarchical_Dirichlet_process}{the Wikipedia page} for quick intro).
+
+$$G_0\ |\ \alpha_0, H \sim \operatorname{DP}(\alpha_0, H)$$
+$$G_j\ |\ G_0, \left\{\alpha_j\right\} \sim \operatorname{DP}(\alpha_j, G_0)$$
+
+Consider countries to be divided into groups by continent (the 8th column in the CSV file).
+
+Then use the model and data as follows:
+\begin{enumerate}
+\item Use the same economic indicator which you used for the previous exercise,
+and investigate how closer/farther two countries on the same continent became
+due to the usage of a different model, i.e. a hierarchical one.
+
+\item Sample and plot GDPs of two groups: ``Europe'' and ``Africa''.
+\end{enumerate}
+
+\ifanswers
+\begin{quotation}
+ {\bf Answer } 
+\end{quotation}
+
+We use the same base distribution $H$ as in the previous exercise.
+
+We firstly define the base Dirichlet process $G_0$.
+
+Then we define the helper memoized procedure \texttt{get-group-dp}, which depending on
+the group id (index $j$) will return the correspondent Dirichlet process $G_j$.
+We create all $G_j$s with the same concentration parameter for simplicity.
+
+We define the helper procedure \texttt{sample-from-group-dp}, which
+samples from the $G_j$ by providing $j$ as the procedure argument.
+
+Finally we define the procedure \texttt{country-parameters},
+which samples from the corresponding $G_j$ by providing the continent name. This procedure
+is memoized so we can remember the sample for each country.
+
+Code for the first subexercise.
+
+\begin{code}{}{}
+...
+
+[assume H (lambda () (list (normal 50000.00 30000.0) (* (gamma 1 1) 3000.0)))]
+
+[assume base-concentration 3.0]
+[assume intra-groups-concentration 3.0]
+
+[assume base-dp (DPmem base-concentration H)]
+[assume get-group-dp
+  (mem (lambda (group-id) (DPmem intra-groups-concentration base-dp)))]
+[assume sample-from-group-dp
+  (lambda (group-id) ((get-group-dp group-id)))]
+
+[assume get-country-parameters
+  (mem (lambda (country-id continent-id) (sample-from-group-dp continent-id)))]
+
+[observe-csv
+  "http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data.csv"
+  (apply normal (get-country-parameters $\$1$ $\$8$)) $\$4$]
+
+[predict (= (get-country-parameters "Iceland" "Europe")
+            (get-country-parameters "Germany" "Europe"))]
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/4_1.anglican}{(See this code online.)}
+
+For the second subexercise we just should change what we are predicting.
+
+\begin{code}{}{}
+...
+
+[predict (apply normal (sample-from-group-dp "Africa"))]
+[predict (apply normal (sample-from-group-dp "Europe"))]
+\end{code}
+\href{http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/code/4_2.anglican}{(See this code online.)}
+
+\ 
+
+\begin{center}
+\includegraphics[scale=0.6]{fourth_exercise_answer.png}
+\end{center}
+
+\fi
+
+
+\bibliographystyle{plainnat}
+
+\bibliography{../refs}
+
+
+
+
+\end{document}  

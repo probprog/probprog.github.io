@@ -1,0 +1,108 @@
+#!/bin/bash
+
+_anglican_version=afb5bd8412aa1d5d84df764de8caa3a3d38c35ab
+
+if ! type -p curl > /dev/null; then
+   echo "Anglican requires curl to be installed and on your path.  Please install curl before running Anglican."
+   exit 1;
+fi
+
+_website_anglican_version=$(curl -s http://www.robots.ox.ac.uk/~fwood/anglican/download/anglican | grep _anglican_version= | head -1 | cut -d'=' -f 2)
+
+# check whether we currently have internet access
+
+if [ "" = "$_website_anglican_version" ]; then
+    _has_internet=0
+else
+    _has_internet=1
+fi
+#echo "has internet access?" $_has_internet 1>&2
+
+if [ $? -eq 0 ]; then
+   if [ "$_anglican_version" != "$_website_anglican_version" -a $_has_internet = 1 ]; then
+       echo "It appears that a new version of Anglican is available.  Please consider downloading it from  http://www.robots.ox.ac.uk/~fwood/anglican/download/." 1>&2
+   fi
+fi
+
+# check for existence of java of sufficiently high version
+
+if type -p java > /dev/null; then
+    #echo found java executable in PATH 1>&2
+    _java=java
+elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+    #echo found java executable in JAVA_HOME 1>&2
+    _java="$JAVA_HOME/bin/java"
+else
+    echo "Anglican requires Java to be installed.  Please install Java before running Anglican." 1>&2
+    exit 1;
+fi
+
+if ! type -p curl > /dev/null; then
+   echo "Anglican requires curl to be installed and on your path.  Please install curl before running Anglican." 1>&2
+   exit 1;
+fi
+
+if [[ "$_java" ]]; then
+    _java_version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    #echo version "$_java_version"
+    if ! [[ "$_java_version" > "1.5" ]]; then
+        echo "Anglican requires Java version greater than 1.5.  Please upgrade Java before running Anglican." 1>&2
+        exit 1;
+    fi
+fi
+
+## check to see if ~/.anglican exists, if not create it
+
+if [ $?HOME == 0 ]; then 
+    echo "Anglican requires the HOME environment variable to be set." 1>&2
+    exit 1;
+fi
+
+_download_dir="$HOME/.anglican";
+
+if [ ! -d "$_download_dir" ]; then
+    mkdir -p $_download_dir
+    if [ ! $? -eq 0 ]; then
+       echo "Anglican failed to create directory $_download_dir.  Please make sure that you have permissions to write to $_download_dir." 1>&2
+       exit 1;
+    fi
+fi
+#
+## check to see if ~/.anglican/--jar--version exists, if not download it
+#
+printf -v _jar_file_name "anglican-%s-master.jar" $_anglican_version
+printf -v _web_address "http://www.robots.ox.ac.uk/~fwood/anglican/download/%s" $_jar_file_name
+
+#echo $_jar_file_name 1>&2
+#echo $_web_address 1>&2
+#echo ${_download_dir}/${_jar_file_name} 1>&2
+
+# check to see if the requested jar is available on the website
+if [ $_has_internet = 1 ]; then
+
+curl -s --head ${_web_address} | head -n 1 | grep "HTTP/1.[01] [23].." > /dev/null
+
+if [ ! $? -eq 0 ]; then
+   echo "Something is misconfigured on the server side.  Please report that ${_web_address} could not be downloaded to the Anglican release team at fwood@robots.ox.ac.uk." 1>&2
+   exit 1;
+fi
+
+
+if [ ! -f ${_download_dir}/${_jar_file_name} ]; then
+    echo "Downloading Anglican (this will happen only the first time you run this script)" 1>&2
+    #echo     curl -# -C - -o "${_download_dir}/${_jar_file_name}" "${_web_address}" 1>&2
+    curl -# -C - -o "${_download_dir}/${_jar_file_name}" "${_web_address}"
+    if [ ! $? -eq 0 ]; then
+       echo Anglican failed to download from ${_web_address}. 1>&2
+       echo Please try again when you have internet connectivity or... 1>&2
+       echo If the problem persists try manually downloading ${_web_address} to ${_download_dir}/${_jar_file_name}. 1>&2
+       exit 1;
+    fi
+fi
+
+fi
+
+#### pass the rest of the command line arguments to anglican and invoke anglican via java
+# todo strip out -X options and pass them to java
+
+java $JAVA_OPTS -jar ${_download_dir}/${_jar_file_name} "$@"

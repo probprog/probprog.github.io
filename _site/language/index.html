@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="https://probprog.github.io/anglican/assets/ico/anglican_logo.ico">
+
+    <title>The Anglican Probabilistic Programming System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://probprog.github.io/anglican/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="https://probprog.github.io/anglican/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://probprog.github.io/anglican/assets/css/jwvdm.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://probprog.github.io/anglican/assets/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://probprog.github.io/anglican/assets/js/html5shiv.js"></script>
+      <script src="https://probprog.github.io/anglican/assets/js/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61399035-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="row">
+  
+  <a href="https://probprog.github.io/anglican"> 
+    <img class="logo" src="https://probprog.github.io/anglican/assets/images/anglican_logo.png" height="50px" align="bottom"> 
+  </a>
+  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
+</div>
+<div class="row">
+	<div class="title pull-left">
+			  Anglican
+    </div>
+    <ul class="nav nav-pills pull-right">
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/index.html" title="">Home</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/news/index.html" title="">News</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/literature/index.html" title="">Papers</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/language/index.html" title="">Language</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/inference/index.html" title="">Inference</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/usage/index.html" title="">Usage</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/contribute/index.html" title="">Contribute</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/examples/index.html" title="">Examples</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+    </ul>
+</div>
+
+<script>
+  $()
+</script>
+       
+      </div>
+      <div class="content row">
+        <h1 id="language-syntax">Language Syntax</h1>
+
+<p>The programming language of Anglican
+is a subset of Clojure, extended with a few special forms that make it a
+probabilistic programming language. These forms are <code>sample</code>
+for drawing a samples from distributions and <code>observe</code> for
+conditioning on data.
+There are other special forms — <code>mem</code>, <code>store</code>, and <code>retrieve</code>
+— which make writing probabilistic programs easier.</p>
+
+<p>The following documentation is quite terse because 
+Anglican is, to a large extent, intentionally syntactially indistiguishable from Clojure.<br />
+Clojure reference
+materials, obtainable from the web via standard search procedures,
+are as essential to programming in Anglican as is this Anglican
+language documentation.  The key to Anglican knowing
+ Clojure <em>and</em> understanding <code>defquery</code>, the interface between
+ Clojure and Anglican.</p>
+
+<p>This interface is meant to be as transparent as possible and for
+ as much Clojure functionality to work inside <code>defquery</code> as possible.</p>
+
+<p>In general the documentation that follows indicates functionality <em>relative to Clojure</em>.
+For instance, the absence of an explicit statement of existence means 
+that the Clojure language feature probably isn’t supported in Anglican.</p>
+
+<h2 id="a-first-example-program">A First Example Program</h2>
+
+<p>Anglican programs reside in Clojure source code modules,
+and are delimited by <code>defquery</code> (a macro). In order to
+enable the Anglican language in a Clojure module, at the minimum namespaces
+<code>anglican.runtime</code> and <code>anglican.emit</code> must be used. A simple way to
+do this is to write</p>
+
+<pre><code>(ns example
+  (:use [anglican emit runtime]))
+</code></pre>
+
+<p>in the beginning of a Clojure module, for example ‘example.clj’. Clojure
+namespacing is notably complex; arguably the best strategy for writing
+a namespace that includes Anglican functionality is to copy namespace 
+declarations from the provided <a href="../examples/index.html">examples</a>.</p>
+
+<p>The rest of the module
+may contain one or more Anglican programs, aka <em>queries</em>.   Queries
+are delimited by the keyword <code>defquery</code>, followed by the query name
+and the program text. If there is only one program in a
+namespace, it customarily bears the same name as the namespace:</p>
+
+<pre><code>(defquery example
+  (let [bet (sample (beta 5 3))]
+    (observe (flip bet) true)
+    (&gt; bet 0.7)))
+</code></pre>
+
+<p><code>defquery</code> assigns a value to <code>example</code> that allows it to be passed
+as the argument to a <code>doquery</code>.  <code>doquery</code> uses inference algorithms to
+produce lazy sequence of weighted samples that characterize the
+conditional distribution of the value of the expression in the tail position of 
+the defquery, here <code>(&gt; bet 0.7)</code>.</p>
+
+<p>Syntactically <code>defquery</code> denotes a joint distribution, <code>observe</code>’s denote
+which random variables’ values are known, and the value of the last, “return” 
+expression, is the variable whose conditional distribution is of interest.</p>
+
+<!-- Note that queries are composable and inference is customizable
+at the level of a query. -->
+
+<p>What follows is a description of what program text can go inside <code>defquery</code>, i.e. a 
+description of the Anglican language.  Note that while the source code inside <code>defquery</code>
+intentionally bears a great deal of resemblance to Clojure, it is not Clojure code, 
+it is Anglican code.</p>
+
+<h2 id="core-anglican-syntax">Core Anglican syntax</h2>
+
+<p>The Anglican language is a subset of Clojure. Within <code>defquery</code>,
+<code>let</code>, <code>if</code>, <code>when</code>, <code>cond</code>, <code>case</code>, <code>and</code>, <code>or</code>, <code>fn</code> forms are
+supported (others may be in the future but are not now). 
+In <code>let</code> bindings and <code>fn</code> argument lists,
+vector destructuring (but not hash map destructuring) is
+supported. Compound literals for vectors, hash maps, and
+sets are supported just like in Clojure.</p>
+
+<h2 id="recur"><code>recur</code></h2>
+
+<p>Anglican is stackless, therefore <code>recur</code> is
+unnecessary, no recursive call can lead to stack overflow;
+Recursive calls to functions should be used instead. However,
+<code>loop</code>/<code>recur</code> is provided for convenience as a way to express
+loops. <code>recur</code> outside of <code>loop</code> will lead to unpredictable
+behaviour and hard-to-catch errors.</p>
+
+<h2 id="core-library">Core library</h2>
+
+<p>All of Clojure’s <a href="http://clojure.github.io/clojure/clojure.core-api.html">core library</a>, 
+except for higher-order functions
+(functions that accept other functions as arguments) is
+available in Anglican. In addition, the following higher-order
+functions are implemented: <code>map</code>, <code>reduce</code>, <code>filter</code>, <code>some</code>,
+<code>repeatedly</code>, <code>comp</code>, <code>partial</code>.</p>
+
+<h2 id="definitions-outside-of-defquery">Definitions outside of <code>defquery</code></h2>
+
+<p>The border between Clojure and Anglican is subtle and usually will
+pose no problem to most programmers, however, some confusion can arise 
+from the fact that Anglican programs are macro compiled into CPS-style
+Clojure functions.  This means that some wrapping of “native” Clojure functions
+needs to happen in order to use them in Anglican.  Errors 
+arising due to misunderstanding this boundary crop up in the form of 
+“wrong number of argument” exceptions.  Carefully following the guidance in 
+this section will resolve most if not all such difficulties.</p>
+
+<p>Data variables may be defined outside of <code>defquery</code> using <code>def</code>
+and used inside <code>defquery</code>. Anglican functions outside of
+<code>defquery</code> may be defined using <code>defm</code> (with the same syntax as
+<code>defn</code>, albeit with a single arity only). Their bodies may use
+the same subset of Clojure as <code>defquery</code>, as well as
+probabilistic and state access forms.  <code>defm</code>-defined functions
+can be called from Anglican without restrictions.</p>
+
+<p>Functions defined outside of <code>defquery</code> using <code>defn</code> may use the
+full Clojure syntax but no Anglican extensions, and must be
+declared primitive using <code>with-primitive-procedures</code>:</p>
+
+<pre><code>(with-primitive-procedures [name ...]
+   body)
+</code></pre>
+
+<p>Where <code>name ...</code> is the  list of primitive procedures. The names
+can be namespace-qualified, but will be seen unqualified in the
+lexical scope of the form. For example,</p>
+
+<pre><code>(with-primitive-procedures [clojure.string/capitalize]
+   (defquery foo
+      (capitalize "hello")))
+</code></pre>
+
+<p>Denotes the dirac distribution over <code>Hello</code> (capitalized).</p>
+
+<h2 id="probabilistic-forms">Probabilistic forms</h2>
+
+<p>In Anglican there are two probabilistic forms: <code>sample</code> and <code>observe</code>.</p>
+
+<ul>
+  <li><code>(sample distribution)</code> returns a sample from a
+<code>distribution</code>.</li>
+  <li><code>(observe distribution value)</code> returns value; <em>critical</em> produces
+conditioning side-effect.   It does this by adding
+the value of <code>(observe* distribution value)</code> (see below)
+to the log probability of the trace.</li>
+</ul>
+
+<h2 id="state-access-and-modification">State access and modification</h2>
+
+<p>Functions can be memoized using <code>mem</code>, which accepts a function
+object as its argument. If the argument is a named <code>fn</code> form,
+self-recursive calls will call the memoized version of the
+function. For example, every <code>fact</code> call in the following code</p>
+
+<pre><code>(defquery fact
+    (let [fact (mem (fn fact [n]
+                        (if (= n 1) 1
+                            * n (fact (- n 1)))))]
+      [(fact 1) (fact 2) (fact 3) (fact 4)])))
+</code></pre>
+
+<p>will reuse previous computation.</p>
+
+<p>Values can be stored in the state using <code>store</code>, values stored
+during the same run of the program can be retrieved using
+<code>retrieve</code>. The syntax is</p>
+
+<ul>
+  <li><code>(store key ... value)</code> stores <code>value</code> at <code>key ...</code> in the state.</li>
+  <li><code>(retrieve key ...)</code> retrieves and returns the value stored at
+<code>key ...</code>. <code>key ...</code> can be a sequence of any length.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code>(defquery customer
+  (store :customer 4 :age 18)
+  (retrieve :customer 4 :age))
+</code></pre>
+
+<p>will return be 18 in :result.</p>
+
+<h2 id="distributions">Distributions</h2>
+
+<p>Distributions are <em>Clojure</em> implementations of a <code>distribution</code> protocol, consisting
+of two methods:</p>
+
+<p><strong>(sample* distribution)</strong> accepts a distribution instance and returns a sample from the distribution.  The <em>Anglican</em> <code>sample</code> uses this method to generate random variable values.</p>
+
+<p><strong>(observe* distribution value)</strong> accepts a distribution and a value and returns log probability of the value given the distribution.  <em>Anglican</em> inference backends stop at <code>observe</code> statements and often use the return value from calling <code>observe*</code> with the same original arguments as the <code>observe</code> call to effect conditioning.</p>
+
+<p>The core runtime library provides the following distribution constructors which can be used either in Clojure or Anglican, remembering the difference between <code>sample</code> and <code>sample*</code>, and, <code>observe</code> and <code>observe*</code>:</p>
+
+<p><strong>(bernoulli p)</strong> constructs a single binomial trial. Calling <code>sample</code> on the returned distribution instance generates 1 with probability <code>p</code> and 0 with probability <code>1-p</code>.</p>
+
+<p><strong>(beta a b)</strong> constructs a Beta distribution with pseudocounts <code>a</code> and <code>b</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> on interval <code>[0,1)</code>.</p>
+
+<p><strong>(binomial n p)</strong> constructs a Binomial distribution with success probability <code>p</code> and number of trials <code>n</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> on the interval <code>[0 ... n]</code>.</p>
+
+<p><strong>(categorical pairs)</strong> constructs a categorical distribution parameterized by a list of pairs <code>(val p)</code>. Calling <code>sample</code> on the returned distribution instance generates <code>val-k</code> with probability <code>p-k</code>.</p>
+
+<p><strong>(dirichlet [alpha-1 … alpha-K])</strong> constructs a Dirichlet distribution parameterized by a vector of pseudocounts <code>alpha</code>. Calling <code>sample</code> on the returned distribution instance generates a vector of probabilities <code>prob</code> such that <code>(sum prob) = 1.0</code> and <code>(count prob) = (count alpha)</code>.</p>
+
+<p><strong>(discrete p)</strong> constructs a discrete distribution parameterized by a list probabilities <code>p</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> in the range <code>[0 ... K-1]</code>, with <code>K = (count p)</code>. The result <code>k</code> is returned with probability <code>(nth p k)</code>.</p>
+
+<p><strong>(exponential l)</strong> constructs an exponential distribution with with rate parameter <code>l</code>. Calling <code>sample</code> on the returned distribution instance generates a double in the domain <code>[0, Inf)</code>.</p>
+
+<p><strong>(flip p)</strong> constructs a single binomial trial. Calling <code>sample</code> on the returned distribution instance generates <code>true</code> with probability <code>p</code> and <code>false</code> with probability <code>1-p</code>.</p>
+
+<p><strong>(gamma a b)</strong> constructs a Gamma distribution with shape <code>a</code> and rate <code>b</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> on the domain <code>(0, Inf)</code>.</p>
+
+<p><strong>(mvn mean cov)</strong> constructs a Multivariate normal distribution with mean
+<code>mean</code> and covariance matrix <code>cov</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> vector of the
+same size as <code>mean</code>.</p>
+
+<p><strong>(normal mean std)</strong> constructs a normal distribution with mean
+<code>mean</code> and standard deviation <code>std</code>.</p>
+
+<p><strong>(poisson l)</strong> constructs a Poisson distribution with rate <code>l</code>. Calling <code>sample</code> on the returned distribution instance generates a non-negative <code>long</code>.</p>
+
+<p><strong>(uniform-continuous min max)</strong> constructs a uniform continuous distribution. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> in the domain <code>[min, max]</code>.</p>
+
+<p><strong>(uniform-discrete min max)</strong> constructs a uniform discrete distribution. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> from the range <code>[min ... max-1]</code>.</p>
+
+<p><strong>(wishart n V)</strong> constructs a Wishart distribution with <code>n</code> degrees of
+freedom and scale matrix <code>V</code>. Calling <code>sample</code> on the returned distribution instance generates a matrix of <code>double</code> of the
+same size as <code>V</code>.</p>
+
+<p>In addition, so-called random processes are provided by the
+runtime, including CRP (Chinese Restaurant Process), DP
+(Dirichlet Process), and GP (Gaussian Process). Random processes
+implement the <code>random-process</code> protocol, consisting of two
+methods:</p>
+
+<p><strong>(produce process)</strong> accepts a process instance and returns a
+distribution object (which can be passed as a parameter to
+<code>observe</code> and <code>sample</code>) corresponding to the current state of
+the process.</p>
+
+<p><strong>(absorb process value)</strong> updates the process by incorporating
+a value sampled or observed from the distribution produced by
+the processes.</p>
+
+<p>The following random process constructors are included into the
+core runtime library:</p>
+
+<p><strong>(CRP alpha)</strong> is a Chinese restaurant process with concentration
+<code>alpha</code>.</p>
+
+<p><strong>(DP alpha H)</strong> is a Dirichlet process with concentration <code>alpha</code>
+over base distribution <code>H</code>.</p>
+
+<p><strong>(GP m k)</strong> is a Gaussian process with mean function <code>m</code> and
+covariance function <code>k</code>.</p>
+
+<p>Other distributions and processes can be defined by the user.
+The definition can be placed into Clojure modules containing
+Anglican programs. A user-defined distribution is specified
+using <code>defdist</code>:</p>
+
+<pre><code>(defdist dirac
+  "Dirac distribution"
+  [x]  ; distribution parameters
+  []   ; auxiliary bindings
+  (sample* [this] x)
+  (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
+</code></pre>
+
+<p>Similarly, a user-defined random process is specified using
+<code>defproc</code>:</p>
+
+<pre><code>(defproc DSD
+  "discrete-symmetric-dirichlet process"
+  [alpha N]                                ; process parameters
+  [counts (vec (repeat N (double alpha)))] ; auxiliary bindings
+  (produce [this] (discrete counts))
+  (absorb [this sample]
+	(DSD alpha N (update-in counts [sample] + 1.))))
+</code></pre>
+
+<p>Constructors of user-defined distributions and processes must be
+declared primitive using <code>with-primitive-procedures</code>.</p>
+
+<!-- ## Inference Algorithms
+
+Anglican provides a range of inference algorithms, and the list
+is growing. Algorithm options are keyword
+arguments of their `infer` methods.
+
+Below are some algorithms of general interest:
+
+lmh
+:   Lightweight Metropolis-Hastings. No options.
+
+almh
+:   Adaptive Lightweight Metropolis-Hastings. No options.
+
+pgibbs
+:   Particle Gibbs.
+Options:
+
+      * `:number-of-particles` (2 by default) — number of
+	    particles per sweep.
+
+pgas
+:   Particle Gibbs with ancestor sampling.
+Options:
+    
+     * `:number-of-particles` (2 by default) - number of particles per sweep.
+
+pimh
+:   Particle Independent Metropolis-Hastings.
+Options:
+
+     * `:number-of-particles` (2 by default) - number of particles per sweep.
+
+pcascade
+:   Particle Cascade. Options:
+
+      * `:number-of-threads` (16 by default) — number of threads.
+      * `:number-of-particles` (number-of-threads/2 by default)
+	   — number of initial particles.
+ -->
+
+      </div>
+      <div class="footer row">
+        <p>
+    &copy; Frank Wood 2014, 2015. 
+    built using 
+    <a href="http://jekyllrb.com">jekyll</a>, 
+    <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
+    <a href="http://getbootstrap.com">bootstrap</a>. 
+    Website design by <a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a>
+</p> 
+       
+      </div>
+    </div>
+  </body>
+</html>

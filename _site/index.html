@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="https://probprog.github.io/anglican/assets/ico/anglican_logo.ico">
+
+    <title>The Anglican Probabilistic Programming System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://probprog.github.io/anglican/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="https://probprog.github.io/anglican/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://probprog.github.io/anglican/assets/css/jwvdm.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://probprog.github.io/anglican/assets/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://probprog.github.io/anglican/assets/js/html5shiv.js"></script>
+      <script src="https://probprog.github.io/anglican/assets/js/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61399035-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="row">
+  
+  <a href="https://probprog.github.io/anglican"> 
+    <img class="logo" src="https://probprog.github.io/anglican/assets/images/anglican_logo.png" height="50px" align="bottom"> 
+  </a>
+  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
+</div>
+<div class="row">
+	<div class="title pull-left">
+			  Anglican
+    </div>
+    <ul class="nav nav-pills pull-right">
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/index.html" title="">Home</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/news/index.html" title="">News</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/literature/index.html" title="">Papers</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/language/index.html" title="">Language</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/inference/index.html" title="">Inference</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/usage/index.html" title="">Usage</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/contribute/index.html" title="">Contribute</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/anglican/examples/index.html" title="">Examples</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+    </ul>
+</div>
+
+<script>
+  $()
+</script>
+       
+      </div>
+      <div class="content row">
+        <h2 id="introduction">Introduction</h2>
+
+<p><a href="https://bitbucket.org/probprog/anglican">Anglican</a> is an open
+source, compiled probabilistic programming language
+integrated with <a href="http://clojure.org/">Clojure</a>, a general
+purpose functional programming language that just-in-time compiles 
+to the <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine
+(JVM)</a>.</p>
+
+<p>To get started right away, follow the <a href="https://bitbucket.org/probprog/ppaml-summer-school-2016/raw/master/docs/getting-started-guide.pdf">installation and getting started guide</a>.</p>
+
+<p>Anglican and Clojure share a common syntax, and can be invoked from
+each other. This allows Anglican programs to make use of a rich
+set of libraries written in both Clojure and Java.  Conversely
+Anglican allows intuitive and compact specification of models
+for which inference may be performed as part of a larger Clojure
+project.</p>
+
+<p>In Anglican, distributions are first class and user-definable.  Matrix 
+primitives and multidimensional distributions are natively supported. 
+A novel query syntax is introduced that combines ideas from both 
+<a href="https://probmods.org/play-space.html">Church</a> and 
+<a href="http://probcomp.csail.mit.edu/venture/">Venture</a> in a way that allows 
+composition of models and inference at query boundaries.  Stateful random
+procedures are user-definable too.</p>
+
+<h2 id="contributors">Contributors</h2>
+
+<p>Core contributors, in order of joining:</p>
+
+<ul>
+  <li><a href="http://www.robots.ox.ac.uk/~fwood/">Frank Wood</a> – original prototype, smc and particle gibbs</li>
+  <li><a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a> – first release, inference methods</li>
+  <li><a href="http://offtopia.net/">David Tolpin</a> – second release, CPS transformation, inference methods</li>
+</ul>
+
+<p>as well as many others, in alphabetical order:</p>
+
+<ul>
+  <li><a href="http://www.tuananhle.co.uk/">Tuan Anh Le</a></li>
+  <li><a href="http://www.robots.ox.ac.uk/~brooks/">Brooks Paige</a></li>
+  <li><a href="http://www.yuraperov.com/">Yura Perov</a></li>
+  <li><a href="http://www.robots.ox.ac.uk/~twgr/">Tom Rainforth</a></li>
+  <li><a href="http://www.cs.ox.ac.uk/people/hongseok.yang/Public/Home.html">Hongseok Yang</a></li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Anglican is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>You should receive a copy of the <a href="gpl-3.0.txt">GNU General Public
+License</a> along with Anglican.  If not, see
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+<h2 id="funding">Funding</h2>
+
+<p>This work is supported under DARPA PPAML through the U.S. AFRL
+under Cooperative Agreement number FA8750-14-2-0004. The U.S.
+Government is authorized to reproduce and distribute reprints
+for Governmental purposes notwithstanding any copyright notation
+heron. The views and conclusions contained herein are those of
+the authors and should be not interpreted as necessarily
+representing the official policies or endorsements, either
+expressed or implied, of DARPA, the U.S. Air Force Research
+Laboratory or the U.S. Government.</p>
+
+      </div>
+      <div class="footer row">
+        <p>
+    &copy; Frank Wood 2014, 2015. 
+    built using 
+    <a href="http://jekyllrb.com">jekyll</a>, 
+    <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
+    <a href="http://getbootstrap.com">bootstrap</a>. 
+    Website design by <a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a>
+</p> 
+       
+      </div>
+    </div>
+  </body>
+</html>
