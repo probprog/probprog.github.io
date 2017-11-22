@@ -1,0 +1,987 @@
+
+
+
+
+
+Research articles on probabilistic programming
+
+
+
+
+papers.bib
+@phdthesis{Stu15,
+  author = {Andreas Stuhlm\"{u}ller},
+  title = {Modeling Cognition with Probabilistic Programs: Representations and Algorithms},
+  school = {Massachusetts Institute of Technology},
+  year = {2015},
+  month = {6}
+}
+
+
+
+@misc{RSG15,
+  author = {Daniel Ritchie and Andreas Stuhlm\"{u}ller and Noah D. Goodman},
+  archiveprefix = {arXiv},
+  eprint = {1509.02151},
+  primaryclass = {cs.AI},
+  title = {C3: Lightweight Incrementalized MCMC for Probabilistic Programs using Continuations and Callsite Caching},
+  year = {2015},
+  keywords = {probabilistic programming, inference, mcmc, metropolis-hastings},
+  url = {http://arxiv.org/abs/1509.02151}
+}
+
+
+
+@misc{SWSG15,
+  author = {Andreas Stuhlm\"{u}ller and Robert X. D. Hawkins and N. Siddharth and Noah D. Goodman},
+  archiveprefix = {arXiv},
+  eprint = {1509.02962},
+  primaryclass = {cs.AI},
+  title = {Coarse-to-Fine Sequential Monte Carlo for Probabilistic Programs},
+  year = {2015},
+  keywords = {probabilistic programming, inference, smc, particle filter, coarse-to-fine},
+  url = {http://arxiv.org/abs/1509.02962}
+}
+
+
+
+@inproceedings{WVM14,
+  author = {Wood, F. and van de Meent, J. W. and Mansinghka, V.},
+  booktitle = {Artificial Intelligence and Statistics},
+  title = {A New Approach to Probabilistic Programming Inference},
+  year = {2014}
+}
+
+
+
+@article{PW14,
+  title = {A Compilation Target for Probabilistic Programming Languages},
+  author = {Paige, Brooks and Wood, Frank},
+  journal = {arXiv preprint arXiv:1403.0504},
+  year = {2014}
+}
+
+
+
+@article{C14,
+  title = {Probabilistic Programming with Stochastic Memoization:  Implementing Non-Parametric Bayesian Inference},
+  author = {John Cassel},
+  year = {2014},
+  journal = {Mathematica Journal},
+  volume = {16},
+  issue = {1},
+  doi = {dx.doi.org/doi:10.3888/tmj.16-1}
+}
+
+
+
+@article{DHWb04,
+  author = {A. {Di Pierro} and C. Hankin and  H. Wiklicky},
+  title = {Probabilistic Lambda-calculus and Quantitative Program Analysis},
+  journal = {Journal of Logic and Computation},
+  volume = {15},
+  number = {2},
+  year = {2005},
+  pages = {159-179}
+}
+
+
+
+@inproceedings{DHW07,
+  author = {Alessandra {Di Pierro} and Chris Hankin and Herbert Wiklicky},
+  title = {A Systematic Approach to Probabilistic Pointer Analysis},
+  booktitle = {Proceedings of APLAS'07 -- Fifth ASIAN Symposium on Programming Languages and Systems},
+  year = {2007},
+  pages = {335--350},
+  editor = {Z. Shao},
+  publisher = {Springer Verlag},
+  series = {Lecture Notes in Computer Science},
+  volume = {4807}
+}
+
+
+
+@article{DHW09,
+  author = {Alessandra {Di Pierro} and Chris Hankin and Herbert Wiklicky},
+  title = {Program Analysis Probably Counts},
+  journal = {The Computer Journal},
+  volume = {53},
+  number = {6},
+  pages = {871--880},
+  year = {2010}
+}
+
+
+
+@article{DHW10,
+  author = {Alessandra {Di Pierro} and Chris Hankin and
+                  Herbert Wiklicky},
+  title = {Probabilistic Timing Covert Channels: To Close or not to Close?},
+  journal = {International Journal of Information Security},
+  volume = {10},
+  number = {2},
+  pages = {83--106},
+  year = {2011}
+}
+
+
+
+@inproceedings{DWa13,
+  author = {Di Pierro, Alessandra and Wiklicky, Herbert},
+  year = {2013},
+  title = {Semantics of Probabilistic Programs: A Weak Limit Approach},
+  editor = {Chung-chieh Shan},
+  booktitle = {Programming Languages and Systems -- Proceedings of the 11th Asian Symposium, APLAS 2013},
+  series = {Lecture Notes in Computer Science},
+  volume = {8301},
+  publisher = {Springer International Publishing},
+  pages = {241--256},
+  doi = {10.1007/978-3-319-03542-0}
+}
+
+
+
+@inproceedings{DWb13,
+  author = {Di Pierro, Alessandra and Wiklicky, Herbert},
+  year = {2014},
+  title = {Probabilistic Analysis of Programs: A Weak Limit Approach},
+  editor = {Ugo dal Lago},
+  booktitle = {3rd International Workshop on Foundational and Practical Aspects of
+                   Resource  Anlysis (FOPARA 2013)},
+  series = {Lecture Notes in Computer Science},
+  volume = {8552},
+  publisher = {Springer}
+}
+
+
+
+@inproceedings{FH15,
+  author = {{Ferrer Fioriti}, Luis Mar\'{\i}a and Hermanns, Holger},
+  title = {Probabilistic Termination: Soundness, Completeness, and Compositionality},
+  booktitle = {Proceedings of the 42Nd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+  series = {POPL '15},
+  year = {2015},
+  isbn = {978-1-4503-3300-9},
+  location = {Mumbai, India},
+  pages = {489--501},
+  numpages = {13},
+  url = {http://doi.acm.org/10.1145/2676726.2677001},
+  doi = {10.1145/2676726.2677001},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  abstract = {We propose a framework to prove almost sure termination for probabilistic programs with real valued variables. It is based on ranking supermartingales, a notion analogous to ranking functions on non-probabilistic programs. The framework is proven sound and complete for a meaningful class of programs involving randomization and bounded nondeterminism. We complement this foundational insight by a practical proof methodology, based on sound conditions that enable compositional reasoning and are amenable to a direct implementation using modern theorem provers. This is integrated in a small dependent type system, to overcome the problem that lexicographic ranking functions fail when combined with randomization. Among others, this compositional methodology enables the verification of probabilistic programs outside the complete class that admits ranking supermartingales.},
+  keywords = {probabilistic programs, program verification, supermartingales, termination}
+}
+
+
+
+@book{BMAM13,
+  author = {Bessi{\`e}re, Pierre and Mazer, Emmanuel and Ahuactzin, Juan-Manuel and Mekhnacha, Kamel},
+  publisher = {Chapman and Hall/CRC},
+  title = {Bayesian Programming},
+  year = {2013}
+}
+
+
+
+@book{BLS08,
+  author = {Bessi{\`e}re, P. and Laugier, C. and Siegwart, R.},
+  publisher = {Springer},
+  title = {Probabilistic Reasoning and Decision Making in Sensory-Motor Systems},
+  year = {2008}
+}
+
+
+
+@article{LBDM04,
+  author = {Lebeltel, O. and Bessi{\`e}re, P. and Diard, J. and Mazer, E..},
+  journal = {Advanced Robotics},
+  number = 1,
+  pages = {49--79},
+  title = {Bayesian robot programming},
+  volume = 16,
+  year = 2004
+}
+
+
+
+@article{Cas14,
+  title = {Probabilistic Programming with Stochastic Memoization:  Implementing Non-Parametric Bayesian Inference},
+  author = {John Cassel},
+  year = {2014},
+  journal = {Mathematica Journal},
+  volume = {16},
+  issue = {1},
+  doi = {dx.doi.org/doi:10.3888/tmj.16-1}
+}
+
+
+
+@incollection{CM12,
+  series = {Lecture Notes in Computer Science},
+  title = {Probabilistic Abstract Interpretation},
+  copyright = {Springer-Verlag Berlin Heidelberg},
+  isbn = {978-3-642-28868-5, 978-3-642-28869-2},
+  url = {http://link.springer.com/chapter/10.1007/978-3-642-28869-2_9},
+  abstract = {Abstract interpretation has been widely used for verifying properties of computer systems. Here, we present a way to extend this framework to the case of probabilistic systems. The probabilistic abstraction framework that we propose allows us to systematically lift any classical analysis or verification method to the probabilistic setting by separating in the program semantics the probabilistic behavior from the (non-)deterministic behavior. This separation provides new insights for designing novel probabilistic static analyses and verification methods. We define the concrete probabilistic semantics and propose different ways to abstract them. We provide examples illustrating the expressiveness and effectiveness of our approach.},
+  number = {7211},
+  urldate = {2014-02-03},
+  booktitle = {Programming Languages and Systems},
+  publisher = {Springer Berlin Heidelberg},
+  author = {Cousot, Patrick and Monerau, Michael},
+  editor = {Seidl, Helmut},
+  month = jan,
+  year = {2012},
+  keywords = {Computer Communication Networks, Logics and Meanings of Programs, Mathematical Logic and Formal Languages, Programming Languages, Compilers, Interpreters, Programming Techniques, Software Engineering},
+  pages = {169--193}
+}
+
+
+
+@inproceedings{CNR13,
+  author = {Arun Chaganty and Aditya V. Nori and Sriram K. Rajamani},
+  title = {Efficiently Sampling Probabilistic Programs via Program Analysis},
+  booktitle = {Artificial Intelligence and Statistics (AISTATS)},
+  year = {2013},
+  url = {http://research.microsoft.com/pubs/183833/105.pdf},
+  pages = {153--160}
+}
+
+
+
+@inproceedings{GHNR14,
+  author = {Andrew D. Gordon and Thomas A. Henzinger and Aditya V. Nori and Sriram K. Rajamani},
+  title = {Probabilistic Programming},
+  booktitle = {International Conference on Software Engineering (ICSE, FOSE track)},
+  url = {http://research.microsoft.com/pubs/208585/fose-icse2014.pdf},
+  year = {2014}
+}
+
+
+
+@inproceedings{CLNR13,
+  author = {Arun T. Chaganty and Akash Lal and Aditya V. Nori and Sriram K. Rajamani},
+  title = {Combining Relational Learning with SMT Solvers using CEGAR.},
+  booktitle = {Computer Aided Verification (CAV)},
+  year = {2013},
+  url = {http://research.microsoft.com/pubs/187332/main.pdf}
+}
+
+
+
+@inproceedings{HNRS14,
+  author = {Chung-Kil Hur and Aditya V. Nori and Sriram K. Rajamani and Selva Samuel},
+  title = {Slicing probabilistic programs},
+  booktitle = {Programming Languages Design and Implementation (PLDI)},
+  url = {http://research.microsoft.com/apps/pubs/default.aspx?id=208584},
+  year = {2014}
+}
+
+
+
+@inproceedings{Poo10,
+  author = {David Poole},
+  title = {Probabilistic Programming Languages: Independent Choices and Deterministic Systems},
+  booktitle = {Heuristics, Probability and Causality: A Tribute to Judea Pearl},
+  editor = {R. Dechter and H. Geffner and J.Y. Halpern},
+  publisher = {College Publications},
+  year = {2010},
+  pages = {253--269},
+  url = {http://www.cs.ubc.ca/~poole/papers/IndependentChoices.pdf}
+}
+
+
+
+@techreport{CRNGB13,
+  author = {Guillaume Claret and Sriram K. Rajamani and Aditya V. Nori and Andrew D. Gordon and Johannes Borgstr\"om},
+  title = {Bayesian Inference Using Data Flow Analysis},
+  number = {MSR-TR-2013-27},
+  institution = {Microsoft Research},
+  month = {March},
+  year = {2013},
+  url = {http://research.microsoft.com/apps/pubs/default.aspx?id=171611},
+  abstract = {We present a new algorithm for Bayesian inference over probabilistic programs, based on data flow analysis techniques from the program analysis community. Unlike existing techniques for Bayesian inference on probabilistic programs, our data flow analysis algorithm is able to perform inference directly on probabilistic programs with loops. Even for loop-free programs, we show that data flow analysis offers better precision and better performance benefits over existing techniques. We also describe heuristics that are crucial for our inference to scale, and present an empirical evaluation of our algorithm over a range of benchmarks.}
+}
+
+
+
+@techreport{GABCGNRR13,
+  author = {Andrew D. Gordon and Mihhail Aizatulin and Johannes Borgstr\"om and Guillaume Claret and Thore Graepel and Aditya V. Nori and Sriram K. Rajamani and Claudio Russo},
+  title = {A Model-Learner Pattern for {B}ayesian Reasoning},
+  month = {January},
+  year = {2013},
+  number = {MSR-TR-2013-1},
+  institution = {Microsoft Research},
+  abstract = {A Bayesian model is based on a pair of probability distributions, known as the prior and sampling distributions. A wide range of fundamental machine learning tasks, including regression, classification, clustering, and many others, can all be seen as Bayesian models. We propose a new probabilistic programming abstraction, a typed Bayesian model, based on a pair of probabilistic expressions for the prior and sampling distributions. A sampler for a model is an algorithm to compute synthetic data from its sampling distribution, while a learner for a model is an algorithm for probabilistic inference on the model. Models, samplers, and learners form a generic programming pattern for model-based inference. They support the uniform expression of common tasks including model testing, and generic compositions such as mixture models, evidence-based model averaging, and mixtures of experts. A formal semantics supports reasoning about model equivalence and implementation correctness. By developing a series of examples and three learner implementations based on exact inference, factor graphs, and Markov chain Monte Carlo, we demonstrate the broad applicability of this new programming pattern.},
+  url = {http://research.microsoft.com/apps/pubs/default.aspx?id=173887}
+}
+
+
+
+@inproceedings{BBGR13,
+  author = {Sooraj Bhat and Johannes Borgstr\"om and Andrew D. Gordon and Claudio Russo},
+  title = {Deriving Probability Density Functions from Probabilistic Functional Programs},
+  booktitle = {19th Int. Conf. on Tools and Algorithms for the Construction and Analysis of Systems (TACAS)},
+  publisher = {Springer},
+  year = {2013},
+  note = {EAPLS Best Paper Award for ETAPS 2013},
+  url = {http://research.microsoft.com/apps/pubs/default.aspx?id=189021},
+  abstract = {The probability density function of a probability distribution is a fundamental concept in probability theory and a key ingredient in various widely used machine learning methods. However, the necessary framework for compiling probabilistic functional programs to density functions has only recently been developed. In this work, we present a density compiler for a probabilistic language with discrete and continuous distributions, and discrete observations, and provide a proof of its soundness. The compiler greatly reduces the development effort of domain experts, which we demonstrate by solving inference problems from various scientific applications, such as modelling the global carbon cycle, using a standard Markov chain Monte Carlo framework.}
+}
+
+
+
+@inproceedings{Gib2013,
+  author = {Jeremy Gibbons},
+  title = {Unifying Theories of Programming with Monads},
+  booktitle = {Unifying Theories of Programming},
+  year = 2013,
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  volume = 7681,
+  pages = {23--67},
+  doi = {10.1007/978-3-642-35705-3_2},
+  abstract = {The combination of probabilistic and nondeterministic choice in program calculi is a notoriously tricky problem, and one with a long history. We present a simple functional programming approach to this challenge, based on algebraic theories of computational effects. We make use of the powerful abstraction facilities of modern functional languages, to introduce the choice operations as a little embedded domain-specific language rather than having to define a language extension; we rely on referential transparency, to justify straightforward equational reasoning about program behaviour.}
+}
+
+
+
+@incollection{FRT12,
+  author = {Cameron E. Freer and Daniel M. Roy and Joshua B. Tenenbaum},
+  archiveprefix = {arXiv},
+  booktitle = {Turing's {L}egacy},
+  series = {ASL Lecture Notes in Logic},
+  publisher = {Cambridge University Press},
+  eprint = {1212.4799},
+  primaryclass = {cs.AI},
+  editor = {Rod Downey},
+  title = {Towards common-sense reasoning via conditional simulation: legacies of {T}uring in {A}rtificial {I}ntelligence},
+  url = {http://danroy.org/papers/FreRoyTen-Turing.pdf},
+  year = {2012},
+  keywords = {probabilistic programming, Alan Turing, artificial intelligence},
+  abstract = {The problem of replicating the flexibility of human common-sense reasoning has captured the imagination of computer scientists since the early days of Alan Turing's foundational work on computation and the philosophy of artificial intelligence. In the intervening years, the idea of cognition as computation has emerged as a fundamental tenet of Artificial Intelligence (AI) and cognitive science. But what kind of computation is cognition? 
+
+We describe a computational formalism centered around a probabilistic Turing machine called QUERY, which captures the operation of probabilistic conditioning via conditional simulation. Through several examples and analyses, we demonstrate how the QUERY abstraction can be used to cast common-sense reasoning as probabilistic inference in a statistical model of our observations and the uncertain structure of the world that generated that experience. This formulation is a recent synthesis of several research programs in AI and cognitive science, but it also represents a surprising convergence of several of Turing's pioneering insights in AI, the foundations of computation, and statistics.}
+}
+
+
+
+@inproceedings{SG12,
+  author = {Andreas Stuhlm\"uller and Noah D. Goodman},
+  archiveprefix = {arXiv},
+  booktitle = {Second Statistical Relational AI workshop at UAI 2012 (StaRAI-12)},
+  eprint = {1206.3555},
+  primaryclass = {cs.AI},
+  title = {A Dynamic Programming Algorithm for Inference in Recursive Probabilistic Programs},
+  year = {2012},
+  keywords = {probabilistic programming, inference, dynamic programming},
+  abstract = {We describe a dynamic programming algorithm for computing the marginal distribution of discrete probabilistic programs. This algorithm takes a functional interpreter for an arbitrary probabilistic programming language and turns it into an efficient marginalizer. Because direct caching of sub-distributions is impossible in the presence of recursion, we build a graph of dependencies between sub-distributions. This factored sum-product network makes (potentially cyclic) dependencies between subproblems explicit, and corresponds to a system of equations for the marginal distribution. We solve these equations by fixed-point iteration in topological order. We illustrate this algorithm on examples used in teaching probabilistic models, computational cognitive science research, and game theory.}
+}
+
+
+
+@misc{RMGT08,
+  author = {Daniel M. Roy and Vikash K. Mansinghka and Noah D. Goodman and Joshua B. Tenenbaum},
+  title = {A stochastic programming perspective on nonparametric {B}ayes},
+  howpublished = {Nonparametric {B}ayesian Workshop, Int. Conf. on Machine Learning},
+  year = {2008}
+}
+
+
+
+@inproceedings{KS09a,
+  author = {Oleg Kiselyov and {Chung-chieh} Shan},
+  title = {Monolingual Probabilistic Programming Using Generalized Coroutines},
+  booktitle = {Proc. of Uncertainty in Artificial Intelligence},
+  pages = {285--292},
+  year = {2009}
+}
+
+
+
+@article{MMS96,
+  author = {Morgan, Carroll and McIver, Annabelle and Seidel, Karen},
+  title = {Probabilistic predicate transformers},
+  journal = {ACM Trans. Program. Lang. Syst.},
+  volume = {18},
+  number = {3},
+  year = {1996},
+  pages = {325--353},
+  publisher = {ACM},
+  address = {New York, NY, USA}
+}
+
+
+
+@article{MM99,
+  author = {Carroll Morgan and Annabelle McIver},
+  title = {{pGCL}: formal reasoning for random algorithms},
+  journal = {South African Comput. J.},
+  year = 1999,
+  volume = 22,
+  pages = {14--27}
+}
+
+
+
+@inproceedings{JP89,
+  author = {Claire Jones and Gordon Plotkin},
+  title = {A probabilistic powerdomain of evaluations},
+  booktitle = {Proc. of the Fourth Ann. Symp. on Logic in Comp. Sci.},
+  year = {1989},
+  isbn = {0-8186-1954-6},
+  pages = {186--195},
+  publisher = {IEEE Press},
+  url = {http://homepages.inf.ed.ac.uk/gdp/publications/Prob_Powerdomain.pdf}
+}
+
+
+
+@article{RP02,
+  title = {{Stochastic lambda calculus and monads of probability distributions}},
+  author = {Norman Ramsey and Avi Pfeffer},
+  journal = {Proc. of the 29th ACM SIGPLAN-SIGACT Symp. on Principles of Program. Lang.},
+  pages = {154--165},
+  year = {2002},
+  publisher = {ACM Press, New York}
+}
+
+
+
+@misc{AFR10,
+  author = {Nathanael L. Ackerman and Cameron E. Freer and Daniel M. Roy},
+  title = {On the computability of conditional probability},
+  year = {2010},
+  eprint = {1005.3014},
+  url = {http://danroy.org/papers/AckFreRoy-CompCondProb-preprint.pdf},
+  keywords = {computable probability theory, conditional probability},
+  abstract = {As inductive inference and machine learning methods in computer science see continued success, researchers are aiming to describe even more complex probabilistic models and inference algorithms. What are the limits of mechanizing probabilistic inference? We investigate the computability of conditional probability, a fundamental notion in probability theory and a cornerstone of Bayesian statistics, and show that there are computable joint distributions with noncomputable conditional distributions, ruling out the prospect of general inference algorithms, even inefficient ones. Specifically, we construct a pair of computable random variables in the unit interval such that the conditional distribution of the first variable given the second encodes the halting problem. Nevertheless, probabilistic inference is possible in many common modeling settings, and we prove several results giving broadly applicable conditions under which conditional distributions are computable. In particular, conditional distributions become computable when measurements are corrupted by independent computable noise with a sufficiently smooth density.}
+}
+
+
+
+@misc{FR09,
+  author = {Cameron E. Freer and Daniel M. Roy},
+  title = {Computable de~{F}inetti measures},
+  year = {2009},
+  eprint = {0912.1072},
+  url = {http://danroy.org/papers/FreerRoy-CompDeFinetti-preprint.pdf},
+  doi = {10.1016/j.apal.2011.06.011},
+  abstract = {We prove a computable version of de Finetti's theorem on exchangeable sequences of real random variables. As a consequence, exchangeable stochastic processes expressed in probabilistic functional programming languages can be automatically rewritten as procedures that do not modify non-local state. Along the way, we prove that a distribution on the unit interval is computable if and only if its moments are uniformly computable.}
+}
+
+
+
+@inproceedings{AFR11,
+  author = {Nathanael L. Ackerman and Cameron E. Freer and Daniel M. Roy},
+  title = {Noncomputable conditional distributions},
+  year = {2011},
+  booktitle = {Proc. of the 26th Ann. Symp. on Logic in Comp. Sci.},
+  publisher = {IEEE Press},
+  url = {http://danroy.org/papers/AckFreRoy-LICS-2011.pdf},
+  abstract = {We study the computability of conditional probability, a fundamental notion in probability theory and Bayesian statistics. In the elementary discrete setting, a ratio of probabilities defines conditional probability. In more general settings, conditional probability is defined axiomatically, and the search for more constructive definitions is the subject of a rich literature in probability theory and statistics. However, we show that in general one cannot compute conditional probabilities. Specifically, we construct a pair of computable random variables (X, Y) in the unit interval whose conditional distribution P[Y|X] encodes the halting problem.
+
+Nevertheless, probabilistic inference has proven remarkably successful in practice, even in infinite-dimensional continuous settings. We prove several results giving general conditions under which conditional distributions are computable.  In the discrete or dominated setting, under suitable computability hypotheses, conditional distributions are computable. Likewise, conditioning is a computable operation in the presence of certain additional structure, such as independent absolutely continuous noise.}
+}
+
+
+
+@article{PPT08,
+  author = {Sungwoo Park and Frank Pfenning and Sebastian Thrun},
+  title = {A probabilistic language based on sampling functions},
+  journal = {ACM Trans. Program. Lang. Syst.},
+  volume = {31},
+  number = {1},
+  year = {2008},
+  pages = {1--46},
+  publisher = {ACM},
+  address = {New York, NY, USA}
+}
+
+
+
+@inproceedings{KS09b,
+  author = {Oleg Kiselyov and {Chung-chieh} Shan},
+  title = {Embedded Probabilistic Programming},
+  booktitle = {Domain-Specific Languages},
+  year = {2009},
+  pages = {360-384},
+  doi = {10.1007/978-3-642-03034-5_17}
+}
+
+
+
+@inproceedings{GMR+08,
+  title = {Church: a language for generative models},
+  author = {Noah D. Goodman and Vikash K. Mansinghka and Daniel M. Roy and Keith Bonawitz and Joshua B. Tenenbaum},
+  booktitle = {Proc. of Uncertainty in Artificial Intelligence},
+  year = {2008},
+  url = {http://danroy.org/papers/church_GooManRoyBonTen-UAI-2008.pdf},
+  abstract = {Formal languages for probabilistic modeling enable re-use, modularity, and descriptive clarity, and can foster generic inference techniques. We introduce Church, a universal language for describing stochastic generative processes. Church is based on the Lisp model of lambda calculus, containing a pure Lisp as its deterministic subset. The semantics of Church is defined in terms of evaluation histories and conditional distributions on such histories. Church also includes a novel language construct, the stochastic memoizer, which enables simple description of many complex non-parametric models. We illustrate language features through several examples, including: a generalized Bayes net in which parameters cluster over trials, infinite PCFGs, planning by inference, and various non-parametric clustering models. Finally, we show how to implement query on any Church program, exactly and approximately, using Monte Carlo techniques.}
+}
+
+
+
+@inproceedings{Pfe01,
+  author = {Avi Pfeffer},
+  title = {{IBAL: A probabilistic rational programming language}},
+  booktitle = {Proc. of the 17th Int. Joint Conf. on Artificial Intelligence},
+  year = {2001},
+  pages = {733--740},
+  publisher = {Morgan Kaufmann Publ.}
+}
+
+
+
+@inproceedings{FR10,
+  title = {Posterior distributions are computable from predictive distributions},
+  author = {Cameron E. Freer and Daniel M. Roy},
+  booktitle = {Proc. of the 13th Artificial Intelligence and Statistics},
+  editor = {Y. W. Teh and M. Titterington},
+  pages = {233-240},
+  location = {Chia Laguna, Sardinia, Italy},
+  year = {2010},
+  url = {http://danroy.org/papers/FreerRoy-AISTATS-2010.pdf},
+  abstract = {As we devise more complicated prior distributions, will inference algorithms keep up?  We highlight a negative result in computable probability theory by Ackerman, Freer, and Roy (2010) that shows that there exist computable priors with noncomputable posteriors. In addition to providing a brief survey of computable probability theory geared towards the A.I. and statistics community, we give a new result characterizing when conditioning is computable in the setting of exchangeable sequences, and provide a computational perspective on work by Orbanz (2010) on conjugate nonparametric models. In particular, using a computable extension of de Finetti’s theorem (Freer and Roy 2009), we describe how to transform a posterior predictive rule for generating an exchangeable sequence into an algorithm for computing the posterior distribution of the directing random measure.}
+}
+
+
+
+@incollection{dMSS56,
+  author = {d{{e Leeuw}}, Karel and Moore, Edward F. and Shannon, Claude E. and Shapiro, Norman},
+  title = {Computability by probabilistic machines},
+  booktitle = {Automata studies},
+  series = {Annals of {Math.} {S}tudies, no. 34},
+  pages = {183--212},
+  publisher = {Princeton Univ. Press},
+  address = {Princeton, N. J.},
+  year = {1956}
+}
+
+
+
+@incollection{SD78,
+  author = {Nasser Saheb-Djahromi},
+  title = {Probabilistic {LCF}},
+  booktitle = {Mathematical Foundations of Comput. Sci., 1978 ({P}roc. {S}eventh {S}ympos., {Z}akopane, 1978)},
+  series = {Lecture Notes in Comput. Sci.},
+  volume = {64},
+  pages = {442--451},
+  publisher = {Springer},
+  address = {Berlin},
+  year = {1978}
+}
+
+
+
+@inproceedings{MW08,
+  author = {Tom Minka and John Winn},
+  title = {Gates: a graphical notation for mixture models},
+  booktitle = {Adv. in Neural Inform. Processing Syst.},
+  volume = {21},
+  year = {2008}
+}
+
+
+
+@inproceedings{MSS09,
+  author = {Andrew McCallum and Karl Schultz and Sameer Singh},
+  title = {FACTORIE: Probabilistic Programming via Imperatively Defined Factor Graphs},
+  booktitle = {Adv. in Neural Inform. Processing Syst.},
+  volume = {22},
+  year = {2009},
+  url = {http://www.cs.umass.edu/~mccallum/papers/factorie-nips09.pdf},
+  keywords = {FACTORIE}
+}
+
+
+
+@inproceedings{SSM09,
+  author = {Sameer Singh and Karl Schultz and Andrew McCallum},
+  title = {Bi-directional Joint Inference for Entity Resolution and Segmentation using Imperatively-Defined Factor Graphs},
+  booktitle = {Machine Learning and Knowledge Discovery in Databases},
+  year = {2009},
+  url = {http://cs.umass.edu/~sameer/files/bidirectional-ecml09.pdf},
+  keywords = {FACTORIE, applications}
+}
+
+
+
+@inproceedings{MRWSS08,
+  author = {Andrew McCallum and Khashayar Rohanemanesh and Michael Wick and Karl Schultz and Sameer Singh},
+  title = {FACTORIE: Efficient Probabilistic Programming for Relational Factor Graphs via Imperative Declarations of Structure, Inference and Learning},
+  booktitle = {NIPS Workshop on Probabilistic Programming},
+  year = {2008},
+  url = {http://www.cs.umass.edu/~mccallum/papers/factorie-nipsws.pdf},
+  keywords = {FACTORIE}
+}
+
+
+
+@techreport{OGT09,
+  author = {Timothy J. O'Donnell and Noah D. Goodman and Joshua B. Tenenbaum},
+  title = {Fragment Grammars: Exploring Computation and Reuse in Language},
+  institution = {Massachusetts Institute of Technology},
+  number = {MIT-CSAIL-TR-2009-013},
+  url = {http://dspace.mit.edu/handle/1721.1/44963},
+  year = {2009},
+  abstract = {Language relies on a division of labor between stored units and structure building operations which combine the stored units into larger structures. This division of labor leads to a tradeoﬀ: more structure-building means less need to store while more storage means less need to compute structure. We develop a hierarchical Bayesian model called fragment grammar to explore the optimum balance between structure-building and reuse. The model is developed in the context of stochastic functional programming (SFP), and in particular, using a probabilistic variant of Lisp known as the Church programming language. We show how to formalize several probabilistic models of language structure using Church, and how fragment grammar generalizes one of them---adaptor grammars. We conclude with experimental data with adults and preliminary evaluations of the model on natural language corpus data.}
+}
+
+
+
+@phdthesis{Man09,
+  author = {Vikash Mansinghka},
+  title = {Natively Probabilistic Computation},
+  school = {Massachusetts Institute of Technology},
+  year = {2009},
+  url = {http://web.mit.edu/vkm/www/vkm-dissertation.pdf},
+  note = {MIT/EECS George M. Sprowls Doctoral Dissertation Award},
+  abstract = {I introduce a new set of natively probabilistic computing abstractions, including probabilistic generalizations of Boolean circuits, backtracking search and pure Lisp. I show how these tools let one compactly specify probabilistic generative models, generalize and parallelize widely used sampling algorithms like rejection sampling and Markov chain Monte Carlo, and solve difficult Bayesian inference problems.
+
+I first introduce Church, a probabilistic programming language for describing probabilistic generative processes that induce distributions, which generalizes Lisp, a language for describing deterministic procedures that induce functions. I highlight the ways randomness meshes with the reflectiveness of Lisp to support the representation of structured, uncertain knowledge, including nonparametric Bayesian models from the current literature, programs for decision making under uncertainty, and programs that learn very simple programs from data. I then introduce systematic stochastic search, a recursive algorithm for exact and approximate sampling that generalizes a popular form of backtracking search to the broader setting of stochastic simulation and recovers widely used particle filters as a special case. I use it to solve probabilistic reasoning problems from statistical physics, causal reasoning and stereo vision. Finally, I introduce stochastic digital circuits that model the probability algebra just as traditional Boolean circuits model the Boolean algebra. I show how these circuits can be used to build massively parallel, fault-tolerant machines for sampling and allow one to efﬁciently run Markov chain Monte Carlo methods on models with hundreds of thousands of variables in real time.  
+
+I emphasize the ways in which these ideas fit together into a coherent software and hardware stack for natively probabilistic computing, organized around distributions and samplers rather than deterministic functions. I argue that by building uncertainty and randomness into the foundations of our programming languages and computing machines, we may arrive at ones that are more powerful, flexible and efficient than deterministic designs, and are in better alignment with the needs of computational science, statistics and artiﬁcial intelligence.}
+}
+
+
+
+@phdthesis{Roy11,
+  author = {Daniel M. Roy},
+  title = {Computability, inference and modeling in probabilistic programming},
+  school = {Massachusetts Institute of Technology},
+  year = {2011},
+  url = {http://danroy.org/papers/Roy-PHD-2011.pdf},
+  note = {MIT/EECS George M. Sprowls Doctoral Dissertation Award},
+  abstract = {We investigate the class of computable probability distributions and explore the fundamental limitations of using this class to describe and compute conditional distributions.  In addition to proving the existence of noncomputable conditional distributions, and thus ruling out the possibility of generic probabilistic inference algorithms (even inefficient ones), we highlight some positive results showing that posterior inference is possible in the presence of additional structure like exchangeability and noise, both of which are common in Bayesian hierarchical modeling.  
+
+This theoretical work bears on the development of probabilistic programming languages (which enable the specification of complex probabilistic models) and their implementations (which can be used to perform Bayesian reasoning).  The probabilistic programming approach is particularly well suited for defining infinite-dimensional, recursively-defined stochastic processes of the sort used in nonparametric Bayesian statistics.  We present a new construction of the Mondrian process as a partition-valued Markov process in continuous time, which can be viewed as placing a distribution on an infinite $k$d-tree data structure.}
+}
+
+
+
+@inproceedings{WSG11,
+  title = {Lightweight Implementations of Probabilistic Programming Languages Via Transformational Compilation},
+  author = {David Wingate and Andreas Stuhlm\"uller and Noah D. Goodman},
+  booktitle = {Proc. of the 14th Artificial Intelligence and Statistics},
+  year = {2011},
+  url = {http://stanford.edu/~ngoodman/papers/WSG-AIStats11.pdf}
+}
+
+
+
+@inproceedings{WGSS11,
+  author = {David Wingate and Noah D. Goodman and Andreas Stuhlm\"uller and Jeffrey M. Siskind},
+  title = {Nonstandard Interpretations of Probabilistic Programs for Efficient Inference},
+  booktitle = {Adv. in Neural Inform. Processing Syst.},
+  volume = {24},
+  year = {2011},
+  url = {http://www.mit.edu/~ast/papers/nonstandard-interpretations-nips2011.pdf}
+}
+
+
+
+@misc{HSG11,
+  author = {Irvin Hwang and Andreas Stuhlm\"uller and Noah D. Goodman},
+  title = {Inducing Probabilistic Programs by Bayesian Program Merging},
+  year = {2011},
+  eprint = {1110.5667}
+}
+
+
+
+@phdthesis{O'D11,
+  author = {O'Donnell, Timothy J.},
+  school = {Harvard University},
+  title = {Productivity and Reuse in Language},
+  year = {2011},
+  abstract = {This thesis presents a formal model of productivity and reuse which treats the problem as a structure-by-structure inference in a Bayesian framework. The model---Fragment Grammars, a generalization of Adaptor Grammars (Johnson et al., 2007)---is built around two proposals. The first is that anything that can be computed can be stored.  The specific computational mechanism by which this is accomplished, stochastic memoization, is inherited from Adaptor Grammars (Goodman et al., 2008; Johnson et al., 2007). The second proposal is that any stored item can include subparts which must be computed productively. This is made possible by the computational mechanism of stochastically lazy evaluation, introduced in the thesis.}
+}
+
+
+
+@phdthesis{Obe09,
+  author = {Obermeyer, Fritz},
+  title = {Automated equational reasoning in nondeterministic $lambda$-calculi modulo theories H*},
+  year = {2009},
+  school = {Carnegie-Mellon University},
+  url = {http://fritzo.org/thesis},
+  pdf = {http://fritzo.org/thesis.pdf},
+  keywords = {automated deduction, lambda-calculus, Bayesian inference},
+  abstract = {This thesis attempts to implement Bayesian induction of
+programs, a la Solomonoff.  We develop equational theories and a
+theorem prover for lambda-calculus with a probability monad, and use
+this to enumerate the first few thousand equivalence classes of
+programs, ordered by Kolmogorov complexity.  The resulting software
+can search for simple programs satisfying user-defined constraints.}
+}
+
+
+
+@inproceedings{JT98,
+  author = {Achim Jung and Regina Tix},
+  title = {The troublesome probabilistic powerdomain},
+  eidtors = {A. Jung, K. Keimel, and M. Kwiatkowska},
+  booktitle = {Third Workshop on Computation and Approximation},
+  volume = {13},
+  series = {Electronic Notes in Theoretical Computer Science},
+  publisher = {Elsevier Science Publishers},
+  year = {1998},
+  url = {http://citeseer.ist.psu.edu/jung98troublesome.html},
+  keywords = {domain theory, probability}
+}
+
+
+
+@inproceedings{KMP97,
+  author = {Daphne Koller and David McAllester and Avi Pfeffer},
+  booktitle = {Proceedings of the 14th National Conference on
+Artificial Intelligence (AAAI)},
+  title = {Effective {B}ayesian Inference for Stochastic Programs},
+  year = {1997},
+  pages = {740--747},
+  url = {http://ai.stanford.edu/~koller//papers.cgi?entry=Koller+al:AAAI97a},
+  pdf = {http://ai.stanford.edu/~koller//Papers/Koller+al:AAAI97a.pdf}
+}
+
+
+
+@inproceedings{Hec94,
+  author = {Reinhold Heckmann},
+  title = {Probabilistic Power Domains, Information Systems, and Locales},
+  booktitle = {Mathematical Foundations of Programming Semantics},
+  year = {1994},
+  publisher = {Springer},
+  series = {Lecture notes in computer science},
+  url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.39.7431},
+  keywords = {domain theory, probability}
+}
+
+
+
+@phdthesis{Jon89,
+  author = {Claire Jones},
+  title = {Probabilistic non-determinism},
+  year = {1989},
+  order_no = {UMI Order No. GAXDX-94930},
+  publisher = {University of Edinburgh},
+  school = {University of Edinburgh},
+  address = {Edinburgh, Scotland, UK},
+  keywords = {domain theory, probability},
+  url = {http://www.lfcs.inf.ed.ac.uk/reports/90/ECS-LFCS-90-105/}
+}
+
+
+
+@inproceedings{Plo82,
+  author = {Gordon Plotkin},
+  title = {Probabilistic Powerdomains},
+  booktitle = {Proceedings CAAP},
+  year = {1982},
+  keywords = {domain theory, probability}
+}
+
+
+
+@article{Koz81,
+  author = {Dexter Kozen},
+  title = {Semantics of Probabilistic Programs},
+  journal = {Journal of Computer System Sciences},
+  year = 1981,
+  volume = {22},
+  pages = {328-350},
+  keywords = {domain theory, randomized algorithms}
+}
+
+
+
+@article{Sol64,
+  author = {Ray Solomonoff},
+  title = {A Formal Theory of Inductive Inference: Parts 1 and 2},
+  journal = {Information and Control},
+  year = 1964,
+  volume = 7,
+  pages = {1-22 and 224-254},
+  keywords = {inductive inference}
+}
+
+
+
+@article{Sol78,
+  author = {Ray Solomonoff},
+  title = {Complexity-Based Induction Systems: Comparisons and
+Convergence Theorems},
+  journal = {IEEE Transactions on Information Theory},
+  year = 1978,
+  volume = {IT-24},
+  pages = {422-432},
+  keywords = {inductive inference}
+}
+
+
+
+@inproceedings{MZKHK08,
+  author = {Brian Milch and Luke S. Zettlemoyer and Kristian Kersting and Michael Haimes and Leslie Pack Kaelbling},
+  year = {2008},
+  title = {Lifted Probabilistic Inference with Counting Formulas},
+  booktitle = {Proc. 23rd AAAI Conference on Artificial Intelligence},
+  pages = {1062--1068},
+  url = {http://sites.google.com/site/bmilch/papers/aaai08cfove.pdf}
+}
+
+
+
+@inproceedings{MMRSOK07,
+  author = {Brian Milch and Bhaskara Marthi and Stuart Russell and David Sontag and Daniel L. Ong and Andrey Kolobov},
+  year = {2007},
+  title = {{BLOG}: Probabilistic Models with Unknown Objects},
+  editor = {Lise Getoor and Ben Taskar},
+  booktitle = {Statistical Relational Learning},
+  publisher = {MIT Press},
+  url = {http://sites.google.com/site/bmilch/papers/blog-chapter.pdf}
+}
+
+
+
+@phdthesis{Mil06,
+  author = {Brian Milch},
+  year = {2006},
+  title = {Probabilistic Models with Unknown Objects},
+  department = {Computer Science Division},
+  school = {University of California, Berkeley},
+  url = {http://sites.google.com/site/bmilch/papers/milch_thesis.pdf},
+  abstract = {Humans and other intelligent agents must make inferences about the real-world objects that underlie their observations: for instance, the objects visible in an image, or the people mentioned in a set of text documents. The agent may not know in advance how many objects exist, how they are related to each other, or which observations correspond to which underlying objects. Existing declarative representations for probabilistic models do not capture the structure of such scenarios.
+
+This thesis introduces Bayesian logic (BLOG), a ﬁrst-order probabilistic modeling language that specifies probability distributions over possible worlds with varying sets of objects. A BLOG model contains statements that define conditional probability distributions for a certain set of random variables; the model also specifies certain context-speciﬁc independence properties. We provide criteria under which such a model is guaranteed to fully deﬁne a probability distribution. These criteria go beyond existing results in that they can be satisﬁed even when the Bayesian network deﬁned by the model is cyclic, or contains nodes with inﬁnitely many ancestors.
+
+We describe several approximate inference algorithms that exploit the contextspeciﬁc dependence structure revealed by a BLOG model. First, we present rejection sampling and likelihood weighting algorithms that are guaranteed to converge to the correct probability for any query on a structurally well-defined BLOG model. Because these algorithms instantiate only those variables that are context-specifically relevant, they can generate samples in finite time even when the model defines infinitely many variables. We then deﬁne a general framework for inference on BLOG models using Markov chain Monte Carlo (MCMC) algorithms. This framework allows a programmer to plug in a domain-specfiic proposal distribution, which helps the Markov chain move to high-probability worlds. Furthermore, the chain can operate on partial world descriptions that specify values only for context-specifically relevant variables. We give conditions under which MCMC over such partial world descriptions is guaranteed to converge to correct probabilities. We also show that this framework performs efficiently on a real-world task: reconstructing the set of distinct publications referred to by a set of bibliographic citations.}
+}
+
+
+
+@inproceedings{MR06,
+  author = {Brian Milch and Stuart Russell},
+  year = {2006},
+  title = {General-Purpose {MCMC} Inference over Relational Structures},
+  booktitle = {Proc. 22nd Conference on Uncertainty in Artificial Intelligence},
+  pages = {349--358},
+  url = {http://sites.google.com/site/bmilch/papers/mcmc-uai06.pdf}
+}
+
+
+
+@inproceedings{MMRSOK05,
+  author = {Brian Milch and Bhaskara Marthi and Stuart Russell and David Sontag and Daniel L. Ong and Andrey Kolobov},
+  year = {2005},
+  title = {{BLOG}: Probabilistic Models with Unknown Objects},
+  booktitle = {Proc. 19th International Joint Conference on Artificial Intelligence},
+  pages = {1352--1359},
+  url = {http://sites.google.com/site/bmilch/papers/blog-ijcai05.pdf}
+}
+
+
+
+@inproceedings{MMSROK05,
+  author = {Brian Milch and Bhaskara Marthi and David Sontag and Stuart Russell and Daniel L. Ong and Andrey Kolobov},
+  year = {2005},
+  title = {Approximate Inference for Infinite Contingent {B}ayesian Networks},
+  booktitle = {10th International Workshop on Artificial Intelligence and Statistics},
+  url = {http://sites.google.com/site/bmilch/papers/aistats05-cbn.pdf}
+}
+
+
+
+@misc{MMR04,
+  author = {Brian Milch and Bhaskara Marthi and Stuart Russell},
+  year = {2004},
+  title = {{BLOG}: Relational Modeling with Unknown Objects},
+  howpublished = {ICML Workshop on Statistical Relational Learning and Its Connections to Other Fields},
+  url = {http://sites.google.com/site/bmilch/papers/fopl-srl04.pdf}
+}
+
+
+
+@misc{MMR03,
+  author = {Bhaskara Marthi and Brian Milch and Stuart Russell},
+  year = {2003},
+  title = {First-Order Probabilistic Models for Information Extraction},
+  howpublished = {IJCAI Workshop on Learning Statistical Models from Relational Data},
+  url = {http://sites.google.com/site/bmilch/papers/srl-fomie.pdf}
+}
+
+
+
+@article{KG07,
+  author = {Jouni Kerman and Andrew Gelman},
+  title = {Manipulating and summarizing posterior simulations using random variable objects},
+  journal = {Stat. Comput.},
+  year = {2007},
+  volume = {17},
+  pages = {235--244},
+  doi = {10.1007/s11222-007-9020-4},
+  url = {http://www.stat.columbia.edu/~gelman/research/published/postsim.pdf},
+  abstract = {Practical Bayesian data analysis involves manipulating and summarizing simulations from the posterior distribution of the unknown parameters. By manipulation we mean computing posterior distributions of functions of the unknowns, and generating posterior predictive distributions.  The results need to be summarized both numerically and graphically.
+
+We introduce, and implement in R, an object-oriented programming paradigm based on a random variable object type that is implicitly represented by simulations. This makes it possible to define vector and array objects that may contain both random and deterministic quantities, and syntax rules that allow to treat these objects like any numeric vectors or arrays, providing a solution to various problems encountered in Bayesian computing involving posterior simulations.
+
+We illustrate the use of this new programming environment with examples of Bayesian computing, demonstrating missing-value imputation, nonlinear summary of regression predictions, and posterior predictive checking.}
+}
+
+
+
+@article{Bun98,
+  author = {Wray L.~Buntine},
+  title = {Will domain-specific code synthesis become a silver bullet? },
+  journal = {IEEE Intelligent Systems},
+  note = {With discussion by Peter Norvig, Jeffrey Van Baalen, David Spiegelhalter and Andrew Thomas. Guest editor for Trends and Controversies},
+  date = {March},
+  year = 1998,
+  doi = {http://dx.doi.org/10.1109/5254.671084}
+}
+
+
+
+@article{WS04,
+  author = {Jon Whittle and Johann Schumann},
+  title = {Automating the implementation of {K}alman filter algorithms},
+  journal = {ACM Trans. Math. Softw.},
+  issue_date = {December 2004},
+  volume = {30},
+  number = {4},
+  month = dec,
+  year = {2004},
+  pages = {434--453},
+  url = {http://ti.arc.nasa.gov/m/profile/schumann/PDF/WS2004.pdf},
+  doi = {http://dx.doi.org/10.1145/1039813.1039816}
+}
+
+
+
+@article{FS03,
+  author = {Bernd Fischer and Johann Schumann},
+  title = {{AutoBayes: a system for generating data analysis programs from statistical models}},
+  journal = {Journal of Functional Programming},
+  volume = {13},
+  year = {2003},
+  pages = {483--508},
+  issue = {3},
+  url = {http://ti.arc.nasa.gov/m/profile/schumann/PDF/FS2003a.pdf},
+  doi = {http://dx.doi.org/10.1017/S0956796802004562}
+}
+
+
+
+@incollection{GFSB03,
+  author = {Gray, Alexander G. and Fischer, Bernd and Schumann, Johann and Buntine, Wray L.},
+  title = {Automatic Derivation of Statistical Algorithms: The {EM} Family and Beyond},
+  booktitle = {Advances in Neural Information Processing Systems 15},
+  editor = {S. Becker and S. Thrun and K. Obermayer},
+  publisher = {MIT Press},
+  pages = {673--680},
+  year = {2003},
+  url = {http://www.fast-lab.org/papers/gray2003autobayes.pdf}
+}
+
+
+
+

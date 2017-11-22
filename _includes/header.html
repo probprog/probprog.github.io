@@ -1,0 +1,26 @@
+<div class="row">
+  
+  <a href="{{ site.baseurl }}"> 
+    <img class="logo" src="{{ site.baseurl }}/assets/images/anglican_logo.png" height="50px" align="bottom"> 
+  </a>
+  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
+</div>
+<div class="row">
+	<div class="title pull-left">
+			  Anglican
+    </div>
+    <ul class="nav nav-pills pull-right">
+      {% for link in site.navigation %}
+      <li {% if page.url == link.url %}class="active"{% endif %}>
+        <a href="{{ site.baseurl }}{{link.url}}" title="{{link.title}}">{{link.text}}</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      {% endfor %}
+    </ul>
+</div>
+
+<script>
+  $()
+</script>

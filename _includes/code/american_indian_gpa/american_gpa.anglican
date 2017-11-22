@@ -1,0 +1,2 @@
+[assume american_gpa (lambda () (if (flip .9) (* 4 (beta 5 5)) (* 4 (if (flip .8) 1 0))))]
+[predict (american_gpa)]

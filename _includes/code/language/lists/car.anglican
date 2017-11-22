@@ -1,0 +1,13 @@
+[assume a (list)]
+[assume b (list 1)]
+[assume c (list 1 2 3 4)]
+[assume d nil]
+[assume e "foo"]
+[assume f 1]
+
+[predict (list 'car a ': (car a))]
+[predict (list 'car b ': (car b))]
+[predict (list 'car c ': (car c))]
+[predict (list 'car d ': (car d))]
+[predict (list 'car e ': (car e))]
+[predict (list 'car f ': (car f))]

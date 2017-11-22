@@ -1,0 +1,6 @@
+(nil? 1 : false)
+(nil? 1.5 : false)
+(nil? 1/2 : false)
+(nil? true : false)
+(nil? "hello world" : false)
+(nil? nil : true)

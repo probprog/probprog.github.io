@@ -1,0 +1,12 @@
+[assume a 2]
+[assume b 7]
+[assume c 1.5]
+[assume d 9223372036854775807]
+
+[predict (list '+ ': (+))]
+[predict (list '+ a ': (+ a))]
+[predict (list a '+ b ': (+ a b))]
+[predict (list b '+ c ': (+ b c))]
+[predict (list a '+ b '+ c ': (+ a b c))]
+[predict (list (list 'double d) '+ 10000 ': (+ (double d) 10000))]
+[predict (list d '+ 10000 ': (+ d 10000))]

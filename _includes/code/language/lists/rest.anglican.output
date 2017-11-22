@@ -1,0 +1,6 @@
+(rest () : ())
+(rest (1) : ())
+(rest (1 2 3 4) : (2 3 4))
+(rest nil : ())
+(rest "foo" : (\o \o))
+[unknown] Unidentified exception when trying to call procedure rest with arguments (1)

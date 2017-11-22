@@ -1,0 +1,2 @@
+[assume indian_gpa (lambda () (if (flip .85) (* 10 (beta 5 5)) (* 10 (if (flip .7) 1 0))))]
+[predict (indian_gpa)]

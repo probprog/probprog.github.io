@@ -1,0 +1,6 @@
+(odd? -2 : false)
+(odd? -1 : true)
+(odd? 0 : false)
+(odd? 1 : true)
+(odd? 2 : false)
+[unknown] Unidentified exception when trying to call procedure odd? with arguments (1.5)

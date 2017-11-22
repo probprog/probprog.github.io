@@ -1,0 +1,5 @@
+[assume sigma (sqrt 2)]
+[assume mu (normal 1 (sqrt 5))]
+[observe (normal mu sigma) 9]
+[observe (normal mu sigma) 8]
+[predict mu]

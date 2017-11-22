@@ -1,0 +1,6 @@
+(second () : nil)
+(second (1) : nil)
+(second (1 2 3 4) : 2)
+(second nil : nil)
+(second "foo" : \o)
+[unknown] Unidentified exception when trying to call procedure second with arguments (1)

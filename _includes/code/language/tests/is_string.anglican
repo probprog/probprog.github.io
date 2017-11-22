@@ -1,0 +1,11 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+
+[predict (list 'string? a ': (string? a))]
+[predict (list 'string? b ': (string? b))]
+[predict (list 'string? c ': (string? c))]
+[predict (list 'string? d ': (string? d))]
+[predict (list 'string? e ': (string? e))]

@@ -1,0 +1,11 @@
+[assume a 2]
+[assume b 7]
+[assume c 1.5]
+[assume d 9223372036854775807]
+
+[predict (list '/ a ': (/ a))]
+[predict (list b '/ a ': (/ b a))]
+[predict (list b '/ c ': (/ b c))]
+[predict (list b '/ a '/ c ': (/ b a c))]
+[predict (list (list 'double d) '/ 0.5 ': (/ (double d) 0.5))]
+[predict (list d '/ 0.5 ': (/ d 0.5))]

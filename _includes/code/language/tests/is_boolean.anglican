@@ -1,0 +1,11 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+
+[predict (list 'boolean? a ': (boolean? a))]
+[predict (list 'boolean? b ': (boolean? b))]
+[predict (list 'boolean? c ': (boolean? c))]
+[predict (list 'boolean? d ': (boolean? d))]
+[predict (list 'boolean? e ': (boolean? e))]

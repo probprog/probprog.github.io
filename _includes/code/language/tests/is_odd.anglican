@@ -1,0 +1,13 @@
+[assume a -2]
+[assume b -1]
+[assume c 0]
+[assume d 1]
+[assume e 2]
+[assume f 1.5]
+
+[predict (list 'odd? a ': (odd? a))]
+[predict (list 'odd? b ': (odd? b))]
+[predict (list 'odd? c ': (odd? c))]
+[predict (list 'odd? d ': (odd? d))]
+[predict (list 'odd? e ': (odd? e))]
+[predict (list 'odd? f ': (odd? f))]

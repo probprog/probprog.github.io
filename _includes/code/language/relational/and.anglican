@@ -1,0 +1,7 @@
+[predict (and)]
+[predict (and false)]
+[predict (and nil)]
+[predict (and true true true)]
+[predict (and 0.0 "" (list))]
+[predict (and true false true)]
+[predict (and true false (/ 0 0))]

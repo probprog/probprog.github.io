@@ -1,0 +1,12 @@
+[assume a (list)]
+[assume b (list 1)]
+[assume c (list 1 2 3 4)]
+[assume d nil]
+[assume e "foo"]
+
+[predict (list 'nth a 1 -1 ': (nth a 1 -1))]
+[predict (list 'nth b 0 ': (nth b 0))]
+[predict (list 'nth c 2 ': (nth c 2))]
+[predict (list 'nth d 1 -1 ': (nth d 1 -1))]
+[predict (list 'nth e 1 ': (nth e 1))]
+[predict (list 'nth c 2 ': (nth c 4))]

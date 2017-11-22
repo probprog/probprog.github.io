@@ -1,0 +1,5 @@
+(float? 1 : false)
+(float? 1.5 : true)
+(float? 1/2 : false)
+(float? true : false)
+(float? "hello world" : false)

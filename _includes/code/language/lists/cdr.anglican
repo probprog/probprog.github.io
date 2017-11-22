@@ -1,0 +1,13 @@
+[assume a (list)]
+[assume b (list 1)]
+[assume c (list 1 2 3 4)]
+[assume d nil]
+[assume e "foo"]
+[assume f 1]
+
+[predict (list 'cdr a ': (cdr a))]
+[predict (list 'cdr b ': (cdr b))]
+[predict (list 'cdr c ': (cdr c))]
+[predict (list 'cdr d ': (cdr d))]
+[predict (list 'cdr e ': (cdr e))]
+[predict (list 'cdr f ': (cdr f))]

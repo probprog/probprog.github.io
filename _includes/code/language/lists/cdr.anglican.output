@@ -1,0 +1,6 @@
+(cdr () : ())
+(cdr (1) : ())
+(cdr (1 2 3 4) : (2 3 4))
+(cdr nil : ())
+(cdr "foo" : (\o \o))
+[unknown] Unidentified exception when trying to call procedure cdr with arguments (1)

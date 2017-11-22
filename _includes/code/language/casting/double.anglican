@@ -1,0 +1,20 @@
+[assume a 0]
+[assume b 1]
+[assume c (/ 1 2)]
+[assume d 9223372036854775807]
+[assume e (- d 1)]
+[assume f 9223372036854774200]
+[assume g 9223372036854774300]
+[assume h "2"]
+
+[predict (list 'double a ': (double a))]
+[predict (list 'double b ': (double b))]
+[predict (list 'double c ': (double c))]
+[predict (list 'double d ': (double d))]
+[predict (list 'double e ': (double e))]
+; There will be some loss of precision when dealing with large values
+[predict (list 'double d '= 'double e ': (=(double d) (double e)))]
+; Large values will round to the nearest double
+[predict (list 'double f ': (double f))]
+[predict (list 'double g ': (double g))]
+[predict (list 'double h ': (double h))]

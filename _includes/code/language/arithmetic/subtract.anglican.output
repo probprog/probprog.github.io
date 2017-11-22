@@ -1,0 +1,6 @@
+(- 2 : -2)
+(2 - 7 : -5)
+(7 - 1.5 : 5.5)
+(2 - 7 - 1.5 : -6.5)
+((double -9223372036854775808) - 10000 : -9.223372036854786E18)
+[unknown] Unidentified exception when trying to call procedure - with arguments (-9223372036854775808 10000)

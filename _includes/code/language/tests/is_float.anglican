@@ -1,0 +1,11 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+
+[predict (list 'float? a ': (float? a))]
+[predict (list 'float? b ': (float? b))]
+[predict (list 'float? c ': (float? c))]
+[predict (list 'float? d ': (float? d))]
+[predict (list 'float? e ': (float? e))]

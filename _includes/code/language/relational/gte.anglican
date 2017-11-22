@@ -1,0 +1,28 @@
+[assume a 1]
+[assume b true]
+[assume c "b"]
+[assume d nil]
+
+[predict (list '>= a ': (>= b))]
+[predict (list '>= b ': (>= b))]
+[predict (list '>= false ': (>= false))]
+[predict (list '>= c ': (>= b))]
+[predict (list '>= d ': (>= b))]
+
+[predict (list a '>= 0 ': (>= a 0))]
+[predict (list a '>= 1 ': (>= a 1))]
+[predict (list a '>= 2 ': (>= a 2))]
+[predict (list a '>= 0.9 ': (>= a 0.9))]
+[predict (list a '>= 1.0 ': (>= a 1.0))]
+[predict (list a '>= 1.1 ': (>= a 1.1))]
+[predict (list a '>= (/ 1 2) ': (>= a (/ 1 2)))]
+[predict (list a '>= (/ 3 2) ': (>= a (/ 3 2)))]
+
+[predict (list a '>= 0.5 '>= 0 ': (>= a 0.5 0))]
+[predict (list a '>= 0.5 '>= 0.5 ': (>= a 0.5 0.5))]
+[predict (list a '>= 0.5 '>= 0.6 ': (>= a 0.5 0.6))]
+[predict (list a '>= 1.5 '>= 1.4 ': (>= a 1.5 1.4))]
+[predict (list a '>= 1.5 '>= 1.5 ': (>= a 1.5 1.5))]
+[predict (list a '>= 1.5 '>= 1.6 ': (>= a 1.5 1.6))]
+
+[predict (list c '>= "a" ': (>= c "a"))]

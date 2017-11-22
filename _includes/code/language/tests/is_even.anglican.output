@@ -1,0 +1,6 @@
+(even? -2 : true)
+(even? -1 : false)
+(even? 0 : true)
+(even? 1 : false)
+(even? 2 : true)
+[unknown] Unidentified exception when trying to call procedure even? with arguments (1.5)

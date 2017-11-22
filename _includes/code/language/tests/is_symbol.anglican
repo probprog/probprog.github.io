@@ -1,0 +1,23 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+[assume f (lambda (x) (pow x 2))]
+[assume g (mem (lambda (x) (f x)))]
+[assume h even?]
+
+[predict (f 4)]
+[predict (g 4)]
+
+[predict (apply f (list 4))]
+[predict (apply g (list 4))]
+
+[predict (list 'symbol? a ': (symbol? a))]
+[predict (list 'symbol? b ': (symbol? b))]
+[predict (list 'symbol? c ': (symbol? c))]
+[predict (list 'symbol? d ': (symbol? d))]
+[predict (list 'symbol? e ': (symbol? e))]
+[predict (list 'symbol? f ': (symbol? f))]
+[predict (list 'symbol? g ': (symbol? g))]
+[predict (list 'symbol? h ': (symbol? h))]

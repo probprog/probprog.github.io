@@ -1,0 +1,9 @@
+[assume a nil]
+[assume b (list)]
+[assume c (list 1 2 3 4 5)]
+[assume d (list 9223372036854775807 1)]
+
+[predict (list 'normalize a ': (normalize a))]
+[predict (list 'normalize b ': (normalize b))]
+[predict (list 'normalize c ': (normalize c))]
+[predict (list 'normalize d ': (normalize d))]

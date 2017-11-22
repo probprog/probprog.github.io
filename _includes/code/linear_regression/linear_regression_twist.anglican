@@ -1,0 +1,7 @@
+[assume m (list (normal 0 1) (normal 0 1))]
+[assume b 4.47]
+[assume variance (gamma 1 1)]
+[assume y (lambda (x-1 x-2 x-3) (+ (+ (* (first m) (- x-1 1950)) (* (second m) (if (> (/ x-2 x-3) 4) 1 0))) b))]
+[observe-csv "http://www.robots.ox.ac.uk/~fwood/anglican/examples/linear_regression/gdp.csv" (normal (y $1 $3 $9) variance) $10]
+[predict (y 2013 (+ 4 (if (flip .5) 1 0)) 1)]
+[predict m]

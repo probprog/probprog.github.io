@@ -1,0 +1,13 @@
+[assume marsaglia-normal (lambda (mu std)
+          (begin
+            (define x (uniform-continuous -1.0 1.0))
+            (define y (uniform-continuous -1.0 1.0))
+            (define s (+ (* x x) (* y y))) 
+            (if (< s 1) 
+                (+ mu (* std (* x (sqrt (* -2.0 (/ (log s) s))))))
+                (marsaglia-normal mu std))))]
+[assume std (sqrt 2)]
+[assume mu (marsaglia-normal 1 (sqrt 5))]
+[observe (normal mu std) (+ 8 1)]
+[observe (normal mu std) 8]
+[predict mu]

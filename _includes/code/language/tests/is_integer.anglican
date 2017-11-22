@@ -1,0 +1,13 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d 9223372036854775807]
+[assume e true]
+[assume f "hello world"]
+
+[predict (list 'integer? a ': (integer? a))]
+[predict (list 'integer? b ': (integer? b))]
+[predict (list 'integer? c ': (integer? c))]
+[predict (list 'integer? d ': (integer? d))]
+[predict (list 'integer? e ': (integer? e))]
+[predict (list 'integer? f ': (integer? f))]

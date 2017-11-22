@@ -1,0 +1,11 @@
+[assume a 2]
+[assume b -2]
+[assume c 1.5]
+[assume d (/ 1 2)]
+[assume e "foo"]
+
+[predict (list 'inc a ': (inc a))]
+[predict (list 'inc b ': (inc b))]
+[predict (list 'inc c ': (inc c))]
+[predict (list 'inc d ': (inc d))]
+[predict (list 'inc e ': (inc e))]

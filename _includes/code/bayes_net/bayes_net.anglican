@@ -1,0 +1,16 @@
+[assume is-cloudy     (flip 0.5)]
+
+[assume is-raining    (cond ( (= is-cloudy true)  (flip 0.8) )
+                            ( (= is-cloudy false) (flip 0.2)))]
+
+[assume sprinkler     (cond ( (= is-cloudy true)  (flip 0.1) )
+                            ( (= is-cloudy false) (flip 0.5)))]
+
+[assume p-wet-grass   (cond ( (and (= sprinkler true) (= is-raining true))  0.99 )
+                            ( (or  (= sprinkler true) (= is-raining true))  0.9  )
+                            ( else                                          0    ))]
+
+[observe (flip p-wet-grass) true]
+
+[predict is-cloudy]
+

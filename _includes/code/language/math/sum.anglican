@@ -1,0 +1,11 @@
+[assume a nil]
+[assume b (list)]
+[assume c (list 1 2 3)]
+[assume d (list 9223372036854775807 1)]
+[assume e (list 1 2 nil)]
+
+[predict (list 'sum a ': (sum a))]
+[predict (list 'sum b ': (sum b))]
+[predict (list 'sum c ': (sum c))]
+[predict (list 'sum d ': (sum d))]
+[predict (list 'sum e ': (sum e))]

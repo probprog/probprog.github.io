@@ -1,0 +1,39 @@
+name: "Anglican"
+baseurl: https://probprog.github.io
+url: https://probprog.github.io
+permalink: /:year/:month/:day/:title
+timezone: Europe/London
+
+navigation:
+- text: Home
+  url: /index.html
+- text: News
+  url: /news/index.html
+- text: Papers
+  url: /literature/index.html
+- text: Language
+  url: /language/index.html
+- text: Inference
+  url: /inference/index.html
+- text: Usage
+  url: /usage/index.html
+- text: Contribute
+  url: /contribute/index.html
+- text: Examples
+  url: /examples/index.html
+
+
+scholar:
+  # sort_by: year
+  # order: descending
+  # style: http://www.zotero.org/styles/nature
+  style: apa
+  repository: assets/pdf
+  bibliography_template: bibliography
+
+markdown:      kramdown
+markdown_ext:  markdown,mkdown,mkdn,mkd,md
+textile_ext:   textile
+highlighter: pygments
+
+markdown: kramdown

@@ -1,0 +1,14 @@
+[assume a nil]
+[assume b (list)]
+[assume c (list 1 2 3 4 5)]
+[assume d (list 9223372036854775807 1)]
+
+[predict (list 'cumsum a ': (cumsum a))]
+[predict (list 'cumsum b ': (cumsum b))]
+[predict (list 'cumsum c ': (cumsum c))]
+
+[predict (list 'cumsum 2 a ': (cumsum 2 a))]
+[predict (list 'cumsum 2 b ': (cumsum 2 b))]
+[predict (list 'cumsum 2 c ': (cumsum 2 c))]
+
+[predict (list 'cumsum d ': (cumsum d))]

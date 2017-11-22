@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+[assume std 2]
+=======
+[assume sigma (sqrt 2)]
+>>>>>>> bc447bbb3bc4b6577403906ae870a29ea00e2c24
+[assume mu (poisson 1)]
+[observe (normal mu std) 9]
+[observe (normal mu std) 8]
+[predict mu]

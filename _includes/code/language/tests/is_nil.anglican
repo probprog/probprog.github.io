@@ -1,0 +1,13 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+[assume f nil]
+
+[predict (list 'nil? a ': (nil? a))]
+[predict (list 'nil? b ': (nil? b))]
+[predict (list 'nil? c ': (nil? c))]
+[predict (list 'nil? d ': (nil? d))]
+[predict (list 'nil? e ': (nil? e))]
+[predict (list 'nil? f ': (nil? f))]

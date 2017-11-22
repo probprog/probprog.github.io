@@ -1,0 +1,7 @@
+[assume a (list 1 2 3 4 5)]
+[assume b (list 9223372036854775807 1)]
+[assume c (list 9223372036854775807 nil)]
+
+[predict (list 'mean a ': (mean a))]
+[predict (list 'mean b ': (mean b))]
+[predict (list 'mean c ': (mean c))]

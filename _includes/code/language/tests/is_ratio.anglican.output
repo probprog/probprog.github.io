@@ -1,0 +1,5 @@
+(ratio? 1 : false)
+(ratio? 1.5 : false)
+(ratio? 1/2 : true)
+(ratio? true : false)
+(ratio? "hello world" : false)

@@ -1,0 +1,11 @@
+[assume a 2]
+[assume b -2]
+[assume c 1.5]
+[assume d (/ 1 2)]
+[assume e "foo"]
+
+[predict (list 'dec a ': (dec a))]
+[predict (list 'dec b ': (dec b))]
+[predict (list 'dec c ': (dec c))]
+[predict (list 'dec d ': (dec d))]
+[predict (list 'dec e ': (dec e))]

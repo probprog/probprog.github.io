@@ -1,0 +1,30 @@
+[import "core.anglican"]
+
+[predict (inc 1)]
+[predict (dec (/ 3 2))]
+
+
+    
+[predict (reduce + (list 2 3))]
+[predict (reduce + 4 (list 1 2 3))]
+
+; check order of operations: this should be `2`
+[predict (reduce - 6 (list 2 3 -1))]
+
+[predict (max 1 2 3 4)]
+[predict (min 10)]
+[predict (apply min (list 4 2 3))]
+
+[predict (min 2 3)]
+
+[predict (map (lambda (x) (* 2 x)) (list 1 2 3))]
+
+[predict (map + (list 1 2 3) (list 10 8 6 4))]
+
+[predict (range 10)]
+[predict (range 1 10 2)]
+
+[predict (filter even? (range 3 100 3))]
+
+
+[predict (dot-product (list 1 2 3) (list 2 4 6))]

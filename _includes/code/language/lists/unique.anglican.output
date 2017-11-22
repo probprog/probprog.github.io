@@ -1,0 +1,6 @@
+(unique () : ())
+(unique (1 1) : (1))
+(unique (1 2 2 3 3 3 4 4 4 4) : (1 2 3 4))
+(unique nil : ())
+(unique "foo" : (\f \o))
+[error]  nth not supported on this type: Long

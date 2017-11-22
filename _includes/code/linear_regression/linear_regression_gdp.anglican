@@ -1,0 +1,6 @@
+[assume m (normal 0 1)]
+[assume b 4.47]
+[assume variance (gamma 1 1)]
+[assume y (lambda (x) (+ (* m (- x 1950)) b))]
+[observe-csv "{{site.baseurl}}/examples/linear_regression/gdp.csv" (normal (y $1) variance) $10]
+[predict (list (* 100 (/ (/ (+ (* m 33) b) b) 33)) b)]

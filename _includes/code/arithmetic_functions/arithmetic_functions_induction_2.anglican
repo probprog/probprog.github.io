@@ -1,0 +1,28 @@
+[assume get-int-constant
+  (lambda () (uniform-discrete 0 10))]
+
+[assume safe-div 
+  (lambda (x y) (if (= y 0) 0 (/ x y)))]
+
+[assume productions 
+  (lambda ()
+    (define expression-type (discrete (list 0.40 0.30 0.30)))
+      (cond
+        ((= expression-type 0) (get-int-constant))
+        ((= expression-type 1) 'x)
+        (else
+          (list
+            (nth (list (quote +) (quote -) (quote *) (quote safe-div))
+                 (discrete (list 0.25 0.25 0.25 0.25)))
+              (productions) (productions)))))]
+
+[assume induced-procedure-code (list 'lambda (list 'x) (productions))]
+[assume induced-procedure (eval induced-procedure-code)]
+
+[assume noise 0.00001]
+[observe (normal (induced-procedure 1) noise) 5]
+[observe (normal (induced-procedure 2) noise) 3]
+[observe (normal (induced-procedure 3) noise) 1]
+
+[predict induced-procedure-code]
+[predict (induced-procedure 4)]

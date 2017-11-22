@@ -1,0 +1,6 @@
+(integer? 1 : true)
+(integer? 1.5 : false)
+(integer? 1/2 : false)
+(integer? 9223372036854775807 : true)
+(integer? true : false)
+(integer? "hello world" : false)

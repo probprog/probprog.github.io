@@ -1,0 +1,13 @@
+[assume a (list)]
+[assume b (list 1 1)]
+[assume c (list 1 2 2 3 3 3 4 4 4 4)]
+[assume d nil]
+[assume e "foo"]
+[assume f 1]
+
+[predict (list 'unique a ': (unique a))]
+[predict (list 'unique b ': (unique b))]
+[predict (list 'unique c ': (unique c))]
+[predict (list 'unique d ': (unique d))]
+[predict (list 'unique e ': (unique e))]
+[predict (list 'unique f ': (unique f))]

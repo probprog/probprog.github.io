@@ -1,0 +1,3 @@
+[assume f 1]
+
+[predict (list 'nth f 0 -1 ': (nth f 0 -1))]

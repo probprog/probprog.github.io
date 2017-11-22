@@ -1,0 +1,11 @@
+[assume a 1]
+[assume b 1.5]
+[assume c (/ 1 2)]
+[assume d true]
+[assume e "hello world"]
+
+[predict (list 'ratio? a ': (ratio? a))]
+[predict (list 'ratio? b ': (ratio? b))]
+[predict (list 'ratio? c ': (ratio? c))]
+[predict (list 'ratio? d ': (ratio? d))]
+[predict (list 'ratio? e ': (ratio? e))]

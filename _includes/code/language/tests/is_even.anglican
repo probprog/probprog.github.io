@@ -1,0 +1,13 @@
+[assume a -2]
+[assume b -1]
+[assume c 0]
+[assume d 1]
+[assume e 2]
+[assume f 1.5]
+
+[predict (list 'even? a ': (even? a))]
+[predict (list 'even? b ': (even? b))]
+[predict (list 'even? c ': (even? c))]
+[predict (list 'even? d ': (even? d))]
+[predict (list 'even? e ': (even? e))]
+[predict (list 'even? f ': (even? f))]

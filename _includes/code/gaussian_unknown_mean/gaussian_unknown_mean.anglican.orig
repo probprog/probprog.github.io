@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+[assume var 2]
+[assume mu (normal 1 (sqrt 5))]
+[observe (normal mu (sqrt var)) 9]
+[observe (normal mu (sqrt var)) 8]
+=======
+[assume sigma (sqrt 2)]
+[assume mu (normal 1 (sqrt 5))]
+[observe (normal mu sigma) 9]
+[observe (normal mu sigma) 8]
+>>>>>>> bc447bbb3bc4b6577403906ae870a29ea00e2c24
+[predict mu]

@@ -1,0 +1,13 @@
+[assume a (list)]
+[assume b (list 1)]
+[assume c (list 1 2 3 4)]
+[assume d nil]
+[assume e "foo"]
+[assume f 1]
+
+[predict (list 'rest a ': (rest a))]
+[predict (list 'rest b ': (rest b))]
+[predict (list 'rest c ': (rest c))]
+[predict (list 'rest d ': (rest d))]
+[predict (list 'rest e ': (rest e))]
+[predict (list 'rest f ': (rest f))]

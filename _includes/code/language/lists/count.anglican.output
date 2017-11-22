@@ -1,0 +1,6 @@
+(count () : 0)
+(count (1) : 1)
+(count (1 2 3 4) : 4)
+(count nil : 0)
+(count "foo" : 3)
+[unknown] Unidentified exception when trying to call procedure count with arguments (1)

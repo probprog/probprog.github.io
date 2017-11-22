@@ -1,0 +1,4 @@
+(normalize nil : ())
+(normalize () : ())
+(normalize (1 2 3 4 5) : (1/15 2/15 1/5 4/15 1/3))
+[unknown] Unidentified exception when trying to call procedure normalize with arguments ((9223372036854775807 1))

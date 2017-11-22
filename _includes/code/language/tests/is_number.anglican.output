@@ -1,0 +1,6 @@
+(number? 1 : true)
+(number? 1.5 : true)
+(number? 1/2 : true)
+(number? true : false)
+(number? "hello world" : false)
+(number? nil : false)

@@ -1,0 +1,7 @@
+(cumsum nil : ())
+(cumsum () : ())
+(cumsum (1 2 3 4 5) : (1 3 6 10 15))
+(cumsum 2 nil : ())
+(cumsum 2 () : ())
+(cumsum 2 (1 2 3 4 5) : (3 5 8 12 17))
+[error]  integer overflow

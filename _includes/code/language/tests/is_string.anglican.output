@@ -1,0 +1,5 @@
+(string? 1 : false)
+(string? 1.5 : false)
+(string? 1/2 : false)
+(string? true : false)
+(string? "hello world" : true)

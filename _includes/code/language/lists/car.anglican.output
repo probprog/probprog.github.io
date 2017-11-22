@@ -1,0 +1,6 @@
+(car () : nil)
+(car (1) : 1)
+(car (1 2 3 4) : 1)
+(car nil : nil)
+(car "foo" : \f)
+[unknown] Unidentified exception when trying to call procedure car with arguments (1)

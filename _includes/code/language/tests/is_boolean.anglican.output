@@ -1,0 +1,5 @@
+(boolean? 1 : false)
+(boolean? 1.5 : false)
+(boolean? 1/2 : false)
+(boolean? true : true)
+(boolean? "hello world" : false)

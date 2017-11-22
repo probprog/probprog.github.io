@@ -1,0 +1,41 @@
+; class generateor samples a sequence of integers according to the Chinese rest. process
+[assume class-generator (crp 1.72)]
+; lazily sample class identifiers
+[assume get-class (mem (lambda (n) (class-generator)))]
+; iid sample observation distribuion parameters
+[assume get-var (mem (lambda (c) (/ 1.0 (gamma 1 10))))]
+[assume get-std (lambda (c) (sqrt (get-var c)))]
+; declare some helper functions for predictions to come 
+; these are written out explicitly for pedagogical purposes
+[assume get-mean (mem (lambda (c) (normal 0 (sqrt (* 10 (get-var c))))))]
+[assume u (lambda () (list (get-class 1) (get-class 2) (get-class 3) 
+                           (get-class 4) (get-class 5) (get-class 6) 
+                           (get-class 7) (get-class 8) (get-class 9) (get-class 10))) ]
+[assume K (lambda () (count (unique (u))))]
+[assume mean-getter (lambda (i c) (if (= i c) 
+                                    (list (get-mean c)) 
+                                    (cons (get-mean i) (mean-getter (+ i 1) c) )))]
+[assume std-getter (lambda (i c) (if (= i c) 
+                                    (list (get-std c)) 
+                                    (cons (get-std i) (std-getter (+ i 1) c) )))]
+; observe draws from the DP mixture
+[observe (normal (get-mean (get-class 1)) (get-std (get-class 1))) 10]
+[observe (normal (get-mean (get-class 2)) (get-std (get-class 2))) 11]
+[observe (normal (get-mean (get-class 3)) (get-std (get-class 3))) 12]
+[observe (normal (get-mean (get-class 4)) (get-std (get-class 4))) -100]
+[observe (normal (get-mean (get-class 5)) (get-std (get-class 5))) -150]
+[observe (normal (get-mean (get-class 6)) (get-std (get-class 6))) -200]
+[observe (normal (get-mean (get-class 7)) (get-std (get-class 7))) .001]
+[observe (normal (get-mean (get-class 8)) (get-std (get-class 8))) .01]
+[observe (normal (get-mean (get-class 9)) (get-std (get-class 9))) .005]
+[observe (normal (get-mean (get-class 10)) (get-std (get-class 10))) 0]
+; all of these observed values are in the .csv file
+;[observe-csv "{{site.baseurl}}/examples/infinite_gaussian_mixture_model/small-data.csv" 
+;                         (normal (get-mean (get-class $1)) (get-std (get-class $1))) $2)]
+; predictive density 
+[predict (normal (get-mean (get-class 11)) (get-std (get-class 11)))]
+; report other quantities if desired
+;[predict (u)]
+;[predict (K)]
+;[predict (mean-getter 1 (K))]
+;[predict (std-getter 1 (K))]

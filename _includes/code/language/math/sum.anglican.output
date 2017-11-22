@@ -1,0 +1,5 @@
+(sum nil : 0.0)
+(sum () : 0.0)
+(sum (1 2 3) : 6.0)
+(sum (9223372036854775807 1) : 9.223372036854776E18)
+[unknown] Unidentified exception when trying to call procedure sum with arguments ((1 2 nil))

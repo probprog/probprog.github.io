@@ -1,0 +1,6 @@
+[predict (or)]
+[predict (or false nil)]
+[predict (or false nil true)]
+[predict (or 0.0)]
+[predict (or "")]
+[predict (or (list))]

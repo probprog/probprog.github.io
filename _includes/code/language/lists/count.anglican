@@ -1,0 +1,13 @@
+[assume a (list)]
+[assume b (list 1)]
+[assume c (list 1 2 3 4)]
+[assume d nil]
+[assume e "foo"]
+[assume f 1]
+
+[predict (list 'count a ': (count a))]
+[predict (list 'count b ': (count b))]
+[predict (list 'count c ': (count c))]
+[predict (list 'count d ': (count d))]
+[predict (list 'count e ': (count e))]
+[predict (list 'count f ': (count f))]

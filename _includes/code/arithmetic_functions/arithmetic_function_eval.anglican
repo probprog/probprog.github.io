@@ -1,0 +1,32 @@
+[assume minus (lambda (x y) (- x y))]
+[assume plus (lambda (x y) (+ x y))]
+[assume random-combination (lambda () (categorical (list (list  '+ .25)
+											        (list  '* .25)
+											        (list 'pow .25)
+											        (list '- .25))))]
+
+[assume random-constant-fn (lambda () (uniform-discrete 0 10))]
+
+[assume random-arithmetic-fn (lambda ()
+    (if (flip 0.3)
+        (list (random-combination) (random-arithmetic-fn) (random-arithmetic-fn) )
+        (if (flip 0.5)
+            'x
+            (random-constant-fn))))]
+
+;[assume random-combination (lambda () (if (flip 0.5) (quote +) (quote -)))]
+
+[assume my-proc (random-arithmetic-fn)]
+[assume noise 0.00001]
+
+;[observe (normal (let ((x 0)) (eval my-proc)) noise) 2]
+;[observe (normal (let ((x 1)) (eval my-proc)) noise) 8]
+;[predict (let ((x 2)) (eval my-proc))]
+
+[observe (normal (let ((x 1)) (eval my-proc)) noise) 1]
+[observe (normal (let ((x 2)) (eval my-proc)) noise) 4]
+[observe (normal (let ((x 3)) (eval my-proc)) noise) 9]
+
+[predict (let ((x 4)) (eval my-proc))]
+
+[predict my-proc]

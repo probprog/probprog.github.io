@@ -1,0 +1,32 @@
+[assume a "1"]
+[assume b "1.5"]
+[assume c "(/ 1 2)"]
+[assume d "true"]
+[assume e "false"]
+[assume f "nil"]
+[assume g "(double 299792458)something"]
+[assume h "/ 1 2)"]
+[assume i "foo"]
+[assume j ""]
+
+[predict (list 'read-string a ': (read-string a))]
+[predict (list 'read-string b ': (read-string b))]
+[predict (list 'read-string c ': (read-string c))]
+[predict (list 'read-string d ': (read-string d))]
+[predict (list 'read-string e ': (read-string e))]
+[predict (list 'read-string f ': (read-string f))]
+[predict (list 'read-string g ': (read-string g))]
+[predict (list 'read-string h ': (read-string h))]
+[predict (list 'read-string i ': (read-string i))]
+
+[predict (list 'eval (list 'read-string c) ': (eval (read-string c)))]
+[predict (list 'eval (list 'read-string g) ': (eval (read-string g)))]
+[predict (list 'eval (list 'read-string h) ': (eval (read-string h)))]
+
+; Primitive values can be used directly
+[predict (list (list 'read-string b) '* 3 ': (* (read-string b) 3))]
+; Complex expressions must be evaluated first
+[predict (list (list 'eval (list 'read-string c)) '* 3 ': (* (eval (read-string c)) 3))]
+
+; Processing the empty string throws an exception
+[predict (list 'read-string j ': (read-string j))]

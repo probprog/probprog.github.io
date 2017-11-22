@@ -1,0 +1,10 @@
+[assume coin (flip 0.5)]
+[assume num (uniform-continuous 0 10)]
+[assume A (if (= coin true)
+              (prn 'A: 'coin 'landed 'heads)
+              (prn 'A: 'coin 'landed 'tails))]
+[assume B (prn 'B: 'number 'is num)]
+[assume C (and (if (= coin true) 
+                   (prn 'C1: 'coin 'landed 'heads)
+                   (prn 'C1: 'coin 'landed 'tails))
+               (prn 'C2: 'number 'is num))]

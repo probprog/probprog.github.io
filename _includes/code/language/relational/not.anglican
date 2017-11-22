@@ -1,0 +1,13 @@
+[assume a 0]
+[assume b 1]
+[assume c false]
+[assume d true]
+[assume e "b"]
+[assume f nil]
+
+[predict (list 'not a ': (not a))]
+[predict (list 'not b ': (not b))]
+[predict (list 'not c ': (not c))]
+[predict (list 'not d ': (not d))]
+[predict (list 'not e ': (not e))]
+[predict (list 'not f ': (not f))]

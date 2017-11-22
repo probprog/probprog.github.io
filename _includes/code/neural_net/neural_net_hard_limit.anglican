@@ -1,0 +1,70 @@
+; Define expected inputs and outputs as lists
+[assume Input  (list (list -1 -1) (list -1  1) (list  1 -1) (list  1  1))]
+[assume Output (list           0            1            1            0)]
+
+[assume I (lambda (i) (nth Input  i))]
+[assume O (lambda (i) (nth Output i))]
+
+; Define weights for layer 1 nodes
+[assume w-L1-N1 (list (normal 0 0.5)
+                      (normal 0 0.5))]
+[assume w-L1-N2 (list (normal 0 0.5)
+                      (normal 0 0.5))]
+[assume w-L1-N3 (list (normal 0 0.5)
+                      (normal 0 0.5))]
+[assume w-L1-N4 (list (normal 0 0.5)
+                      (normal 0 0.5))]
+
+; Define weights for layer 2 nodes
+[assume w-L2-N1 (list (normal 0 0.5)
+                      (normal 0 0.5)
+                      (normal 0 0.5)
+                      (normal 0 0.5))]
+[assume w-L2-N2 (list (normal 0 0.5)
+                      (normal 0 0.5)
+                      (normal 0 0.5)
+                      (normal 0 0.5))]
+
+; Define weights for output node
+[assume w-O     (list (normal 0 0.5)
+                      (normal 0 0.5))]
+
+; Define activation function
+[assume activate (lambda (v) (if (<= v 0.5) -1 1))]
+
+; Compute layer 1 node values as a list based on input nodes
+[assume L1 (mem (lambda (i) (list (activate (+ (* (first  (I i)) (first  w-L1-N1))
+                                               (* (second (I i)) (second w-L1-N1))))
+                                  (activate (+ (* (first  (I i)) (first  w-L1-N2))
+                                               (* (second (I i)) (second w-L1-N2))))
+                                  (activate (+ (* (first  (I i)) (first  w-L1-N3))
+                                               (* (second (I i)) (second w-L1-N3))))
+                                  (activate (+ (* (first  (I i)) (first  w-L1-N4))
+                                               (* (second (I i)) (second w-L1-N4)))))))]
+
+; Compute layer 2 node values as a list based on layer 1 nodes
+[assume L2 (mem (lambda (i) (list (activate(+ (+ (+ (* (nth (L1 i) 0) (nth w-L2-N1 0))
+                                                    (* (nth (L1 i) 1) (nth w-L2-N1 1)))
+                                                    (* (nth (L1 i) 2) (nth w-L2-N1 2)))
+                                                    (* (nth (L1 i) 3) (nth w-L2-N1 3))))
+                                  (activate(+ (+ (+ (* (nth (L1 i) 0) (nth w-L2-N2 0))
+                                                    (* (nth (L1 i) 1) (nth w-L2-N2 1)))
+                                                    (* (nth (L1 i) 2) (nth w-L2-N2 2)))
+                                                    (* (nth (L1 i) 3) (nth w-L2-N2 3)))))))]
+
+; Compute output value based on layer 2 nodes
+[assume p-O  (mem (lambda (i) (if (= (activate(+ (* (first  (L2 i)) (first  w-O))
+                                                 (* (second (L2 i)) (second w-O)))) 1) 1 0)))]
+
+
+; Train the network using our training data
+[observe (normal (p-O  0) 0.1) (O 0)]
+[observe (normal (p-O  1) 0.1) (O 1)]
+[observe (normal (p-O  2) 0.1) (O 2)]
+[observe (normal (p-O  3) 0.1) (O 3)]
+
+; Predict response to the four input values
+[predict (list (I 0) (p-O 0))]
+[predict (list (I 1) (p-O 1))]
+[predict (list (I 2) (p-O 2))]
+[predict (list (I 3) (p-O 3))]

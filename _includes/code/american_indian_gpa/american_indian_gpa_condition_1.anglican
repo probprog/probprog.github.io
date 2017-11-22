@@ -1,0 +1,6 @@
+[assume american_gpa (lambda () (if (flip .9) (* 4 (beta 5 5)) (* 4 (if (flip .8) 1 0))))]
+[assume indian_gpa (lambda () (if (flip .85) (* 10 (beta 5 5)) (* 10 (if (flip .7) 1 0))))]
+[assume university_location (if (flip .5) 'USA 'India)]
+[assume student_gpa (if (= university_location 'USA) (american_gpa) (indian_gpa))]
+[observe (flip (if (= student_gpa 4.0) 1.0 0.0)) (= 1 1)]
+[predict university_location]

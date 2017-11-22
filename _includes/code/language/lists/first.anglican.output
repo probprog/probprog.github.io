@@ -1,0 +1,6 @@
+(first () : nil)
+(first (1) : 1)
+(first (1 2 3 4) : 1)
+(first nil : nil)
+(first "foo" : \f)
+[unknown] Unidentified exception when trying to call procedure first with arguments (1)

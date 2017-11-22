@@ -1,0 +1,18 @@
+[assume dot-product (lambda (u v) 
+  (if (= (count u) 0) 
+     0 
+     (+ (* (first u) (first v)) 
+        (dot-product (rest u) (rest v)))))]
+[assume sigma (sqrt (gamma 1 1))]
+[assume b (list (normal 0 sigma) (normal 0 sigma) (normal 0 sigma) (normal 0 sigma) (normal 0 sigma))]
+[assume z (lambda (x) 
+  (/ 1 (+ 1 (exp (* -1 (dot-product b x))))))]
+[observe-csv 
+   "http://www.robots.ox.ac.uk/~fwood/anglican/examples/logistic_regression/iris.csv" 
+   (flip (z (list 1 $1 $2 $3 $4))) (= $5 "Iris-setosa")]
+[predict b]
+; should be Iris-setosa    (from training data)
+[predict (z (list 1 5.1 3.5 1.4 0.2 ))]
+; should be Iris-virginica (from training data)
+[predict (z (list 1 7.7 2.6 6.9 2.3 ))]
+

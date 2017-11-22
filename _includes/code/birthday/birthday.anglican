@@ -1,0 +1,12 @@
+[assume birthday (mem (lambda (i) (uniform-discrete 1 366)))]
+[assume N 23]
+[assume pair-equal 
+  (lambda (i j) 
+    (if (> i N) 
+      false
+      (if (> j N)
+        (pair-equal (+ i 1) (+ i 2))
+        (if (= (birthday i) (birthday j)) 
+          true
+          (pair-equal i (+ j 1))))))]
+[predict (pair-equal 1 2)]
