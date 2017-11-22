@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="https://probprog.github.io/ico/anglican_logo.ico">
+
+    <title>Anglican the Probabilistic Programming System Post</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://probprog.github.io/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="https://probprog.github.io/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://probprog.github.io/assets/css/jwvdm.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://probprog.github.io/assets/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://probprog.github.io/assets/js/html5shiv.js"></script>
+      <script src="https://probprog.github.io/assets/js/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61399035-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+
+
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="row">
+  
+  <a href="https://probprog.github.io"> 
+    <img class="logo" src="https://probprog.github.io/assets/images/anglican_logo.png" height="50px" align="bottom"> 
+  </a>
+  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
+</div>
+<div class="row">
+	<div class="title pull-left">
+			  Anglican
+    </div>
+    <ul class="nav nav-pills pull-right">
+      
+      <li >
+        <a href="https://probprog.github.io/index.html" title="">Home</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/news/index.html" title="">News</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/literature/index.html" title="">Papers</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/language/index.html" title="">Language</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/inference/index.html" title="">Inference</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/usage/index.html" title="">Usage</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/contribute/index.html" title="">Contribute</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="https://probprog.github.io/examples/index.html" title="">Examples</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+    </ul>
+</div>
+
+<script>
+  $()
+</script>
+       
+      </div>
+      <div class="content row">
+        <p><a href="https://github.com/probprog/bopp">BOPP</a> is a package for automated marginal maximum a posteriori inference (MMAP) based around the probabilistic programming system <a href="http://www.robots.ox.ac.uk/~fwood/anglican">Anglican</a>. The user only needs to write their model in the same manner as existing Anglican programs and by using the <code>defopt</code> construct instead of <code>defquery</code>, select the variables to be optimized, with the rest marginalized out. It can also be used as a means of exploiting the target source code to improve Bayesian optimization (BO), delivering things such as automatic domain scaling, unbounded optimization, and implicit constraint satisfaction including equality constraints. The key idea is to use a series of code transformations to extract from the original program all the things that are needed to carry out the MMAP problem, such as the target function itself and a program for optimizing the acquisition function subject to the implicit constraints. These are then passed to our other package <a href="https://github.com/probprog/deodorant">Deodorant</a>, which uses these to solve the problem probabilistic programs creates for BO. The following paper should be referred to for full algorithmic details and we ask that you cite this paper if you use BOPP in your work.</p>
+
+<ol class="bibliography"><li><span id="rainforth-nips-2016">Rainforth, T., Le, T. A., van de Meent, J.-W., Osborne, M. A., &amp; Wood, F. (2016). Bayesian Optimization for Probabilistic Programs. In <i>Advances in Neural Information Processing Systems (NIPS)</i> (pp. 280–288).</span> 
+    
+
+    <a data-target="#rainforth-nips-2016_bibtex" data-toggle="collapse" href="#rainforth-nips-2016_bibtex" onclick="_gaq.push(['_trackEvent', 'View', 'Bibliography', 'rainforth-nips-2016']); return false;">BIB</a>
+
+    
+
+<span id="rainforth-nips-2016_materials">
+
+  
+
+  <pre id="rainforth-nips-2016_bibtex" class="pre pre-scrollable collapse">@inproceedings{rainforth-nips-2016,
+  title = {{B}ayesian {O}ptimization for {P}robabilistic {P}rograms},
+  author = {Rainforth, Tom and Le, Tuan Anh and van de Meent, Jan-Willem and Osborne, Michael A and Wood, Frank},
+  booktitle = {Advances in Neural Information Processing Systems (NIPS)},
+  year = {2016},
+  pages = {280--288}
+}
+</pre>
+
+</span>
+</li></ol>
+
+      </div>
+      <div class="footer row">
+        <p>
+    &copy; Frank Wood 2014, 2015. 
+    built using 
+    <a href="http://jekyllrb.com">jekyll</a>, 
+    <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
+    <a href="http://getbootstrap.com">bootstrap</a>. 
+    Website design by <a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a>
+</p> 
+       
+      </div>
+    </div>
+  </body>
+</html>
