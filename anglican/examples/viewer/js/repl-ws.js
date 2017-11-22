@@ -24,7 +24,7 @@ var repl = (function () {
         var loc = window.location,
             url = "wss://" + loc.hostname + ":" + loc.port + loc.pathname.replace(/[^/]+$/,'repl');
 
-        self.ws = new WebSocketSecure(url);
+        self.ws = new WebSocket(url);
 
         // we first install a handler that will capture the session id from the clone message. Once it's done its work
         // it will replace the handler with one that handles the rest of the messages, and call the successCallback.
