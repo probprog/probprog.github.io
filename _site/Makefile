@@ -13,4 +13,5 @@ deploy: build
 	git stash pop
 
 build:
+	-rm website.tar
 	jekyll build
