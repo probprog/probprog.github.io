@@ -1,0 +1,15 @@
+[assume dot-product (lambda (u v)
+	(if (= (count u) 0) 
+	    0
+		(+ (* (first u) (first v)) (dot-product (rest u) (rest v)))))]
+[assume repeatedly (lambda (N func) (if (= N 0)
+									      (list)
+										  (cons (func) (repeatedly (- N 1) func))))]
+[assume D 4] ; this is the shared length of rows of U / columns of V 
+[assume sigma 0.01]
+[assume sigma-U 1]
+[assume sigma-V 1]
+[assume get-row-U (mem (lambda (m) (repeatedly D (lambda () (normal 0 sigma-U) ))))]
+[assume get-col-V (mem (lambda (n) (repeatedly D (lambda () (normal 0 sigma-V) ))))]
+[observe-csv "http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/bayesian_matrix_factorization/movies-10.csv" (normal (dot-product (get-row-U $1) (get-col-V $2)) sigma) $3]
+[predict (list (dot-product (get-row-U 5) (get-col-V 3)) (dot-product (get-row-U 11) (get-col-V 10))) ]

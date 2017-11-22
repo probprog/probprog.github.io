@@ -1,0 +1,2 @@
+open "http://0.0.0.0:4000/~fwood/"
+jekyll serve --watch --baseurl='/~fwood/' 
