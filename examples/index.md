@@ -15,43 +15,43 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 
 # Pedagogical Models
 
-- [Conjugate Gaussians](viewer/?worksheet=gaussian-posteriors)
-- [Kalman Smoother](viewer/?worksheet=kalman)
-- [Gaussian Mixture Model](viewer/?worksheet=gmm-iris)
-- [Beta-Binomial Model](viewer/?worksheet=pencil-factory)
-- [Bayes Net](viewer/?worksheet=bayes-net)
+- [Conjugate Gaussians](http://www.offtopia.net/anglican/examples/viewer/?worksheet=gaussian-posteriors)
+- [Kalman Smoother](http://www.offtopia.net/anglican/examples/viewer/?worksheet=kalman)
+- [Gaussian Mixture Model](http://www.offtopia.net/anglican/examples/viewer/?worksheet=gmm-iris)
+- [Beta-Binomial Model](http://www.offtopia.net/anglican/examples/viewer/?worksheet=pencil-factory)
+- [Bayes Net](http://www.offtopia.net/anglican/examples/viewer/?worksheet=bayes-net)
 
 # Optimization (requires [BOPP](https://github.com/probprog/bopp) and [Deodorant](https://github.com/probprog/deodorant))
-- [Inferring the parameters of a chaotic system](viewer/?source=github&user=probprog&repo=bopp&path=worksheets/chaos.clj)
+- [Inferring the parameters of a chaotic system](http://www.offtopia.net/anglican/examples/viewer/?source=github&user=probprog&repo=bopp&path=worksheets/chaos.clj)
 
 # Bayesian Nonparametrics
 
-- [Dirichlet Process Mixture Model](viewer/?worksheet=nonparametrics/dp-mixture-model)
-- [Hierarchical Dirichlet Process](viewer/?worksheet=nonparametrics/hdp)
-- [Probabilistic Deterministic Infinite Automata](viewer/?worksheet=nonparametrics/pdia)
+- [Dirichlet Process Mixture Model](http://www.offtopia.net/anglican/examples/viewer/?worksheet=nonparametrics/dp-mixture-model)
+- [Hierarchical Dirichlet Process](http://www.offtopia.net/anglican/examples/viewer/?worksheet=nonparametrics/hdp)
+- [Probabilistic Deterministic Infinite Automata](http://www.offtopia.net/anglican/examples/viewer/?worksheet=nonparametrics/pdia)
 
 # Other Examples
 
-- [Decision Diagram](viewer/?worksheet=decision-diagram)
-- [Schelling Coordination Game](viewer/?worksheet=coordination-game)
-- [Poisson Execution Traces](viewer/?worksheet=poisson-trace)
-- [Indian GPA](viewer/?worksheet=indian-gpa)
-- [Nested Number Guessing](viewer/?worksheet=nested-number-guessing)
-- [Marsaglia](viewer/?worksheet=marsaglia)
-- [Aircraft Detection](viewer/?worksheet=aircraft)
-<!-- - [Birthday](viewer/?worksheet=birthday)-->
+- [Decision Diagram](http://www.offtopia.net/anglican/examples/viewer/?worksheet=decision-diagram)
+- [Schelling Coordination Game](http://www.offtopia.net/anglican/examples/viewer/?worksheet=coordination-game)
+- [Poisson Execution Traces](http://www.offtopia.net/anglican/examples/viewer/?worksheet=poisson-trace)
+- [Indian GPA](http://www.offtopia.net/anglican/examples/viewer/?worksheet=indian-gpa)
+- [Nested Number Guessing](http://www.offtopia.net/anglican/examples/viewer/?worksheet=nested-number-guessing)
+- [Marsaglia](http://www.offtopia.net/anglican/examples/viewer/?worksheet=marsaglia)
+- [Aircraft Detection](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aircraft)
+<!-- - [Birthday](http://www.offtopia.net/anglican/examples/viewer/?worksheet=birthday)-->
 
-<!-- - [Maximum Likelihood for Logistic Regression](viewer/?worksheet=logistic-regression-iris) -->
+<!-- - [Maximum Likelihood for Logistic Regression](http://www.offtopia.net/anglican/examples/viewer/?worksheet=logistic-regression-iris) -->
 
 # Older Examples
 
 These are the original example models used in the 2014 AISTATS paper introducing Anglican.
 
-- [Gaussian with Unknown Mean](viewer/?worksheet=aistats/gaussian-aistats)
-- [Hidden Markov Model](viewer/?worksheet=aistats/hmm-aistats)
-- [A Simple Branching Example](viewer/?worksheet=aistats/branching-aistats)
-- [Marsaglia Normal](viewer/?worksheet=aistats/marsaglia-aistats)
-<!-- - [Chinese Restaurant Process](viewer/?worksheet=aistats/crp-aistats) -->
+- [Gaussian with Unknown Mean](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aistats/gaussian-aistats)
+- [Hidden Markov Model](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aistats/hmm-aistats)
+- [A Simple Branching Example](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aistats/branching-aistats)
+- [Marsaglia Normal](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aistats/marsaglia-aistats)
+<!-- - [Chinese Restaurant Process](http://www.offtopia.net/anglican/examples/viewer/?worksheet=aistats/crp-aistats) -->
 
 
 We welcome contributions of new example models and use cases.  Please
