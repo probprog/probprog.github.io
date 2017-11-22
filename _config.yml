@@ -1,6 +1,6 @@
 name: "Anglican"
-baseurl: https://probprog.github.io/anglican
-url: https://probprog.github.io/anglican
+baseurl: http://probprog.github.io/anglican
+url: http://probprog.github.io/anglican
 permalink: /:year/:month/:day/:title
 timezone: Europe/London
 
