@@ -57,7 +57,8 @@ var getParameterByName = function (name) {
 $(function () {
     var viewer = app();
     // how are we getting the worksheet data?
-    var source = getParameterByName("source");
+	// we are hard-coding to only view official Anglican worksheets here
+    var source = getParameterByName("source") || "official";
     switch (source) {
         case "github":
             var user = getParameterByName("user");
@@ -78,6 +79,15 @@ $(function () {
             var user = getParameterByName("user");
             var repo = getParameterByName("repo");
             var path = getParameterByName("path");
+            var revision = getParameterByName("revision") || "HEAD";
+            getFromBitbucket(user, repo, path, revision, function (data) {
+                viewer.start(data, "https://bitbucket.org/" + user + "/" + repo, path, source);
+            });
+            return;
+        case "official":
+            var user = "probprog"; 
+            var repo = "anglican-examples"; 
+            var path = "worksheets/" + getParameterByName("worksheet") + ".clj";
             var revision = getParameterByName("revision") || "HEAD";
             getFromBitbucket(user, repo, path, revision, function (data) {
                 viewer.start(data, "https://bitbucket.org/" + user + "/" + repo, path, source);
