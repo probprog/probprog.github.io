@@ -17,6 +17,7 @@
     <link href="/anglican/assets/css/jwvdm.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/anglican/assets/js/bootstrap.min.js"></script>
+    <link href="/anglican/assets/css/syntax.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,14 +61,7 @@
       <!-- <li><a href="/publications">Publications</a></li> -->
       
       <li >
-        <a href="/anglican/news/index.html" title="">News</a>
-      </li>
-      <!-- class="active"><a href="/">About</a></li> -->
-      <!-- <li><a href="/projects">Projects</a></li> -->
-      <!-- <li><a href="/publications">Publications</a></li> -->
-      
-      <li >
-        <a href="/anglican/literature/index.html" title="">Papers</a>
+        <a href="/anglican/examples/index.html" title="">Examples</a>
       </li>
       <!-- class="active"><a href="/">About</a></li> -->
       <!-- <li><a href="/projects">Projects</a></li> -->
@@ -88,13 +82,6 @@
       <!-- <li><a href="/publications">Publications</a></li> -->
       
       <li >
-        <a href="/anglican/usage/index.html" title="">Usage</a>
-      </li>
-      <!-- class="active"><a href="/">About</a></li> -->
-      <!-- <li><a href="/projects">Projects</a></li> -->
-      <!-- <li><a href="/publications">Publications</a></li> -->
-      
-      <li >
         <a href="/anglican/contribute/index.html" title="">Contribute</a>
       </li>
       <!-- class="active"><a href="/">About</a></li> -->
@@ -102,7 +89,7 @@
       <!-- <li><a href="/publications">Publications</a></li> -->
       
       <li >
-        <a href="/anglican/examples/index.html" title="">Examples</a>
+        <a href="/anglican/literature/index.html" title="">Papers</a>
       </li>
       <!-- class="active"><a href="/">About</a></li> -->
       <!-- <li><a href="/projects">Projects</a></li> -->
@@ -134,7 +121,7 @@ best way to get started quickly with Anglican.</p>
   
     <li>
       <a href="/anglican//2016/12/02/BOPP">02 Dec 2016 : Optimization comes to probabilistic programming</a>
-      <p><p><a href="https://github.com/probprog/bopp">BOPP</a> is a package for automated marginal maximum a posteriori inference (MMAP) based around the probabilistic programming system <a href="http://www.robots.ox.ac.uk/~fwood/anglican">Anglican</a>. The user only needs to write their model in the same manner as existing Anglican programs and by using the <code>defopt</code> construct instead of <code>defquery</code>, select the variables to be optimized, with the rest marginalized out. It can also be used as a means of exploiting the target source code to improve Bayesian optimization (BO), delivering things such as automatic domain scaling, unbounded optimization, and implicit constraint satisfaction including equality constraints. The key idea is to use a series of code transformations to extract from the original program all the things that are needed to carry out the MMAP problem, such as the target function itself and a program for optimizing the acquisition function subject to the implicit constraints. These are then passed to our other package <a href="https://github.com/probprog/deodorant">Deodorant</a>, which uses these to solve the problem probabilistic programs creates for BO. The following paper should be referred to for full algorithmic details and we ask that you cite this paper if you use BOPP in your work.</p>
+      <p><p><a href="https://github.com/probprog/bopp">BOPP</a> is a package for automated marginal maximum a posteriori inference (MMAP) based around the probabilistic programming system <a href="http://www.robots.ox.ac.uk/~fwood/anglican">Anglican</a>. The user only needs to write their model in the same manner as existing Anglican programs and by using the <code class="highlighter-rouge">defopt</code> construct instead of <code class="highlighter-rouge">defquery</code>, select the variables to be optimized, with the rest marginalized out. It can also be used as a means of exploiting the target source code to improve Bayesian optimization (BO), delivering things such as automatic domain scaling, unbounded optimization, and implicit constraint satisfaction including equality constraints. The key idea is to use a series of code transformations to extract from the original program all the things that are needed to carry out the MMAP problem, such as the target function itself and a program for optimizing the acquisition function subject to the implicit constraints. These are then passed to our other package <a href="https://github.com/probprog/deodorant">Deodorant</a>, which uses these to solve the problem probabilistic programs creates for BO. The following paper should be referred to for full algorithmic details and we ask that you cite this paper if you use BOPP in your work.</p>
 
 </p>
     </li>
@@ -186,5 +173,7 @@ best way to get started quickly with Anglican.</p>
        
       </div>
     </div>
+
+	<a href="https://github.com/probprog/anglican"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
   </body>
 </html>
