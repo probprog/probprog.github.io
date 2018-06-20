@@ -37,8 +37,10 @@ enable the Anglican language in a Clojure module, at the minimum namespaces
 `anglican.runtime` and `anglican.emit` must be used. A simple way to
 do this is to write
 
-    (ns example
-      (:use [anglican emit runtime]))
+~~~clojure
+(ns example
+  (:use [anglican emit runtime]))
+~~~
 
 in the beginning of a Clojure module, for example 'example.clj'. Clojure
 namespacing is notably complex; arguably the best strategy for writing
@@ -51,10 +53,12 @@ are delimited by the keyword `defquery`, followed by the query name
 and the program text. If there is only one program in a
 namespace, it customarily bears the same name as the namespace:
 
-    (defquery example
-      (let [bet (sample (beta 5 3))]
-        (observe (flip bet) true)
-        (> bet 0.7)))
+~~~clojure
+(defquery example
+  (let [bet (sample (beta 5 3))]
+    (observe (flip bet) true)
+    (> bet 0.7)))
+~~~
 
 `defquery` assigns a value to `example` that allows it to be passed
 as the argument to a `doquery`.  `doquery` uses inference algorithms to
@@ -125,16 +129,20 @@ Functions defined outside of `defquery` using `defn` may use the
 full Clojure syntax but no Anglican extensions, and must be
 declared primitive using `with-primitive-procedures`:
 
-    (with-primitive-procedures [name ...]
-       body)
+~~~clojure
+(with-primitive-procedures [name ...]
+   body)
+~~~
 
 Where `name ...` is the  list of primitive procedures. The names
 can be namespace-qualified, but will be seen unqualified in the
 lexical scope of the form. For example,
 
-    (with-primitive-procedures [clojure.string/capitalize]
-       (defquery foo
-          (capitalize "hello")))
+~~~clojure
+(with-primitive-procedures [clojure.string/capitalize]
+   (defquery foo
+      (capitalize "hello")))
+~~~
 
 Denotes the dirac distribution over `Hello` (capitalized).
 
@@ -156,11 +164,13 @@ object as its argument. If the argument is a named `fn` form,
 self-recursive calls will call the memoized version of the
 function. For example, every `fact` call in the following code
 
-    (defquery fact
-        (let [fact (mem (fn fact [n]
-                            (if (= n 1) 1
-                                * n (fact (- n 1)))))]
-          [(fact 1) (fact 2) (fact 3) (fact 4)])))
+~~~clojure
+(defquery fact
+    (let [fact (mem (fn fact [n]
+                        (if (= n 1) 1
+                            * n (fact (- n 1)))))]
+      [(fact 1) (fact 2) (fact 3) (fact 4)])))
+~~~
 
 will reuse previous computation.
 
@@ -174,9 +184,11 @@ during the same run of the program can be retrieved using
 
 For example:
 
-    (defquery customer
-      (store :customer 4 :age 18)
-      (retrieve :customer 4 :age))
+~~~clojure
+(defquery customer
+  (store :customer 4 :age 18)
+  (retrieve :customer 4 :age))
+~~~
 
 will return be 18 in :result.
 
@@ -258,23 +270,27 @@ The definition can be placed into Clojure modules containing
 Anglican programs. A user-defined distribution is specified
 using `defdist`:
 
-	(defdist dirac
-	  "Dirac distribution"
-	  [x]  ; distribution parameters
-	  []   ; auxiliary bindings
-      (sample* [this] x)
-      (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
+~~~clojure
+(defdist dirac
+  "Dirac distribution"
+  [x]  ; distribution parameters
+  []   ; auxiliary bindings
+     (sample* [this] x)
+     (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
+~~~
 
 Similarly, a user-defined random process is specified using
 `defproc`:
 
-	(defproc DSD
-	  "discrete-symmetric-dirichlet process"
-	  [alpha N]                                ; process parameters
-	  [counts (vec (repeat N (double alpha)))] ; auxiliary bindings
-	  (produce [this] (discrete counts))
-	  (absorb [this sample]
-		(DSD alpha N (update-in counts [sample] + 1.))))
+~~~clojure
+(defproc DSD
+  "discrete-symmetric-dirichlet process"
+  [alpha N]                                ; process parameters
+  [counts (vec (repeat N (double alpha)))] ; auxiliary bindings
+  (produce [this] (discrete counts))
+  (absorb [this sample]
+	(DSD alpha N (update-in counts [sample] + 1.))))
+~~~
 	  
 Constructors of user-defined distributions and processes must be
 declared primitive using `with-primitive-procedures`.

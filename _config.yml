@@ -1,5 +1,5 @@
 name: "Anglican"
-baseurl: https://probprog.github.io/anglican
+baseurl: /anglican
 url: https://probprog.github.io/anglican
 permalink: /:year/:month/:day/:title
 timezone: Europe/London
@@ -7,20 +7,20 @@ timezone: Europe/London
 navigation:
 - text: Home
   url: /index.html
-- text: News
-  url: /news/index.html
-- text: Papers
-  url: /literature/index.html
+#- text: News
+#  url: /news/index.html
+- text: Examples
+  url: /examples/index.html
+#- text: Usage
+#  url: /usage/index.html
 - text: Language
   url: /language/index.html
 - text: Inference
   url: /inference/index.html
-- text: Usage
-  url: /usage/index.html
 - text: Contribute
   url: /contribute/index.html
-- text: Examples
-  url: /examples/index.html
+- text: Papers
+  url: /literature/index.html
 
 
 scholar:
@@ -37,3 +37,5 @@ textile_ext:   textile
 highlighter: pygments
 
 markdown: kramdown
+
+highlighter: rouge
