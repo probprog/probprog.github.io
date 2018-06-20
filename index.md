@@ -3,7 +3,7 @@ title: Anglican Home Page
 layout: default
 ---
 
-## Introduction 
+## Anglican - A Probabilistic Programming System
 
 
 [Anglican](https://bitbucket.org/probprog/anglican) is a probabilistic

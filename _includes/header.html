@@ -1,14 +1,10 @@
 <div class="row">
-  
-  <a href="{{ site.baseurl }}"> 
-    <img class="logo" src="{{ site.baseurl }}/assets/images/anglican_logo.png" height="50px" align="bottom"> 
-  </a>
-  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
-</div>
-<div class="row">
-	<div class="title pull-left">
-			  Anglican
-    </div>
+	<a href="{{ site.baseurl }}"> 
+		<img class="logo" src="{{ site.baseurl }}/assets/images/anglican_logo.png" height="30px" align="bottom"> 
+		<span class="title">
+			Anglican
+		</span>
+		</a>
     <ul class="nav nav-pills pull-right">
       {% for link in site.navigation %}
       <li {% if page.url == link.url %}class="active"{% endif %}>

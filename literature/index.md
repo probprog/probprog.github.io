@@ -3,9 +3,14 @@ title: Literature
 layout: default
 ---
 
-If you use Anglican, please cite the Anglican papers below.
 
-## Anglican
+# Lectures
+
+To get up-to-date with the recent research in probabilistic programming you can take a look at [Hongseok Yang's lecture](https://github.com/hongseok-yang/probprog18).
+
+## Papers
+
+If you use Anglican for research, please cite the Anglican papers below.
 
 #### Current Anglican implementation (please cite this as an Anglican user)
 {% bibliography --file tolpin2016design %}

@@ -13,6 +13,7 @@ The worksheet links below are _canned_, _view only_ workbooks.  In
 order to create your own interactive worksheets or interact with these examples
 you must follow the browser-based REPL [usage](../usage) instructions.
 
+
 # Pedagogical Models
 
 - [Conjugate Gaussians](viewer/?worksheet=gaussian-posteriors)
@@ -43,6 +44,8 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 
 <!-- - [Maximum Likelihood for Logistic Regression](http://www.robots.ox.ac.uk/~fwood/anglican/examples/viewer/?worksheet=logistic-regression-iris) -->
 
+
+
 # Older Examples
 
 These are the original example models used in the 2014 AISTATS paper introducing Anglican.
@@ -53,6 +56,11 @@ These are the original example models used in the 2014 AISTATS paper introducing
 - [Marsaglia Normal](viewer/?worksheet=aistats/marsaglia-aistats)
 <!-- - [Chinese Restaurant Process](http://www.robots.ox.ac.uk/~fwood/anglican/examples/viewer/?worksheet=aistats/crp-aistats) -->
 
+
+# Contribute
+
+We would love for you to share the models you develop using Anglican 
+with the community.  To share an interesting model follow these steps.
 
 We welcome contributions of new example models and use cases.  Please
  [contribute](../contribute) back new and interesting models.

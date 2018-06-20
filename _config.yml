@@ -17,9 +17,9 @@ navigation:
   url: /language/index.html
 - text: Inference
   url: /inference/index.html
-- text: Contribute
-  url: /contribute/index.html
-- text: Papers
+#- text: Contribute
+#  url: /contribute/index.html
+- text: Literature
   url: /literature/index.html
 
 
@@ -37,5 +37,3 @@ textile_ext:   textile
 highlighter: pygments
 
 markdown: kramdown
-
-highlighter: rouge
