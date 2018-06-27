@@ -98,10 +98,10 @@
 
 <p>The programming language of Anglican
 is a subset of Clojure, extended with a few special forms that make it a
-probabilistic programming language. These forms are <code class="highlighter-rouge">sample</code>
-for drawing a samples from distributions and <code class="highlighter-rouge">observe</code> for
+probabilistic programming language. These forms are <code>sample</code>
+for drawing a samples from distributions and <code>observe</code> for
 conditioning on data.
-There are other special forms — <code class="highlighter-rouge">mem</code>, <code class="highlighter-rouge">store</code>, and <code class="highlighter-rouge">retrieve</code>
+There are other special forms — <code>mem</code>, <code>store</code>, and <code>retrieve</code>
 — which make writing probabilistic programs easier.</p>
 
 <p>The following documentation is quite terse because 
@@ -110,11 +110,11 @@ Clojure reference
 materials, obtainable from the web via standard search procedures,
 are as essential to programming in Anglican as is this Anglican
 language documentation.  The key to Anglican knowing
- Clojure <em>and</em> understanding <code class="highlighter-rouge">defquery</code>, the interface between
+ Clojure <em>and</em> understanding <code>defquery</code>, the interface between
  Clojure and Anglican.</p>
 
 <p>This interface is meant to be as transparent as possible and for
- as much Clojure functionality to work inside <code class="highlighter-rouge">defquery</code> as possible.</p>
+ as much Clojure functionality to work inside <code>defquery</code> as possible.</p>
 
 <p>In general the documentation that follows indicates functionality <em>relative to Clojure</em>.
 For instance, the absence of an explicit statement of existence means 
@@ -123,14 +123,14 @@ that the Clojure language feature probably isn’t supported in Anglican.</p>
 <h2 id="a-first-example-program">A First Example Program</h2>
 
 <p>Anglican programs reside in Clojure source code modules,
-and are delimited by <code class="highlighter-rouge">defquery</code> (a macro). In order to
+and are delimited by <code>defquery</code> (a macro). In order to
 enable the Anglican language in a Clojure module, at the minimum namespaces
-<code class="highlighter-rouge">anglican.runtime</code> and <code class="highlighter-rouge">anglican.emit</code> must be used. A simple way to
+<code>anglican.runtime</code> and <code>anglican.emit</code> must be used. A simple way to
 do this is to write</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example</span><span class="w">
-  </span><span class="p">(</span><span class="no">:use</span><span class="w"> </span><span class="p">[</span><span class="n">anglican</span><span class="w"> </span><span class="n">emit</span><span class="w"> </span><span class="n">runtime</span><span class="p">]))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(ns example
+  (:use [anglican emit runtime]))
+</code></pre>
 
 <p>in the beginning of a Clojure module, for example ‘example.clj’. Clojure
 namespacing is notably complex; arguably the best strategy for writing
@@ -139,51 +139,51 @@ declarations from the provided <a href="../examples/index.html">examples</a>.</p
 
 <p>The rest of the module
 may contain one or more Anglican programs, aka <em>queries</em>.   Queries
-are delimited by the keyword <code class="highlighter-rouge">defquery</code>, followed by the query name
+are delimited by the keyword <code>defquery</code>, followed by the query name
 and the program text. If there is only one program in a
 namespace, it customarily bears the same name as the namespace:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defquery</span><span class="w"> </span><span class="n">example</span><span class="w">
-  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">bet</span><span class="w"> </span><span class="p">(</span><span class="nf">sample</span><span class="w"> </span><span class="p">(</span><span class="nf">beta</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">3</span><span class="p">))]</span><span class="w">
-    </span><span class="p">(</span><span class="nf">observe</span><span class="w"> </span><span class="p">(</span><span class="nf">flip</span><span class="w"> </span><span class="n">bet</span><span class="p">)</span><span class="w"> </span><span class="n">true</span><span class="p">)</span><span class="w">
-    </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">bet</span><span class="w"> </span><span class="mf">0.7</span><span class="p">)))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(defquery example
+  (let [bet (sample (beta 5 3))]
+    (observe (flip bet) true)
+    (&gt; bet 0.7)))
+</code></pre>
 
-<p><code class="highlighter-rouge">defquery</code> assigns a value to <code class="highlighter-rouge">example</code> that allows it to be passed
-as the argument to a <code class="highlighter-rouge">doquery</code>.  <code class="highlighter-rouge">doquery</code> uses inference algorithms to
+<p><code>defquery</code> assigns a value to <code>example</code> that allows it to be passed
+as the argument to a <code>doquery</code>.  <code>doquery</code> uses inference algorithms to
 produce lazy sequence of weighted samples that characterize the
 conditional distribution of the value of the expression in the tail position of 
-the defquery, here <code class="highlighter-rouge">(&gt; bet 0.7)</code>.</p>
+the defquery, here <code>(&gt; bet 0.7)</code>.</p>
 
-<p>Syntactically <code class="highlighter-rouge">defquery</code> denotes a joint distribution, <code class="highlighter-rouge">observe</code>’s denote
+<p>Syntactically <code>defquery</code> denotes a joint distribution, <code>observe</code>’s denote
 which random variables’ values are known, and the value of the last, “return” 
 expression, is the variable whose conditional distribution is of interest.</p>
 
 <!-- Note that queries are composable and inference is customizable
 at the level of a query. -->
 
-<p>What follows is a description of what program text can go inside <code class="highlighter-rouge">defquery</code>, i.e. a 
-description of the Anglican language.  Note that while the source code inside <code class="highlighter-rouge">defquery</code>
+<p>What follows is a description of what program text can go inside <code>defquery</code>, i.e. a 
+description of the Anglican language.  Note that while the source code inside <code>defquery</code>
 intentionally bears a great deal of resemblance to Clojure, it is not Clojure code, 
 it is Anglican code.</p>
 
 <h2 id="core-anglican-syntax">Core Anglican syntax</h2>
 
-<p>The Anglican language is a subset of Clojure. Within <code class="highlighter-rouge">defquery</code>,
-<code class="highlighter-rouge">let</code>, <code class="highlighter-rouge">if</code>, <code class="highlighter-rouge">when</code>, <code class="highlighter-rouge">cond</code>, <code class="highlighter-rouge">case</code>, <code class="highlighter-rouge">and</code>, <code class="highlighter-rouge">or</code>, <code class="highlighter-rouge">fn</code> forms are
+<p>The Anglican language is a subset of Clojure. Within <code>defquery</code>,
+<code>let</code>, <code>if</code>, <code>when</code>, <code>cond</code>, <code>case</code>, <code>and</code>, <code>or</code>, <code>fn</code> forms are
 supported (others may be in the future but are not now). 
-In <code class="highlighter-rouge">let</code> bindings and <code class="highlighter-rouge">fn</code> argument lists,
+In <code>let</code> bindings and <code>fn</code> argument lists,
 vector destructuring (but not hash map destructuring) is
 supported. Compound literals for vectors, hash maps, and
 sets are supported just like in Clojure.</p>
 
-<h2 id="recur"><code class="highlighter-rouge">recur</code></h2>
+<h2 id="recur"><code>recur</code></h2>
 
-<p>Anglican is stackless, therefore <code class="highlighter-rouge">recur</code> is
+<p>Anglican is stackless, therefore <code>recur</code> is
 unnecessary, no recursive call can lead to stack overflow;
 Recursive calls to functions should be used instead. However,
-<code class="highlighter-rouge">loop</code>/<code class="highlighter-rouge">recur</code> is provided for convenience as a way to express
-loops. <code class="highlighter-rouge">recur</code> outside of <code class="highlighter-rouge">loop</code> will lead to unpredictable
+<code>loop</code>/<code>recur</code> is provided for convenience as a way to express
+loops. <code>recur</code> outside of <code>loop</code> will lead to unpredictable
 behaviour and hard-to-catch errors.</p>
 
 <h2 id="core-library">Core library</h2>
@@ -192,10 +192,10 @@ behaviour and hard-to-catch errors.</p>
 except for higher-order functions
 (functions that accept other functions as arguments) is
 available in Anglican. In addition, the following higher-order
-functions are implemented: <code class="highlighter-rouge">map</code>, <code class="highlighter-rouge">reduce</code>, <code class="highlighter-rouge">filter</code>, <code class="highlighter-rouge">some</code>,
-<code class="highlighter-rouge">repeatedly</code>, <code class="highlighter-rouge">comp</code>, <code class="highlighter-rouge">partial</code>.</p>
+functions are implemented: <code>map</code>, <code>reduce</code>, <code>filter</code>, <code>some</code>,
+<code>repeatedly</code>, <code>comp</code>, <code>partial</code>.</p>
 
-<h2 id="definitions-outside-of-defquery">Definitions outside of <code class="highlighter-rouge">defquery</code></h2>
+<h2 id="definitions-outside-of-defquery">Definitions outside of <code>defquery</code></h2>
 
 <p>The border between Clojure and Anglican is subtle and usually will
 pose no problem to most programmers, however, some confusion can arise 
@@ -206,136 +206,136 @@ arising due to misunderstanding this boundary crop up in the form of
 “wrong number of argument” exceptions.  Carefully following the guidance in 
 this section will resolve most if not all such difficulties.</p>
 
-<p>Data variables may be defined outside of <code class="highlighter-rouge">defquery</code> using <code class="highlighter-rouge">def</code>
-and used inside <code class="highlighter-rouge">defquery</code>. Anglican functions outside of
-<code class="highlighter-rouge">defquery</code> may be defined using <code class="highlighter-rouge">defm</code> (with the same syntax as
-<code class="highlighter-rouge">defn</code>, albeit with a single arity only). Their bodies may use
-the same subset of Clojure as <code class="highlighter-rouge">defquery</code>, as well as
-probabilistic and state access forms.  <code class="highlighter-rouge">defm</code>-defined functions
+<p>Data variables may be defined outside of <code>defquery</code> using <code>def</code>
+and used inside <code>defquery</code>. Anglican functions outside of
+<code>defquery</code> may be defined using <code>defm</code> (with the same syntax as
+<code>defn</code>, albeit with a single arity only). Their bodies may use
+the same subset of Clojure as <code>defquery</code>, as well as
+probabilistic and state access forms.  <code>defm</code>-defined functions
 can be called from Anglican without restrictions.</p>
 
-<p>Functions defined outside of <code class="highlighter-rouge">defquery</code> using <code class="highlighter-rouge">defn</code> may use the
+<p>Functions defined outside of <code>defquery</code> using <code>defn</code> may use the
 full Clojure syntax but no Anglican extensions, and must be
-declared primitive using <code class="highlighter-rouge">with-primitive-procedures</code>:</p>
+declared primitive using <code>with-primitive-procedures</code>:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">with-primitive-procedures</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">...</span><span class="p">]</span><span class="w">
-   </span><span class="n">body</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(with-primitive-procedures [name ...]
+   body)
+</code></pre>
 
-<p>Where <code class="highlighter-rouge">name ...</code> is the  list of primitive procedures. The names
+<p>Where <code>name ...</code> is the  list of primitive procedures. The names
 can be namespace-qualified, but will be seen unqualified in the
 lexical scope of the form. For example,</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">with-primitive-procedures</span><span class="w"> </span><span class="p">[</span><span class="n">clojure.string/capitalize</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nf">defquery</span><span class="w"> </span><span class="n">foo</span><span class="w">
-      </span><span class="p">(</span><span class="nf">capitalize</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(with-primitive-procedures [clojure.string/capitalize]
+   (defquery foo
+      (capitalize "hello")))
+</code></pre>
 
-<p>Denotes the dirac distribution over <code class="highlighter-rouge">Hello</code> (capitalized).</p>
+<p>Denotes the dirac distribution over <code>Hello</code> (capitalized).</p>
 
 <h2 id="probabilistic-forms">Probabilistic forms</h2>
 
-<p>In Anglican there are two probabilistic forms: <code class="highlighter-rouge">sample</code> and <code class="highlighter-rouge">observe</code>.</p>
+<p>In Anglican there are two probabilistic forms: <code>sample</code> and <code>observe</code>.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(sample distribution)</code> returns a sample from a
-<code class="highlighter-rouge">distribution</code>.</li>
-  <li><code class="highlighter-rouge">(observe distribution value)</code> returns value; <em>critical</em> produces
+  <li><code>(sample distribution)</code> returns a sample from a
+<code>distribution</code>.</li>
+  <li><code>(observe distribution value)</code> returns value; <em>critical</em> produces
 conditioning side-effect.   It does this by adding
-the value of <code class="highlighter-rouge">(observe* distribution value)</code> (see below)
+the value of <code>(observe* distribution value)</code> (see below)
 to the log probability of the trace.</li>
 </ul>
 
 <h2 id="state-access-and-modification">State access and modification</h2>
 
-<p>Functions can be memoized using <code class="highlighter-rouge">mem</code>, which accepts a function
-object as its argument. If the argument is a named <code class="highlighter-rouge">fn</code> form,
+<p>Functions can be memoized using <code>mem</code>, which accepts a function
+object as its argument. If the argument is a named <code>fn</code> form,
 self-recursive calls will call the memoized version of the
-function. For example, every <code class="highlighter-rouge">fact</code> call in the following code</p>
+function. For example, every <code>fact</code> call in the following code</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defquery</span><span class="w"> </span><span class="n">fact</span><span class="w">
-    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">fact</span><span class="w"> </span><span class="p">(</span><span class="nf">mem</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="n">fact</span><span class="w"> </span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w">
-                        </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="w">
-                            </span><span class="nb">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nf">fact</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)))))]</span><span class="w">
-      </span><span class="p">[(</span><span class="nf">fact</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">fact</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">fact</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">fact</span><span class="w"> </span><span class="mi">4</span><span class="p">)])))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(defquery fact
+    (let [fact (mem (fn fact [n]
+                        (if (= n 1) 1
+                            * n (fact (- n 1)))))]
+      [(fact 1) (fact 2) (fact 3) (fact 4)])))
+</code></pre>
 
 <p>will reuse previous computation.</p>
 
-<p>Values can be stored in the state using <code class="highlighter-rouge">store</code>, values stored
+<p>Values can be stored in the state using <code>store</code>, values stored
 during the same run of the program can be retrieved using
-<code class="highlighter-rouge">retrieve</code>. The syntax is</p>
+<code>retrieve</code>. The syntax is</p>
 
 <ul>
-  <li><code class="highlighter-rouge">(store key ... value)</code> stores <code class="highlighter-rouge">value</code> at <code class="highlighter-rouge">key ...</code> in the state.</li>
-  <li><code class="highlighter-rouge">(retrieve key ...)</code> retrieves and returns the value stored at
-<code class="highlighter-rouge">key ...</code>. <code class="highlighter-rouge">key ...</code> can be a sequence of any length.</li>
+  <li><code>(store key ... value)</code> stores <code>value</code> at <code>key ...</code> in the state.</li>
+  <li><code>(retrieve key ...)</code> retrieves and returns the value stored at
+<code>key ...</code>. <code>key ...</code> can be a sequence of any length.</li>
 </ul>
 
 <p>For example:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defquery</span><span class="w"> </span><span class="n">customer</span><span class="w">
-  </span><span class="p">(</span><span class="nf">store</span><span class="w"> </span><span class="no">:customer</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="w">
-  </span><span class="p">(</span><span class="nf">retrieve</span><span class="w"> </span><span class="no">:customer</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="no">:age</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(defquery customer
+  (store :customer 4 :age 18)
+  (retrieve :customer 4 :age))
+</code></pre>
 
 <p>will return be 18 in :result.</p>
 
 <h2 id="distributions">Distributions</h2>
 
-<p>Distributions are <em>Clojure</em> implementations of a <code class="highlighter-rouge">distribution</code> protocol, consisting
+<p>Distributions are <em>Clojure</em> implementations of a <code>distribution</code> protocol, consisting
 of two methods:</p>
 
-<p><strong>(sample* distribution)</strong> accepts a distribution instance and returns a sample from the distribution.  The <em>Anglican</em> <code class="highlighter-rouge">sample</code> uses this method to generate random variable values.</p>
+<p><strong>(sample* distribution)</strong> accepts a distribution instance and returns a sample from the distribution.  The <em>Anglican</em> <code>sample</code> uses this method to generate random variable values.</p>
 
-<p><strong>(observe* distribution value)</strong> accepts a distribution and a value and returns log probability of the value given the distribution.  <em>Anglican</em> inference backends stop at <code class="highlighter-rouge">observe</code> statements and often use the return value from calling <code class="highlighter-rouge">observe*</code> with the same original arguments as the <code class="highlighter-rouge">observe</code> call to effect conditioning.</p>
+<p><strong>(observe* distribution value)</strong> accepts a distribution and a value and returns log probability of the value given the distribution.  <em>Anglican</em> inference backends stop at <code>observe</code> statements and often use the return value from calling <code>observe*</code> with the same original arguments as the <code>observe</code> call to effect conditioning.</p>
 
-<p>The core runtime library provides the following distribution constructors which can be used either in Clojure or Anglican, remembering the difference between <code class="highlighter-rouge">sample</code> and <code class="highlighter-rouge">sample*</code>, and, <code class="highlighter-rouge">observe</code> and <code class="highlighter-rouge">observe*</code>:</p>
+<p>The core runtime library provides the following distribution constructors which can be used either in Clojure or Anglican, remembering the difference between <code>sample</code> and <code>sample*</code>, and, <code>observe</code> and <code>observe*</code>:</p>
 
-<p><strong>(bernoulli p)</strong> constructs a single binomial trial. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates 1 with probability <code class="highlighter-rouge">p</code> and 0 with probability <code class="highlighter-rouge">1-p</code>.</p>
+<p><strong>(bernoulli p)</strong> constructs a single binomial trial. Calling <code>sample</code> on the returned distribution instance generates 1 with probability <code>p</code> and 0 with probability <code>1-p</code>.</p>
 
-<p><strong>(beta a b)</strong> constructs a Beta distribution with pseudocounts <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">double</code> on interval <code class="highlighter-rouge">[0,1)</code>.</p>
+<p><strong>(beta a b)</strong> constructs a Beta distribution with pseudocounts <code>a</code> and <code>b</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> on interval <code>[0,1)</code>.</p>
 
-<p><strong>(binomial n p)</strong> constructs a Binomial distribution with success probability <code class="highlighter-rouge">p</code> and number of trials <code class="highlighter-rouge">n</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">long</code> on the interval <code class="highlighter-rouge">[0 ... n]</code>.</p>
+<p><strong>(binomial n p)</strong> constructs a Binomial distribution with success probability <code>p</code> and number of trials <code>n</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> on the interval <code>[0 ... n]</code>.</p>
 
-<p><strong>(categorical pairs)</strong> constructs a categorical distribution parameterized by a list of pairs <code class="highlighter-rouge">(val p)</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates <code class="highlighter-rouge">val-k</code> with probability <code class="highlighter-rouge">p-k</code>.</p>
+<p><strong>(categorical pairs)</strong> constructs a categorical distribution parameterized by a list of pairs <code>(val p)</code>. Calling <code>sample</code> on the returned distribution instance generates <code>val-k</code> with probability <code>p-k</code>.</p>
 
-<p><strong>(dirichlet [alpha-1 … alpha-K])</strong> constructs a Dirichlet distribution parameterized by a vector of pseudocounts <code class="highlighter-rouge">alpha</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a vector of probabilities <code class="highlighter-rouge">prob</code> such that <code class="highlighter-rouge">(sum prob) = 1.0</code> and <code class="highlighter-rouge">(count prob) = (count alpha)</code>.</p>
+<p><strong>(dirichlet [alpha-1 … alpha-K])</strong> constructs a Dirichlet distribution parameterized by a vector of pseudocounts <code>alpha</code>. Calling <code>sample</code> on the returned distribution instance generates a vector of probabilities <code>prob</code> such that <code>(sum prob) = 1.0</code> and <code>(count prob) = (count alpha)</code>.</p>
 
-<p><strong>(discrete p)</strong> constructs a discrete distribution parameterized by a list probabilities <code class="highlighter-rouge">p</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">long</code> in the range <code class="highlighter-rouge">[0 ... K-1]</code>, with <code class="highlighter-rouge">K = (count p)</code>. The result <code class="highlighter-rouge">k</code> is returned with probability <code class="highlighter-rouge">(nth p k)</code>.</p>
+<p><strong>(discrete p)</strong> constructs a discrete distribution parameterized by a list probabilities <code>p</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> in the range <code>[0 ... K-1]</code>, with <code>K = (count p)</code>. The result <code>k</code> is returned with probability <code>(nth p k)</code>.</p>
 
-<p><strong>(exponential l)</strong> constructs an exponential distribution with with rate parameter <code class="highlighter-rouge">l</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a double in the domain <code class="highlighter-rouge">[0, Inf)</code>.</p>
+<p><strong>(exponential l)</strong> constructs an exponential distribution with with rate parameter <code>l</code>. Calling <code>sample</code> on the returned distribution instance generates a double in the domain <code>[0, Inf)</code>.</p>
 
-<p><strong>(flip p)</strong> constructs a single binomial trial. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates <code class="highlighter-rouge">true</code> with probability <code class="highlighter-rouge">p</code> and <code class="highlighter-rouge">false</code> with probability <code class="highlighter-rouge">1-p</code>.</p>
+<p><strong>(flip p)</strong> constructs a single binomial trial. Calling <code>sample</code> on the returned distribution instance generates <code>true</code> with probability <code>p</code> and <code>false</code> with probability <code>1-p</code>.</p>
 
-<p><strong>(gamma a b)</strong> constructs a Gamma distribution with shape <code class="highlighter-rouge">a</code> and rate <code class="highlighter-rouge">b</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">double</code> on the domain <code class="highlighter-rouge">(0, Inf)</code>.</p>
+<p><strong>(gamma a b)</strong> constructs a Gamma distribution with shape <code>a</code> and rate <code>b</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> on the domain <code>(0, Inf)</code>.</p>
 
 <p><strong>(mvn mean cov)</strong> constructs a Multivariate normal distribution with mean
-<code class="highlighter-rouge">mean</code> and covariance matrix <code class="highlighter-rouge">cov</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">double</code> vector of the
-same size as <code class="highlighter-rouge">mean</code>.</p>
+<code>mean</code> and covariance matrix <code>cov</code>. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> vector of the
+same size as <code>mean</code>.</p>
 
 <p><strong>(normal mean std)</strong> constructs a normal distribution with mean
-<code class="highlighter-rouge">mean</code> and standard deviation <code class="highlighter-rouge">std</code>.</p>
+<code>mean</code> and standard deviation <code>std</code>.</p>
 
-<p><strong>(poisson l)</strong> constructs a Poisson distribution with rate <code class="highlighter-rouge">l</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a non-negative <code class="highlighter-rouge">long</code>.</p>
+<p><strong>(poisson l)</strong> constructs a Poisson distribution with rate <code>l</code>. Calling <code>sample</code> on the returned distribution instance generates a non-negative <code>long</code>.</p>
 
-<p><strong>(uniform-continuous min max)</strong> constructs a uniform continuous distribution. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">double</code> in the domain <code class="highlighter-rouge">[min, max]</code>.</p>
+<p><strong>(uniform-continuous min max)</strong> constructs a uniform continuous distribution. Calling <code>sample</code> on the returned distribution instance generates a <code>double</code> in the domain <code>[min, max]</code>.</p>
 
-<p><strong>(uniform-discrete min max)</strong> constructs a uniform discrete distribution. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a <code class="highlighter-rouge">long</code> from the range <code class="highlighter-rouge">[min ... max-1]</code>.</p>
+<p><strong>(uniform-discrete min max)</strong> constructs a uniform discrete distribution. Calling <code>sample</code> on the returned distribution instance generates a <code>long</code> from the range <code>[min ... max-1]</code>.</p>
 
-<p><strong>(wishart n V)</strong> constructs a Wishart distribution with <code class="highlighter-rouge">n</code> degrees of
-freedom and scale matrix <code class="highlighter-rouge">V</code>. Calling <code class="highlighter-rouge">sample</code> on the returned distribution instance generates a matrix of <code class="highlighter-rouge">double</code> of the
-same size as <code class="highlighter-rouge">V</code>.</p>
+<p><strong>(wishart n V)</strong> constructs a Wishart distribution with <code>n</code> degrees of
+freedom and scale matrix <code>V</code>. Calling <code>sample</code> on the returned distribution instance generates a matrix of <code>double</code> of the
+same size as <code>V</code>.</p>
 
 <p>In addition, so-called random processes are provided by the
 runtime, including CRP (Chinese Restaurant Process), DP
 (Dirichlet Process), and GP (Gaussian Process). Random processes
-implement the <code class="highlighter-rouge">random-process</code> protocol, consisting of two
+implement the <code>random-process</code> protocol, consisting of two
 methods:</p>
 
 <p><strong>(produce process)</strong> accepts a process instance and returns a
 distribution object (which can be passed as a parameter to
-<code class="highlighter-rouge">observe</code> and <code class="highlighter-rouge">sample</code>) corresponding to the current state of
+<code>observe</code> and <code>sample</code>) corresponding to the current state of
 the process.</p>
 
 <p><strong>(absorb process value)</strong> updates the process by incorporating
@@ -346,41 +346,41 @@ the processes.</p>
 core runtime library:</p>
 
 <p><strong>(CRP alpha)</strong> is a Chinese restaurant process with concentration
-<code class="highlighter-rouge">alpha</code>.</p>
+<code>alpha</code>.</p>
 
-<p><strong>(DP alpha H)</strong> is a Dirichlet process with concentration <code class="highlighter-rouge">alpha</code>
-over base distribution <code class="highlighter-rouge">H</code>.</p>
+<p><strong>(DP alpha H)</strong> is a Dirichlet process with concentration <code>alpha</code>
+over base distribution <code>H</code>.</p>
 
-<p><strong>(GP m k)</strong> is a Gaussian process with mean function <code class="highlighter-rouge">m</code> and
-covariance function <code class="highlighter-rouge">k</code>.</p>
+<p><strong>(GP m k)</strong> is a Gaussian process with mean function <code>m</code> and
+covariance function <code>k</code>.</p>
 
 <p>Other distributions and processes can be defined by the user.
 The definition can be placed into Clojure modules containing
 Anglican programs. A user-defined distribution is specified
-using <code class="highlighter-rouge">defdist</code>:</p>
+using <code>defdist</code>:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defdist</span><span class="w"> </span><span class="n">dirac</span><span class="w">
-  </span><span class="s">"Dirac distribution"</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">  </span><span class="c1">; distribution parameters</span><span class="w">
-  </span><span class="p">[]</span><span class="w">   </span><span class="c1">; auxiliary bindings</span><span class="w">
-     </span><span class="p">(</span><span class="nf">sample*</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
-     </span><span class="p">(</span><span class="nf">observe*</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="w"> </span><span class="n">value</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)))))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(defdist dirac
+  "Dirac distribution"
+  [x]  ; distribution parameters
+  []   ; auxiliary bindings
+     (sample* [this] x)
+     (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
+</code></pre>
 
 <p>Similarly, a user-defined random process is specified using
-<code class="highlighter-rouge">defproc</code>:</p>
+<code>defproc</code>:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defproc</span><span class="w"> </span><span class="n">DSD</span><span class="w">
-  </span><span class="s">"discrete-symmetric-dirichlet process"</span><span class="w">
-  </span><span class="p">[</span><span class="n">alpha</span><span class="w"> </span><span class="n">N</span><span class="p">]</span><span class="w">                                </span><span class="c1">; process parameters</span><span class="w">
-  </span><span class="p">[</span><span class="n">counts</span><span class="w"> </span><span class="p">(</span><span class="nf">vec</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="p">(</span><span class="nb">double</span><span class="w"> </span><span class="n">alpha</span><span class="p">)))]</span><span class="w"> </span><span class="c1">; auxiliary bindings</span><span class="w">
-  </span><span class="p">(</span><span class="nf">produce</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">discrete</span><span class="w"> </span><span class="n">counts</span><span class="p">))</span><span class="w">
-  </span><span class="p">(</span><span class="nf">absorb</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="w"> </span><span class="n">sample</span><span class="p">]</span><span class="w">
-	</span><span class="p">(</span><span class="nf">DSD</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="p">(</span><span class="nf">update-in</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="p">[</span><span class="n">sample</span><span class="p">]</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="nb">.</span><span class="p">))))</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(defproc DSD
+  "discrete-symmetric-dirichlet process"
+  [alpha N]                                ; process parameters
+  [counts (vec (repeat N (double alpha)))] ; auxiliary bindings
+  (produce [this] (discrete counts))
+  (absorb [this sample]
+	(DSD alpha N (update-in counts [sample] + 1.))))
+</code></pre>
 
 <p>Constructors of user-defined distributions and processes must be
-declared primitive using <code class="highlighter-rouge">with-primitive-procedures</code>.</p>
+declared primitive using <code>with-primitive-procedures</code>.</p>
 
 <!-- ## Inference Algorithms
 

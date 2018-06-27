@@ -124,7 +124,7 @@ any questions or suggestions. We are happy to learn about your experience!</p>
 <p><a href="https://clojars.org/anglican"><img src="https://img.shields.io/clojars/v/anglican.svg" alt="Clojars Project" /></a></p>
 
 <p>You can also clone the <a href="https://bitbucket.org/probprog/anglican-examples/">examples
-repository</a> and run <code class="highlighter-rouge">lein
+repository</a> and run <code>lein
 gorilla</code> to get a quick setup.</p>
 
 <p>A typical hello world example in statistics is a <a href="https://en.wikipedia.org/wiki/Coin_flipping">coin flip
@@ -133,64 +133,64 @@ head and tail. Intuitively given a set of observed values of a coin you would
 now like to know how fair it is. Mathematically speaking we want to know the
 probability of head turning up. Let’s encode a model for this:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">anglican.coin-flips</span><span class="w">
-  </span><span class="p">(</span><span class="no">:use</span><span class="w"> </span><span class="p">[</span><span class="n">anglican</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="n">emit</span><span class="w"> </span><span class="n">runtime</span><span class="p">]))</span><span class="w">
+<pre><code class="language-clojure">(ns anglican.coin-flips
+  (:use [anglican core emit runtime]))
   
 
-</span><span class="p">(</span><span class="nf">defquery</span><span class="w"> </span><span class="n">coin-model</span><span class="w"> </span><span class="p">[</span><span class="n">coin-series</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">prob</span><span class="w"> </span><span class="p">(</span><span class="nf">sample</span><span class="w"> </span><span class="p">(</span><span class="nf">beta</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">))]</span><span class="w"> </span><span class="c1">;; 1. prior</span><span class="w">
-    </span><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[[</span><span class="n">f</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="p">]</span><span class="w"> </span><span class="n">coin-series</span><span class="p">]</span><span class="w">
-      </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="n">f</span><span class="w">
-        </span><span class="p">(</span><span class="nf">observe</span><span class="w"> </span><span class="p">(</span><span class="nf">flip</span><span class="w"> </span><span class="n">prob</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="c1">;; 2. incorporate data</span><span class="w">
-        </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="n">r</span><span class="p">)))</span><span class="w">
-    </span><span class="n">prob</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
+(defquery coin-model [coin-series]
+  (let [prob (sample (beta 1 1))] ;; 1. prior
+    (loop [[f &amp; r] coin-series]
+      (when f
+        (observe (flip prob) f) ;; 2. incorporate data
+        (recur r)))
+    prob))
+</code></pre>
 
 <p>Anglican provides us primitives to build a model for our coin. If you are
-familiar with Clojure, you will spot them: <code class="highlighter-rouge">defquery</code>, <code class="highlighter-rouge">sample</code> and <code class="highlighter-rouge">observe</code>.
-<code class="highlighter-rouge">defquery</code> just sets up the scope of our model and allows us to give it the name
-<code class="highlighter-rouge">coin-model</code> and define an input slot for our data as <code class="highlighter-rouge">coin-series</code>. In 1. we
+familiar with Clojure, you will spot them: <code>defquery</code>, <code>sample</code> and <code>observe</code>.
+<code>defquery</code> just sets up the scope of our model and allows us to give it the name
+<code>coin-model</code> and define an input slot for our data as <code>coin-series</code>. In 1. we
 define our prior belief without seeing any data. Let’s just pick the <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta
 distribution</a>, because it
 defines a probability between 0 and 1 and we assume that the coin is rather
 fair. You can incorporate any other prior belief by tweaking the two parameters
 of the Beta distribution though.</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">sample*</span><span class="w"> </span><span class="p">(</span><span class="nf">beta</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="c1">;; =&gt; 0.7185479773538508</span><span class="w">
-</span></code></pre></div></div>
-<p>(Note: <code class="highlighter-rouge">sample*</code> has to be used if you run it outside a query.)</p>
+<pre><code class="language-clojure">(sample* (beta 1 1)) ;; =&gt; 0.7185479773538508
+</code></pre>
+<p>(Note: <code>sample*</code> has to be used if you run it outside a query.)</p>
 
-<p>In our model we then <code class="highlighter-rouge">sample</code> this value in the query and will plug it into the
-<code class="highlighter-rouge">flip</code> distribution to <code class="highlighter-rouge">observe</code> each data point in 2.. If we have no data then
+<p>In our model we then <code>sample</code> this value in the query and will plug it into the
+<code>flip</code> distribution to <code>observe</code> each data point in 2.. If we have no data then
 the loop will not run and we will get just our prior belief samples. This is not
 really that helpful though. Anglican does its magic when you start to provide
-observed values from the coin. For this we use <code class="highlighter-rouge">doquery</code>.</p>
+observed values from the coin. For this we use <code>doquery</code>.</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nf">doquery</span><span class="w"> </span><span class="no">:smc</span><span class="w"> </span><span class="n">coin-model</span><span class="w"> </span><span class="p">[[</span><span class="n">true</span><span class="p">]]</span><span class="w"> </span><span class="no">:number-of-particles</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w">
-   </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
-   </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="no">:result</span><span class="p">))</span><span class="w">
+<pre><code class="language-clojure">(-&gt;&gt; (doquery :smc coin-model [[true]] :number-of-particles 10000)
+   (take 10)
+   (map :result))
 
-</span><span class="c1">;; =&gt; (0.98529804829141 0.5948306954057996 0.5948306954057996 0.3579256597687244 0.9818148690925241 0.9818148690925241 0.4539746712124162 0.8944478678159888 0.8944478678159888 0.3433014675748332)</span><span class="w">
-</span></code></pre></div></div>
+;; =&gt; (0.98529804829141 0.5948306954057996 0.5948306954057996 0.3579256597687244 0.9818148690925241 0.9818148690925241 0.4539746712124162 0.8944478678159888 0.8944478678159888 0.3433014675748332)
+</code></pre>
 
-<p>(Note: <code class="highlighter-rouge">doquery</code> receives a few arguments for the Sequential Monte Carlo method.
+<p>(Note: <code>doquery</code> receives a few arguments for the Sequential Monte Carlo method.
 You can <a href="./inference/">look up each of those for inference</a>. An attribute of the
 method is that you might get the same value multiple times in a statistically
 consistent manner.)</p>
 
-<p>You might know from a real-life or a statistics course that having very few
+<p>You might know from real-life or a statistics course that having very few
 examples, only one here, will not allow you to infer the probability of head.
 Anglican provides you a so called posterior distribution after seeing the
 values. As you can see our distribution is already considerably tilted towards 1.</p>
 
 <p>Let’s assume we observe 8 times heads:</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nf">doquery</span><span class="w"> </span><span class="no">:smc</span><span class="w"> </span><span class="n">coin-model</span><span class="w"> </span><span class="p">[[</span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="p">]]</span><span class="w"> </span><span class="no">:number-of-particles</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w">
-   </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
-   </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="no">:result</span><span class="p">))</span><span class="w">
+<pre><code class="language-clojure">(-&gt;&gt; (doquery :smc coin-model [[true true true true true true true true]] :number-of-particles 10000)
+   (take 10)
+   (map :result))
    
-</span><span class="c1">;; =&gt; (0.9068541546104443 0.9068541546104443 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636)</span><span class="w">
-</span></code></pre></div></div>
+;; =&gt; (0.9068541546104443 0.9068541546104443 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636 0.9664328786599636)
+</code></pre>
 
 <p>Our posterior distribution confirms our intuition that this coin is very
 unlikely, but still incorporates some uncertainty about the actual flipping
@@ -201,7 +201,7 @@ Bayesian inference allows you to both intuitively incorporate expert knowledge
 in the prior to work in a small data regime, while correcting wrong prior
 beliefs with more data.</p>
 
-<p>What happens if you pick a different prior, e.g. tweaking the <code class="highlighter-rouge">beta</code> parameters
+<p>What happens if you pick a different prior, e.g. tweaking the <code>beta</code> parameters
 to 10 and 10? Try to use a larger data set. Do you see that the effect of the
 prior belief vanishes?</p>
 

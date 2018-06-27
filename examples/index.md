@@ -16,13 +16,18 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 
 # Pedagogical Models
 
-- [Linear Regression](viewer/?worksheet=linear-regression)
+- [Linear Regression](viewer/?worksheet=linear_regression)
 - [Classification](viewer/?worksheet=classification)
 - [Conjugate Gaussians](viewer/?worksheet=gaussian-posteriors)
 - [Kalman Smoother](viewer/?worksheet=kalman)
 - [Gaussian Mixture Model](viewer/?worksheet=gmm-iris)
 - [Beta-Binomial Model](viewer/?worksheet=pencil-factory)
 - [Bayes Net](viewer/?worksheet=bayes-net)
+
+# Financial
+
+- [Internal Rate of Return 1](viewer/?worksheet=irr-1)
+- [Internal Rate of Return 2](viewer/?worksheet=irr-2)
 
 # Optimization (requires [BOPP](https://github.com/probprog/bopp) and [Deodorant](https://github.com/probprog/deodorant))
 - [Inferring the parameters of a chaotic system](viewer/?source=github&user=probprog&repo=bopp&path=worksheets/chaos.clj)

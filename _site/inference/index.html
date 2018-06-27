@@ -96,18 +96,18 @@
       <div class="content row">
         <h1 id="inference-methods">Inference Methods</h1>
 
-<p>From Clojure, the syntax for calling an inference algorithm on a query is <code class="highlighter-rouge">(doquery
-:method foo args &amp; method-opts)</code>. For example, we could run the <code class="highlighter-rouge">smc</code> algorithm with
-<code class="highlighter-rouge">:number-of-particles</code> set to 100 on a program <code class="highlighter-rouge">foo</code> defined by <code class="highlighter-rouge">(defquery foo [x] ...)</code> as follows</p>
+<p>From Clojure, the syntax for calling an inference algorithm on a query is <code>(doquery
+:method foo args &amp; method-opts)</code>. For example, we could run the <code>smc</code> algorithm with
+<code>:number-of-particles</code> set to 100 on a program <code>foo</code> defined by <code>(defquery foo [x] ...)</code> as follows</p>
 
-<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">doquery</span><span class="w"> </span><span class="no">:smc</span><span class="w">
-  </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">xval</span><span class="p">]</span><span class="w">
-  </span><span class="no">:number-of-particles</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+<pre><code class="language-clojure">(doquery :smc
+  foo [xval]
+  :number-of-particles 100)
+</code></pre>
 
-<p>When a <code class="highlighter-rouge">query</code> object is passed to <code class="highlighter-rouge">doquery</code> or <code class="highlighter-rouge">conditional</code> the user has a choice of what kind of inference should be used to perform the characterization of the denoted conditional distribution.  In general we recommend <code class="highlighter-rouge">rmh</code> if all observes occur at the end of the program, <code class="highlighter-rouge">smc</code> with as many particles as can fit in memory if observes occur with the program, and <code class="highlighter-rouge">ipmcmc</code> for programs with internal observes that are too large for <code class="highlighter-rouge">smc</code> to solve well.</p>
+<p>When a <code>query</code> object is passed to <code>doquery</code> or <code>conditional</code> the user has a choice of what kind of inference should be used to perform the characterization of the denoted conditional distribution.  In general we recommend <code>rmh</code> if all observes occur at the end of the program, <code>smc</code> with as many particles as can fit in memory if observes occur with the program, and <code>ipmcmc</code> for programs with internal observes that are too large for <code>smc</code> to solve well.</p>
 
-<p><em>CRITICAL</em>: the default arguments supplied for all inference methods are the <em>minimum</em> required.  This design make interactive debugging easier but nearly absolutely ensures poor inference performance unless non-default parameter values are chosen.  For instance <code class="highlighter-rouge">smc</code> performance will only get better with more particles; ultimately how many particles to use should be chosen so as to maximize the joint criteria of how long you want to wait and how good you want your results to be.</p>
+<p><em>CRITICAL</em>: the default arguments supplied for all inference methods are the <em>minimum</em> required.  This design make interactive debugging easier but nearly absolutely ensures poor inference performance unless non-default parameter values are chosen.  For instance <code>smc</code> performance will only get better with more particles; ultimately how many particles to use should be chosen so as to maximize the joint criteria of how long you want to wait and how good you want your results to be.</p>
 
 <p>Anglican provides 4 general categories of inference methods and several instances of each:</p>
 
@@ -130,72 +130,72 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">importance</code></td>
+      <td><code>importance</code></td>
       <td>IS</td>
       <td>Importance sampling (likelihood weighting)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">smc</code></td>
+      <td><code>smc</code></td>
       <td>IS</td>
       <td>Sequential Monte Carlo</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pcascade</code></td>
+      <td><code>pcascade</code></td>
       <td>IS</td>
       <td>Particle cascade (asynchronous sequential Monte Carlo)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pgibbs</code></td>
+      <td><code>pgibbs</code></td>
       <td>PMCMC</td>
       <td>Particle Gibbs (iterated conditional SMC)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pimh</code></td>
+      <td><code>pimh</code></td>
       <td>PMCMC</td>
       <td>Particle independent Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pgas</code></td>
+      <td><code>pgas</code></td>
       <td>PMCMC</td>
       <td>Particle Gibbs with ancestor sampling</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">ipmcmc</code></td>
+      <td><code>ipmcmc</code></td>
       <td>PMCMC</td>
       <td>Interacting particle Markov chain Monte Carlo</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">lmh</code></td>
+      <td><code>lmh</code></td>
       <td>MCMC</td>
       <td>Lightweight Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">rmh</code></td>
+      <td><code>rmh</code></td>
       <td>MCMC</td>
       <td>Random-walk Lightweight Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">almh</code></td>
+      <td><code>almh</code></td>
       <td>MCMC</td>
       <td>Adaptive scheduling lightweight Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">palmh</code></td>
+      <td><code>palmh</code></td>
       <td>MCMC</td>
       <td>Parallelised adaptive scheduling lightweight Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">plmh</code></td>
+      <td><code>plmh</code></td>
       <td>MCMC</td>
       <td>Parallelised lightweight Metropolis-Hastings</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">bamc</code></td>
+      <td><code>bamc</code></td>
       <td>MAP</td>
       <td>Bayesian Ascent Monte Carlo</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">siman</code></td>
+      <td><code>siman</code></td>
       <td>MAP</td>
       <td>MAP estimation via simulated annealing</td>
     </tr>
@@ -204,7 +204,7 @@
 
 <h1 id="method-specific-options">Method-specific Options</h1>
 
-<p>Some algorithms have optional arguments, which can be specified with <code class="highlighter-rouge">(doquery :method prog args :option value)</code>. These are</p>
+<p>Some algorithms have optional arguments, which can be specified with <code>(doquery :method prog args :option value)</code>. These are</p>
 
 <table>
   <thead>
@@ -217,13 +217,13 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">smc</code></td>
+      <td><code>smc</code></td>
       <td>:number-of-particles</td>
       <td>1</td>
       <td>Number of particles</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">rmh</code></td>
+      <td><code>rmh</code></td>
       <td>:alpha</td>
       <td>0.5</td>
       <td>Probability of using a local MCMC move</td>
@@ -235,7 +235,7 @@
       <td>Spread of the local move</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">ipmcmc</code></td>
+      <td><code>ipmcmc</code></td>
       <td>:number-of-particles</td>
       <td>2</td>
       <td>Number of particles per sweep</td>
@@ -265,37 +265,37 @@
       <td>Number of threads to use</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pgibbs</code></td>
+      <td><code>pgibbs</code></td>
       <td>:number-of-particles</td>
       <td>2</td>
       <td> </td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pgas</code></td>
+      <td><code>pgas</code></td>
       <td>:number-of-particles</td>
       <td>2</td>
       <td> </td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pimh</code></td>
+      <td><code>pimh</code></td>
       <td>:number-of-particles</td>
       <td>2</td>
       <td> </td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">plmh</code></td>
+      <td><code>plmh</code></td>
       <td>:number-of-threads</td>
       <td>2</td>
       <td>Number of processor threads</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">palmh</code></td>
+      <td><code>palmh</code></td>
       <td>:number-of-threads</td>
       <td>2</td>
       <td> </td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">pcascade</code></td>
+      <td><code>pcascade</code></td>
       <td>:number-of-threads</td>
       <td>16</td>
       <td> </td>
@@ -307,13 +307,13 @@
       <td>Initial number of particles</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">bamc</code></td>
+      <td><code>bamc</code></td>
       <td>:predict-candidates</td>
       <td>false</td>
       <td>Output samples with non-increasing log-weight</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">siman</code></td>
+      <td><code>siman</code></td>
       <td>:predict-candidates</td>
       <td>false</td>
       <td> </td>
