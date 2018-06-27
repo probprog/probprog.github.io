@@ -92,7 +92,7 @@ You can [look up each of those for inference](./inference/). An attribute of the
 method is that you might get the same value multiple times in a statistically
 consistent manner.)
 
-You might know from a real-life or a statistics course that having very few
+You might know from real-life or a statistics course that having very few
 examples, only one here, will not allow you to infer the probability of head.
 Anglican provides you a so called posterior distribution after seeing the
 values. As you can see our distribution is already considerably tilted towards 1.

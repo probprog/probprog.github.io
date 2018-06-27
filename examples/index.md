@@ -16,6 +16,8 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 
 # Pedagogical Models
 
+- [Linear Regression](viewer/?worksheet=linear-regression)
+- [Classification](viewer/?worksheet=classification)
 - [Conjugate Gaussians](viewer/?worksheet=gaussian-posteriors)
 - [Kalman Smoother](viewer/?worksheet=kalman)
 - [Gaussian Mixture Model](viewer/?worksheet=gmm-iris)
