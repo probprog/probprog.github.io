@@ -4,6 +4,7 @@ body {
   color: #ddd;
   font-family: "Open Sans";
   font-weight: normal;
+  overflow-x: hidden;
 }
 
 a {
