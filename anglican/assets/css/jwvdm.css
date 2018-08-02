@@ -120,17 +120,11 @@ img[alt=contact] {
   padding-right: 20px;
 }
 
-.nav {
-   font-weight: 400;
+.nav, .title {
+   font-weight: 300;
    text-transform: uppercase;
    letter-spacing: 2px;
    font-size: 100%;
-}
-
-.title {
-   font-weight: 300;
-   font-size: 20px;
-   font-spacing: 2px;
 }
 
 .title, .subtitle {
