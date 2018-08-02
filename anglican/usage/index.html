@@ -123,36 +123,36 @@ styles of usage.</p>
 <h2 id="calling-anglican-from-clojure">Calling Anglican from Clojure</h2>
 
 <p>The <a href="https://bitbucket.org/probprog/anglican-user">anglican-user</a> repository 
-contains a <a href="http://leiningen.org/">leiningen</a> <code>project.clj</code> with the suggested 
+contains a <a href="http://leiningen.org/">leiningen</a> <code class="highlighter-rouge">project.clj</code> with the suggested 
 dependencies and namespace declarations.  Anglican is also available on <a href="https://clojars.org/anglican">Clojars</a>.</p>
 
 <p>An Anglican query can also be invoked programmatically from
-Clojure code, using the <code>doquery</code> macro, with the following
+Clojure code, using the <code class="highlighter-rouge">doquery</code> macro, with the following
 syntax:</p>
 
-<pre><code>(doquery algorithm query value &amp; options)
-</code></pre>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(doquery algorithm query value &amp; options)
+</code></pre></div></div>
 
-<p>where <code>algorithm</code> is the keyword specifying the algorithm (<code>:lmh</code>,
-<code>:pgibbs</code>, <code>:pcascade</code> etc.), <code>value</code> is the initial value passed to
-the query (<code>nil</code> if the query does not expect arguments), and
-<code>options</code> are Clojure clojure keyword arguments, specific to each
-inference algorithm.  <code>doquery</code> returns a lazy sequence of samples —
+<p>where <code class="highlighter-rouge">algorithm</code> is the keyword specifying the algorithm (<code class="highlighter-rouge">:lmh</code>,
+<code class="highlighter-rouge">:pgibbs</code>, <code class="highlighter-rouge">:pcascade</code> etc.), <code class="highlighter-rouge">value</code> is the initial value passed to
+the query (<code class="highlighter-rouge">nil</code> if the query does not expect arguments), and
+<code class="highlighter-rouge">options</code> are Clojure clojure keyword arguments, specific to each
+inference algorithm.  <code class="highlighter-rouge">doquery</code> returns a lazy sequence of samples —
 objects encapsulating a map of predicts and the log probability of
 each sample.</p>
 
-<p>The example worksheets provide many examples of how do use <code>doquery.</code>  The language
-tab explains how to construct the Anglican programs which are the essence of <code>query</code>’s.</p>
+<p>The example worksheets provide many examples of how do use <code class="highlighter-rouge">doquery.</code>  The language
+tab explains how to construct the Anglican programs which are the essence of <code class="highlighter-rouge">query</code>’s.</p>
 
 <h2 id="browser-based-repl">Browser-based REPL</h2>
 
 <p><a href="http://www.gorilla-repl.org/">Gorilla REPL</a> provides a convenient
 environment for processing and visualization of inference results.
-<code>worksheets/template.clj</code> is supplied as a starting point for an
+<code class="highlighter-rouge">worksheets/template.clj</code> is supplied as a starting point for an
 Anglican worksheet.  Running</p>
 
-<pre><code>lein gorilla
-</code></pre>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lein gorilla
+</code></pre></div></div>
 
 <p>in the root of <a href="https://bitbucket.org/probprog/anglican-user">anglican-user</a> starts a 
 local http server which can be connected to via a local browser.</p>
@@ -161,35 +161,35 @@ local http server which can be connected to via a local browser.</p>
 
 <p>Standalone Anglican programs can be run from the command line
 or in the REPL. The template for a standalone program, which you can
-just copy and modify for your needs, is <code>programs/template.clj</code>.
+just copy and modify for your needs, is <code class="highlighter-rouge">programs/template.clj</code>.
 The command line syntax is</p>
 
-<pre><code>lein run namespace [program] [option ...]
-</code></pre>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lein run namespace [program] [option ...]
+</code></pre></div></div>
 
 <p>from the command line, or:</p>
 
-<pre><code>(m! namespace [program] [option ...])
-</code></pre>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(m! namespace [program] [option ...])
+</code></pre></div></div>
 
-<p>in the REPL, where <code>namespace</code> is the namespace containing the
+<p>in the REPL, where <code class="highlighter-rouge">namespace</code> is the namespace containing the
 Anglican program to run, for example:</p>
 
-<pre><code>bash$ lein run branching -a pgibbs -n 100 \
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash$ lein run branching -a pgibbs -n 100 \
            -o ":number-of-particles 50"
 
 anglican.core=&gt; (m! branching -a pgibbs -n 100
                   -o ":number-of-particles 50")
-</code></pre>
+</code></pre></div></div>
 
-<p><code>program</code> is the first argument of <code>defquery</code>. The namespace
-may contain multiple programs. If <code>program</code> is omitted, it defaults
+<p><code class="highlighter-rouge">program</code> is the first argument of <code class="highlighter-rouge">defquery</code>. The namespace
+may contain multiple programs. If <code class="highlighter-rouge">program</code> is omitted, it defaults
 to the last component of the namespace (hmm for anglican.hmm,
 logi for anglican.logi).</p>
 
 <h3 id="options">Options:</h3>
 
-<pre><code>-a, --inference-algorithm NAME   :lmh       Inference algorithm
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-a, --inference-algorithm NAME   :lmh       Inference algorithm
 -b, --burn N                     0          Skip first N samples
 -d, --debug                                 Print debugging information
 -f, --output-format FORMAT       :anglican  Output format
@@ -199,39 +199,39 @@ logi for anglican.logi).</p>
 -v, --value V                               Initial value to pass to the program
 -w, --warmup FLAG                true       Pre-evaluate the program
 -h, --help                                  Print usage summary and exit
-</code></pre>
+</code></pre></div></div>
 
 <h3 id="redirecting-input-and-output">Redirecting Input and Output</h3>
 
 <p>Inference output is normally redirected to a file for post-processing. On the
-command line, <code>&gt;</code> can be used:</p>
+command line, <code class="highlighter-rouge">&gt;</code> can be used:</p>
 
-<pre><code>bash$ lein run branching -a pgibbs -n 100 \
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash$ lein run branching -a pgibbs -n 100 \
            -o ":number-of-particles 50" &gt; branching.pgibbs
-</code></pre>
+</code></pre></div></div>
 
-<p>In the REPL, a macro <code>redir</code> is provided. The syntax is:</p>
+<p>In the REPL, a macro <code class="highlighter-rouge">redir</code> is provided. The syntax is:</p>
 
-<pre><code>(redir [:in "input-file-name" :out "output-file-name"]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(redir [:in "input-file-name" :out "output-file-name"]
   actions ...)
-</code></pre>
+</code></pre></div></div>
 
-<p>Either <code>:in</code> or <code>:out</code> (or both) can be omitted.
-if the output file name begins with <code>+</code>, <code>+</code> is removed
+<p>Either <code class="highlighter-rouge">:in</code> or <code class="highlighter-rouge">:out</code> (or both) can be omitted.
+if the output file name begins with <code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">+</code> is removed
 and the output is appended to the file. In the REPL, the above
 command example can be run as</p>
 
-<pre><code>anglican.core=&gt; (redir [:out "branching.pgibbs"]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anglican.core=&gt; (redir [:out "branching.pgibbs"]
                   (m! branching -a pgibbs -n 100
                       -o ":number-of-particles 50"))
-</code></pre>
+</code></pre></div></div>
 
-<p>Functions <code>freqs</code> (frequency table for every integer-valued or
-symbolic predict) and <code>meansd</code> (mean and standard deviation for
+<p>Functions <code class="highlighter-rouge">freqs</code> (frequency table for every integer-valued or
+symbolic predict) and <code class="highlighter-rouge">meansd</code> (mean and standard deviation for
 each predict) can be used in the REPL to quickly assess the
 results:</p>
 
-<pre><code> anglican.core=&gt; (redir [:in "branching.pgibbs"] (freqs))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> anglican.core=&gt; (redir [:in "branching.pgibbs"] (freqs))
  r, 0, 0.0260000, -3.64966
  r, 1, 0.0930000, -2.37516
  r, 2, 0.0740000, -2.60369
@@ -244,7 +244,7 @@ results:</p>
  r, 10, 0.00700000, -4.96185
  r, 11, 0.00500000, -5.29832
  r, 12, 0.00100000, -6.90776
-</code></pre>
+</code></pre></div></div>
 
       </div>
       <div class="footer row">
