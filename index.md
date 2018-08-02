@@ -19,7 +19,7 @@ Do you interact with users or remote systems? Then you often make the
 unfortunate experience that they act unpredictably. Mathematically speaking you
 observe undeterministic or stochastic behaviour. Anglican allows you to express
 random variables capturing all this stochasticity for you and helps you to learn
-from data to execute informed decisions in your Clojure programs.
+from data to execute informed decisions in your Clojure programs. 
 
 ### Contact
 
@@ -136,7 +136,7 @@ project.
 
 Anglican provides a language to abstract the statistical inference from the
 Clojure runtime. If you are just interested in using Anglican, you can read the
-details of it are documented [in the language section](./language/) and ignore
+details of it [in the language section](./language/) and ignore
 the details about inference. You might have to try to different inference
 methods depending on the nature of your model, but you do not need to learn any
 of the statistics involved.

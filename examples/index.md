@@ -13,8 +13,18 @@ The worksheet links below are _canned_, _view only_ workbooks.  In
 order to create your own interactive worksheets or interact with these examples
 you must follow the browser-based REPL [usage](../usage) instructions.
 
+# Practical 
 
-# Pedagogical Models
+- [User form filling behaviour](viewer/?worksheet=practical/faithful_user)
+
+## Financial
+
+- [Internal Rate of Return 1](viewer/?worksheet=irr-1)
+- [Internal Rate of Return 2](viewer/?worksheet=irr-2)
+
+# Academic
+
+## Pedagogical Models
 
 - [Linear Regression](viewer/?worksheet=linear_regression)
 - [Classification](viewer/?worksheet=classification)
@@ -24,21 +34,16 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 - [Beta-Binomial Model](viewer/?worksheet=pencil-factory)
 - [Bayes Net](viewer/?worksheet=bayes-net)
 
-# Financial
-
-- [Internal Rate of Return 1](viewer/?worksheet=irr-1)
-- [Internal Rate of Return 2](viewer/?worksheet=irr-2)
-
-# Optimization (requires [BOPP](https://github.com/probprog/bopp) and [Deodorant](https://github.com/probprog/deodorant))
+## Optimization (requires [BOPP](https://github.com/probprog/bopp) and [Deodorant](https://github.com/probprog/deodorant))
 - [Inferring the parameters of a chaotic system](viewer/?source=github&user=probprog&repo=bopp&path=worksheets/chaos.clj)
 
-# Bayesian Nonparametrics
+## Bayesian Nonparametrics
 
 - [Dirichlet Process Mixture Model](viewer/?worksheet=nonparametrics/dp-mixture-model)
 - [Hierarchical Dirichlet Process](viewer/?worksheet=nonparametrics/hdp)
 - [Probabilistic Deterministic Infinite Automata](viewer/?worksheet=nonparametrics/pdia)
 
-# Other Examples
+## Other Examples
 
 - [Decision Diagram](viewer/?worksheet=decision-diagram)
 - [Schelling Coordination Game](viewer/?worksheet=coordination-game)
@@ -52,6 +57,10 @@ you must follow the browser-based REPL [usage](../usage) instructions.
 <!-- - [Maximum Likelihood for Logistic Regression](http://www.robots.ox.ac.uk/~fwood/anglican/examples/viewer/?worksheet=logistic-regression-iris) -->
 
 
+# External 
+
+- [Predicting NYC real estate prices](http://blog.fastforwardlabs.com/2017/03/15/predicting-nyc-real-estate-prices-with-probabilistic-programming.html)
+- [Automated tuning of the JVM with Bayesian Optimization](https://yetanothermathprogrammingconsultant.blogspot.com/2016/09/automated-tuning-of-jvm-with-bayesian.html)
 
 # Older Examples
 

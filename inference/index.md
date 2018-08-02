@@ -45,32 +45,37 @@ The current list of algorithms that are included with Anglican is
 | `plmh`       | MCMC  | Parallelised lightweight Metropolis-Hastings                     |
 | `bamc`       | MAP   | Bayesian Ascent Monte Carlo                                      |
 | `siman`      | MAP   | MAP estimation via simulated annealing                           |
+| `bbvb`       | VI    | Black Box Variational Inference                                  |
 
 # Method-specific Options
 
 Some algorithms have optional arguments, which can be specified with `(doquery :method prog args :option value)`. These are
 
-| Method      | Keyword              | Default              | Description                                   |
-|-------------|----------------------|----------------------|-----------------------------------------------|
-| `smc`       | :number-of-particles | 1                    | Number of particles                           |
-| `rmh`       | :alpha               | 0.5                  | Probability of using a local MCMC move        |
-|             | :sigma               | 1                    | Spread of the local move                      |
-| `ipmcmc`    | :number-of-particles | 2                    | Number of particles per sweep                          |
-|             | :number-of-nodes     | 32                    | Number of nodes running SMC and CSMC          |
-|             | :number-of-csmc-nodes| (/ :number-of-nodes 2) | Number of nodes CSMC          |
-|             | :all-particles?      | true                 | Return all particles or just one per node        |
-|             | :pool                | (+ (npus) 2)         | Number of threads to use |
-| `pgibbs`    | :number-of-particles | 2                    |                                               |
-| `pgas`      | :number-of-particles | 2                    |                                               |
-| `pimh`      | :number-of-particles | 2                    |                                               |
-| `plmh`      | :number-of-threads   | 2                    | Number of processor threads                   |
-| `palmh`     | :number-of-threads   | 2                    |                                               |
-| `pcascade`  | :number-of-threads   | 16                   |                                               |
-|             | :number-of-particles | :number-of-threads/2 | Initial number of particles                   |
-| `bamc`      | :predict-candidates  | false                | Output samples with non-increasing log-weight |
-| `siman`     | :predict-candidates  | false                |                                               |
-|             | :cooling-rate        | 0.99                 | Cooling rate (should be less than 1)          |
-|             | :cooling-schedule    | :exponential         | Cooling schedule, :exponential or :lundy-mees |
+| Method     | Keyword               |                Default | Description                                   |
+|------------|-----------------------|------------------------|-----------------------------------------------|
+| `smc`      | :number-of-particles  |                      1 | Number of particles                           |
+| `rmh`      | :alpha                |                    0.5 | Probability of using a local MCMC move        |
+|            | :sigma                |                      1 | Spread of the local move                      |
+| `ipmcmc`   | :number-of-particles  |                      2 | Number of particles per sweep                 |
+|            | :number-of-nodes      |                     32 | Number of nodes running SMC and CSMC          |
+|            | :number-of-csmc-nodes | (/ :number-of-nodes 2) | Number of nodes CSMC                          |
+|            | :all-particles?       |                   true | Return all particles or just one per node     |
+|            | :pool                 |           (+ (npus) 2) | Number of threads to use                      |
+| `pgibbs`   | :number-of-particles  |                      2 |                                               |
+| `pgas`     | :number-of-particles  |                      2 |                                               |
+| `pimh`     | :number-of-particles  |                      2 |                                               |
+| `plmh`     | :number-of-threads    |                      2 | Number of processor threads                   |
+| `palmh`    | :number-of-threads    |                      2 |                                               |
+| `pcascade` | :number-of-threads    |                     16 |                                               |
+|            | :number-of-particles  |   :number-of-threads/2 | Initial number of particles                   |
+| `bamc`     | :predict-candidates   |                  false | Output samples with non-increasing log-weight |
+| `siman`    | :predict-candidates   |                  false |                                               |
+|            | :cooling-rate         |                   0.99 | Cooling rate (should be less than 1)          |
+|            | :cooling-schedule     |           :exponential | Cooling schedule, :exponential or :lundy-mees |
+| `bbvb`     | :number-of-particles  |                    100 | Number of particles                           |
+|            | :base-step-size       |                    1.0 | Gradient descent stepsize                     |
+|            | :adagrad              |                   true | Use adagrad adaptive gradient ascent          |
+|            | :robbins-monro        |                    0.0 | Stepsize gradient decay               |
 
 
 <!-- `importance`
