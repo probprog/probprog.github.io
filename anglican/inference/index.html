@@ -199,6 +199,11 @@
       <td>MAP</td>
       <td>MAP estimation via simulated annealing</td>
     </tr>
+    <tr>
+      <td><code>bbvb</code></td>
+      <td>VI</td>
+      <td>Black Box Variational Inference</td>
+    </tr>
   </tbody>
 </table>
 
@@ -329,6 +334,30 @@
       <td>:cooling-schedule</td>
       <td>:exponential</td>
       <td>Cooling schedule, :exponential or :lundy-mees</td>
+    </tr>
+    <tr>
+      <td><code>bbvb</code></td>
+      <td>:number-of-particles</td>
+      <td>100</td>
+      <td>Number of particles</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>:base-step-size</td>
+      <td>1.0</td>
+      <td>Gradient descent stepsize</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>:adagrad</td>
+      <td>true</td>
+      <td>Use adagrad adaptive gradient ascent</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>:robbins-monro</td>
+      <td>0.0</td>
+      <td>Stepsize gradient decay</td>
     </tr>
   </tbody>
 </table>
