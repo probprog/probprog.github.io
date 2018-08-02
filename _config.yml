@@ -34,6 +34,6 @@ scholar:
 markdown:      kramdown
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
 textile_ext:   textile
-highlighter: pygments
+highlighter: rouge
 
 markdown: kramdown
