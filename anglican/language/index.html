@@ -17,6 +17,8 @@
     <link href="/anglican/assets/css/jwvdm.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/anglican/assets/js/bootstrap.min.js"></script>
+    <link href="/anglican/assets/css/syntax.css" rel="stylesheet">
+    <link href="/anglican/assets/css/ribbon.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,16 +42,12 @@
     <div class="container">
       <div class="header row">
         <div class="row">
-  
-  <a href="/anglican"> 
-    <img class="logo" src="/anglican/assets/images/anglican_logo.png" height="50px" align="bottom"> 
-  </a>
-  <!-- <span class="subtitle">A Probabilistic Programming System</span> -->
-</div>
-<div class="row">
-	<div class="title pull-left">
-			  Anglican
-    </div>
+	<a href="/anglican"> 
+		<img class="logo" src="/anglican/assets/images/anglican_logo.png" height="30px" align="bottom"> 
+		<span class="title">
+			Anglican
+		</span>
+		</a>
     <ul class="nav nav-pills pull-right">
       
       <li >
@@ -60,14 +58,7 @@
       <!-- <li><a href="/publications">Publications</a></li> -->
       
       <li >
-        <a href="/anglican/news/index.html" title="">News</a>
-      </li>
-      <!-- class="active"><a href="/">About</a></li> -->
-      <!-- <li><a href="/projects">Projects</a></li> -->
-      <!-- <li><a href="/publications">Publications</a></li> -->
-      
-      <li >
-        <a href="/anglican/literature/index.html" title="">Papers</a>
+        <a href="/anglican/examples/index.html" title="">Examples</a>
       </li>
       <!-- class="active"><a href="/">About</a></li> -->
       <!-- <li><a href="/projects">Projects</a></li> -->
@@ -88,21 +79,7 @@
       <!-- <li><a href="/publications">Publications</a></li> -->
       
       <li >
-        <a href="/anglican/usage/index.html" title="">Usage</a>
-      </li>
-      <!-- class="active"><a href="/">About</a></li> -->
-      <!-- <li><a href="/projects">Projects</a></li> -->
-      <!-- <li><a href="/publications">Publications</a></li> -->
-      
-      <li >
-        <a href="/anglican/contribute/index.html" title="">Contribute</a>
-      </li>
-      <!-- class="active"><a href="/">About</a></li> -->
-      <!-- <li><a href="/projects">Projects</a></li> -->
-      <!-- <li><a href="/publications">Publications</a></li> -->
-      
-      <li >
-        <a href="/anglican/examples/index.html" title="">Examples</a>
+        <a href="/anglican/literature/index.html" title="">Literature</a>
       </li>
       <!-- class="active"><a href="/">About</a></li> -->
       <!-- <li><a href="/projects">Projects</a></li> -->
@@ -151,7 +128,7 @@ enable the Anglican language in a Clojure module, at the minimum namespaces
 <code>anglican.runtime</code> and <code>anglican.emit</code> must be used. A simple way to
 do this is to write</p>
 
-<pre><code>(ns example
+<pre><code class="language-clojure">(ns example
   (:use [anglican emit runtime]))
 </code></pre>
 
@@ -166,7 +143,7 @@ are delimited by the keyword <code>defquery</code>, followed by the query name
 and the program text. If there is only one program in a
 namespace, it customarily bears the same name as the namespace:</p>
 
-<pre><code>(defquery example
+<pre><code class="language-clojure">(defquery example
   (let [bet (sample (beta 5 3))]
     (observe (flip bet) true)
     (&gt; bet 0.7)))
@@ -241,7 +218,7 @@ can be called from Anglican without restrictions.</p>
 full Clojure syntax but no Anglican extensions, and must be
 declared primitive using <code>with-primitive-procedures</code>:</p>
 
-<pre><code>(with-primitive-procedures [name ...]
+<pre><code class="language-clojure">(with-primitive-procedures [name ...]
    body)
 </code></pre>
 
@@ -249,7 +226,7 @@ declared primitive using <code>with-primitive-procedures</code>:</p>
 can be namespace-qualified, but will be seen unqualified in the
 lexical scope of the form. For example,</p>
 
-<pre><code>(with-primitive-procedures [clojure.string/capitalize]
+<pre><code class="language-clojure">(with-primitive-procedures [clojure.string/capitalize]
    (defquery foo
       (capitalize "hello")))
 </code></pre>
@@ -276,7 +253,7 @@ object as its argument. If the argument is a named <code>fn</code> form,
 self-recursive calls will call the memoized version of the
 function. For example, every <code>fact</code> call in the following code</p>
 
-<pre><code>(defquery fact
+<pre><code class="language-clojure">(defquery fact
     (let [fact (mem (fn fact [n]
                         (if (= n 1) 1
                             * n (fact (- n 1)))))]
@@ -297,7 +274,7 @@ during the same run of the program can be retrieved using
 
 <p>For example:</p>
 
-<pre><code>(defquery customer
+<pre><code class="language-clojure">(defquery customer
   (store :customer 4 :age 18)
   (retrieve :customer 4 :age))
 </code></pre>
@@ -382,18 +359,18 @@ The definition can be placed into Clojure modules containing
 Anglican programs. A user-defined distribution is specified
 using <code>defdist</code>:</p>
 
-<pre><code>(defdist dirac
+<pre><code class="language-clojure">(defdist dirac
   "Dirac distribution"
   [x]  ; distribution parameters
   []   ; auxiliary bindings
-  (sample* [this] x)
-  (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
+     (sample* [this] x)
+     (observe* [this value] (if (= x value) 0.0 (- (/ 1.0 0.0)))))
 </code></pre>
 
 <p>Similarly, a user-defined random process is specified using
 <code>defproc</code>:</p>
 
-<pre><code>(defproc DSD
+<pre><code class="language-clojure">(defproc DSD
   "discrete-symmetric-dirichlet process"
   [alpha N]                                ; process parameters
   [counts (vec (repeat N (double alpha)))] ; auxiliary bindings
@@ -449,7 +426,7 @@ pcascade
       </div>
       <div class="footer row">
         <p>
-    &copy; Frank Wood 2014, 2015. 
+    &copy; Frank Wood 2014-2018
     built using 
     <a href="http://jekyllrb.com">jekyll</a>, 
     <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
@@ -458,6 +435,10 @@ pcascade
 </p> 
        
       </div>
+    </div>
+
+    <div class="ribbon">
+      <a href="https://bitbucket.org/probprog/anglican/">Fork me on BitBucket</a>
     </div>
   </body>
 </html>
