@@ -4,7 +4,7 @@
   }
 }
 @media (min-width: 992px) {
-  div.sidebar-container {
+	div.sidebar-container {
     float: right;
   }
   div.sidebar-fixed {
