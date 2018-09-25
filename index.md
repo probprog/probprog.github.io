@@ -50,8 +50,8 @@ probability of head turning up. Let's encode a model for this:
 
 (defquery coin-model [coin-series]
   (let [prob (sample (beta 1 1))] ;; 1. prior
-    (loop [[f & r] coin-series]
-      (when (boolean? f)
+    (loop [[f & r :as s] coin-series]
+      (when (seq s)
         (observe (flip prob) f) ;; 2. incorporate data
         (recur r)))
     prob))
