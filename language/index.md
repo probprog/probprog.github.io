@@ -169,7 +169,7 @@ function. For example, every `fact` call in the following code
     (let [fact (mem (fn fact [n]
                         (if (= n 1) 1
                             * n (fact (- n 1)))))]
-      [(fact 1) (fact 2) (fact 3) (fact 4)])))
+      [(fact 1) (fact 2) (fact 3) (fact 4)]))
 ~~~
 
 will reuse previous computation.
