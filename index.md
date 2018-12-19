@@ -1,4 +1,5 @@
 # Probabilistic programming
 
 * [Anglican](http://probprog.ml/anglican/)
-* [Infergo](http://infergo.org) 
+* [PobTorch](http://github.com/probtorch/probtorch)
+* [`infergo`](http://infergo.org) 
