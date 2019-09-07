@@ -9,7 +9,6 @@ Build instructions
     git checkout development
     make
 
-
 FAQ
 ---
 
@@ -31,3 +30,4 @@ There is some discussion, as well as a "one-liner" which will patch your system 
 3. To run the plots, you need both `feedgnuplot` and `gnuplot` itself. On ubuntu, these are both available via apt-get (try `sudo apt-get install feedgnuplot`).
 On OSX, gnuplot can be installed via homebrew (`brew install gnuplot`).
 The feedgnuplot script requires perl modules `IPC::Run` and `String::ShellQuote`, both of which can be installed with the CPAN package manager.
+=======

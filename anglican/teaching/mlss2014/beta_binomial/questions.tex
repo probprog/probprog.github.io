@@ -1,0 +1,203 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{epstopdf}
+\usepackage{url}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+%\usepackage{xspace}
+%\usepackage{hyperref}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{graphicx}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{amssymb}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{balance}
+
+\newif\ifanswers
+
+% uncomment if you want answers to appear
+%\answerstrue
+% uncomment if you want answers to be suppressed
+\answersfalse
+
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{orange}{rgb}{.8,.4,0}
+\lstset{ 
+  language=Lisp, 
+  basicstyle=\small\ttfamily, 
+  keywordstyle={}, 
+  %commentstyle=\em \color{green}, 
+  %frame=L,
+  %float=tbph,
+ % captionpos=b,
+  showstringspaces=false, 
+  keywordstyle=[3]\bf\color{orange},
+  keywords=[3]{<>},
+  keywordstyle=[2]\bf\color{darkgreen},
+  keywords=[2]{predict,observe,assume,observe-csv},
+  mathescape=true,
+  stringstyle={},
+           } 
+\renewcommand*{\lstlistingname}{Program}
+
+\lstnewenvironment{bodycode}[2]{\small\lstset{caption=#1,label=#2,basicstyle=\small\ttfamily}}{}
+%\lstnewenvironment{code}[1][]{\lstset{caption=#1,label=#1}}{}
+\lstnewenvironment{code}[2]{\small\lstset{caption=#1,label=#2}}{}
+
+\newcommand{\+}[1]{\ensuremath{{\mathbf{#1}}}}
+
+\newenvironment{inline}[1]{{\small\ttfamily #1}}{}
+
+\renewcommand\vdots{%
+  \vbox{\baselineskip2pt\lineskiplimit0pt\kern1pt\hbox{.}\hbox{.}\hbox{.}\kern-1pt}}
+
+\newcommand{\bx}{{\bf x}}
+
+\newcommand{\bz}{{\bf z}}
+
+\title{Automatic Bayesian Inference as Programming}
+\author{Frank Wood, Brooks Paige}
+%\date{}                                           % Activate to display a given date or no date
+
+
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+
+{\bf Introduction}
+
+Probabilistic generative models can be written concisely as probabilistic programs.
+In this short exercise we will outline the basic structure of a probabilistic program, and show an example of automatic posterior inference.
+
+A classical example problem deals with estimating the failure rate of a process, as in the following example:
+\begin{quote}
+Suppose that you are thinking
+about purchasing a factory that makes pencils. Your accountants
+have determined that you can make a profit 
+(i.e. you should transact the purchase) if the percentage of defective pencils
+manufactured by the factory is less than 30\%.
+
+In your prior experience, you learned that, on average, pencil
+factories produce defective pencils at a rate of 50\%.
+
+To make your judgement about the efficiency of this factory you
+test pencils one at a time in sequence as they emerge from the
+factory to see if they are defective.
+\end{quote}
+
+We let $y_1, \dots, y_N$, with $y_n \in \{0, 1\}$, be a set of defective / not defective observations.
+A very simple approach would be to model each observation $y_n$ as an independent Bernoulli trial, with some unknown success rate $p$.
+We place a prior distribution on $p$, the shape of which represents the strength of our conviction that pencil factories produce 50\% defective pencils.
+A traditional choice of prior might be a uniform distribution on the interval $[0, 1]$, the maximum entropy distribution for $p$ which has an expected value of 0.5.
+In this case, our full model for the pencil factory data is
+\begin{align}
+p &\sim \mathrm{Uniform}(0, 1) \\
+y_n &\sim \mathrm{Bernoulli}(p).
+\end{align}
+Suppose the very first pencil that comes off the conveyor belt is defective.
+We can write this model as a probabilistic program, complete with observing our defective pencil, as 
+\begin{code}{}{}
+[assume p (uniform-continuous 0 1)]
+[observe (flip p) false]
+[predict p]
+\end{code}
+This program is exceedingly simple, but demonstrates the basic structure of a probabilistic program written in Anglican:
+\begin{itemize}
+\item \inline{assume} directives define a prior on $p$;
+\item \inline{observe} directives introduce observed data and a likelihood function;
+\item \inline{predict} directives output posterior samples.
+\end{itemize}
+
+\vspace{1cm}
+\noindent {\bf Questions: }
+
+{\bf (1)} Recall that a uniform-continuous distribution over the interval $[0,1]$ is identical to a Beta distribution with pseudocounts $a = b = 1$.
+After observing $K$ successes from $N$ trials, we can compute the posterior expectation and variance of $p$ analytically:
+\begin{align}
+\mathbb{E}[p] &= \frac{a + K}{a + b + N} 
+\\
+\mathbb{V}[p] &= \frac{(a + K)(b + N - K)}{(a + b + N)^2 (a + b + N + 1)}
+.
+\end{align}
+Compare these with the values estimated by averaging over samples from the probabilistic program above (i.e.~for $a=b=1$, $N=1$, $K=0$).
+Confirm for yourself that the printed output of $p$ draws from the correct posterior distribution.
+
+\ifanswers
+\begin{quote}
+{\bf Answer:}
+For $a=b=1$, $N=1$, $K=0$ the posterior should have: 
+\begin{align} 
+\mathbb{E}[p] &\approx 0.3333 &
+\mathbb{V}[p] &\approx 0.0556.
+\end{align}
+\end{quote}
+\fi
+
+Change the prior on $p$ to be non-uniform, by modifying the first line of the program to draw from a \inline{beta} density. 
+Add a few more observations, of either good or defective pencils.
+Confirm for yourself that the program output matches the analytic posterior.
+
+{\bf (2)} Adding many observations in this manner is cumbersome.
+We'll introduce new notation later, but for now note that we can define our model for arbitrarily many observations by using the \inline{binomial} density with a single \inline{observe}, instead of using many observations of \inline{flip}.
+
+\ifanswers
+\begin{quote}
+{\bf Example answer:}
+\begin{code}{}{}
+[assume p (beta 5 5)]
+[observe (binomial p 10) 7]
+[predict p]
+\end{code}
+\end{quote}
+\fi
+
+{\bf (3)} 
+Crucially, when writing probabilistic programs we are not limited to simple conjugate models like the one we have defined above.
+Instead of the \inline{beta} prior on $p$, introduce a new prior for which we can no longer compute the posterior distribution by hand.
+
+For example, suppose we were to place a truncated exponential prior on $p$, with
+\begin{align}
+z &\sim \mathrm{Exponential}(0.5) \\
+p|z &= \min(z, 1)
+\end{align}
+%Note that this new prior still satisfies our original description of our belief, that pencil factories produce defective pencils at a rate of 50\% on average.
+
+Modify the probabilistic program to draw the success rate $p$ from this new prior distribution. Suppose we find 3 defective pencils from the first 10 we test. What is the expected posterior failure rate of this pencil factory?
+
+\ifanswers
+\begin{quote}
+{\bf Answer:}
+\begin{code}{}{}
+[assume z (exponential 0.5)]
+[assume p (if (> z 1) 1 z)]
+[observe (binomial p 10) 8]
+[predict p]
+\end{code}
+\end{quote}
+\fi
+
+
+Try to come up with some more interesting, plausible, or outrageous programs to generate $p$.
+
+\bibliographystyle{plainnat}
+
+\bibliography{../refs}
+
+
+
+
+\end{document}  

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: Anglican Home Page
 layout: default
@@ -182,3 +183,10 @@ the authors and should be not interpreted as necessarily
 representing the official policies or endorsements, either
 expressed or implied, of DARPA, the U.S. Air Force Research
 Laboratory or the U.S. Government.
+=======
+# Probabilistic programming
+
+* [Anglican](http://probprog.ml/anglican/)
+* [PobTorch](http://github.com/probtorch/probtorch)
+* [`infergo`](http://infergo.org) 
+>>>>>>> 97c4993f0e6368b3e79496f08c9ba21a7979648c

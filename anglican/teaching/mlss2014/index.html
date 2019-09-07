@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/anglican/assets/ico/anglican_logo.ico">
+
+    <title>The Anglican Probabilistic Programming System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/anglican/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/anglican/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/anglican/assets/css/jwvdm.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/anglican/assets/js/bootstrap.min.js"></script>
+    <link href="/anglican/assets/css/syntax.css" rel="stylesheet">
+    <link href="/anglican/assets/css/ribbon.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/anglican/assets/js/html5shiv.js"></script>
+      <script src="/anglican/assets/js/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61399035-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="row">
+	<a href="/anglican"> 
+		<img class="logo" src="/anglican/assets/images/anglican_logo.png" height="30px" align="bottom"> 
+		<span class="title">
+			Anglican
+		</span>
+		</a>
+    <ul class="nav nav-pills pull-right">
+      
+      <li >
+        <a href="/anglican/index.html" title="">Home</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/examples/index.html" title="">Examples</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/language/index.html" title="">Language</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/inference/index.html" title="">Inference</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/literature/index.html" title="">Literature</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+    </ul>
+</div>
+
+<script>
+  $()
+</script>
+       
+      </div>
+      <div class="content row">
+        <h1 id="learning-probabilistic-programming">Learning Probabilistic Programming</h1>
+
+<p>For the broadest possible perspective on probabilistic programming see <a href="http://probabilistic-programming.org/wiki/Home">probabilistic-programming.org</a>, a site that tracks the latest developments in probabilistic programming and maintains links to many probabilistic programming languages and systems as well as links to related literature.</p>
+
+<p>A nice, short academic article on probabilistic programming is <a href="http://dl.acm.org/citation.cfm?id=2429117">The principles and practice of probabilistic programming</a>.</p>
+
+<h2 id="exercises">Exercises</h2>
+
+<p>These materials are designed to teach the characteristics of higher order Turing-complete probabilistic programming systems in general.  The materials, though, are directly source compatible with the <a href="../">Anglican</a> probabilistic programming language.  Anglican <a href="../../language/">language documentation</a>, <a href="../../download/">installation instructions</a>,
+and <a href="../../examples/">examples</a> are available.  You may find the helper shell scripts <a href="./scripts/compute_counts.sh">compute_counts.sh</a> and <a href="./scripts/compute_moments.sh">compute_moments.sh</a> useful.</p>
+
+<ul>
+  <li><a href="beta_binomial/">Automatic Bayesian Inference via Probabilistic Programming</a></li>
+  <li><a href="arithmetic_expression/">Things Higher Order Probabilistic Programming Systems Can Do That Others Can’t</a></li>
+  <li><a href="poisson_generative_procedure/">How Probabilistic Programming Works; The Actual Randomness Sampled When Exploring Traces</a></li>
+  <li><a href="bayesian_matrix_factorization/">Why Developing Models Is Easy In Probabilistic Programming Languages But Eagerness Sometimes Hurts</a></li>
+  <li><a href="py_mem/">A Natural Connection To Bayesian Nonparametrics</a></li>
+</ul>
+
+<p>These tutorial materials are straightforwardly syntactically compatible with 
+the <a href="http://probcomp.csail.mit.edu/venture/">Venture</a>
+probabilistic programming system.  People learning probabilistic programming
+will do well by themselves if they try solving these problems in Venture as well.<br />
+Venture highlights a different, language-within-a-language (Python) interaction model, stressing interactivity and programmable inference.</p>
+
+<p>Another great resource is <a href="http://forestdb.org/">Forest</a>, a repository for generative 
+models.  This site contains many fascinating examples of the expressivity of higher order Turing-complete probabilistic programming systems.  It also allows visitors to actually run said generative models in written in the <a href="http://arxiv.org/pdf/1206.3255.pdf">Church</a> language in <a href="https://probmods.org/play-space.html">Webchurch</a>.  Note that the <a href="http://projects.csail.mit.edu/church/wiki/Church">Church wiki</a> has a great deal of excellent and insightful material as well.</p>
+
+<h2 id="reporting-anglican-bugs">Reporting Anglican bugs</h2>
+
+<p>There is a public <a href="https://bitbucket.org/fwood/anglican/issues">issue tracker</a> to which bug reports can be posted.</p>
+
+<h2 id="developing-probabilistic-programming-languages">Developing probabilistic programming languages</h2>
+
+<p>The development of Turing-complete probabilistic programming languages remains a highly
+specialized discipline.  Existing implementations include</p>
+
+<ul>
+  <li><a href="https://bitbucket.org/fwood/anglican">Anglican</a></li>
+  <li><a href="https://github.com/stuhlmueller/jschurch">jsChurch</a></li>
+  <li><a href="https://github.com/mit-probabilistic-computing-project/Venturecxx">Venture</a></li>
+</ul>
+
+<p>though two of these repositories are currently remain private.</p>
+
+<p>Arguably the best papers for learning how to develop probabilistic programming systems include</p>
+
+<ol class="bibliography"><li><span id="Wood-AISTATS-2014">Wood, F., van de Meent, J. W., &amp; Mansinghka, V. (2014). A New Approach to Probabilistic Programming Inference. In <i>Proceedings of the 17th International conference on Artificial Intelligence and Statistics</i>.</span> 
+    
+
+    <a data-target="#Wood-AISTATS-2014_bibtex" data-toggle="collapse" href="#Wood-AISTATS-2014_bibtex" onclick="_gaq.push(['_trackEvent', 'View', 'Bibliography', 'Wood-AISTATS-2014']); return false;">BIB</a>
+
+    
+
+<span id="Wood-AISTATS-2014_materials">
+
+  
+
+  <pre id="Wood-AISTATS-2014_bibtex" class="pre pre-scrollable collapse">@inproceedings{Wood-AISTATS-2014,
+  author = {Wood, F. and van de Meent, J. W. and Mansinghka, V.},
+  booktitle = {Proceedings of the 17th International conference on Artificial Intelligence and Statistics},
+  title = {A New Approach to Probabilistic Programming Inference},
+  year = {2014}
+}
+</pre>
+
+</span>
+</li>
+<li><span id="paige2014compilation">Paige, B., &amp; Wood, F. (2014). A Compilation Target for Probabilistic Programming Languages. <i>ArXiv Preprint ArXiv:1403.0504</i>.</span> 
+    
+
+    <a data-target="#paige2014compilation_bibtex" data-toggle="collapse" href="#paige2014compilation_bibtex" onclick="_gaq.push(['_trackEvent', 'View', 'Bibliography', 'paige2014compilation']); return false;">BIB</a>
+
+    
+
+<span id="paige2014compilation_materials">
+
+  
+
+  <pre id="paige2014compilation_bibtex" class="pre pre-scrollable collapse">@article{paige2014compilation,
+  title = {A Compilation Target for Probabilistic Programming Languages},
+  author = {Paige, Brooks and Wood, Frank},
+  journal = {arXiv preprint arXiv:1403.0504},
+  year = {2014}
+}
+</pre>
+
+</span>
+</li>
+<li><span id="wingate2011lightweight">Wingate, D., Stuhlmüller, A., &amp; Goodman, N. D. (2011). Lightweight implementations of probabilistic programming languages via transformational compilation. In <i>International Conference on Artificial Intelligence and Statistics</i> (pp. 770–778).</span> 
+    
+
+    <a data-target="#wingate2011lightweight_bibtex" data-toggle="collapse" href="#wingate2011lightweight_bibtex" onclick="_gaq.push(['_trackEvent', 'View', 'Bibliography', 'wingate2011lightweight']); return false;">BIB</a>
+
+    
+
+<span id="wingate2011lightweight_materials">
+
+  
+
+  <pre id="wingate2011lightweight_bibtex" class="pre pre-scrollable collapse">@inproceedings{wingate2011lightweight,
+  title = {Lightweight implementations of probabilistic programming languages via transformational compilation},
+  author = {Wingate, David and Stuhlm{\"u}ller, Andreas and Goodman, Noah D},
+  booktitle = {International Conference on Artificial Intelligence and Statistics},
+  pages = {770--778},
+  year = {2011}
+}
+</pre>
+
+</span>
+</li>
+<li><span id="mansinghka2014venture">Mansinghka, V., Selsam, D., &amp; Perov, Y. (2014). Venture: a higher-order probabilistic programming platform with programmable inference. <i>ArXiv Preprint ArXiv:1404.0099</i>.</span> 
+    
+
+    <a data-target="#mansinghka2014venture_bibtex" data-toggle="collapse" href="#mansinghka2014venture_bibtex" onclick="_gaq.push(['_trackEvent', 'View', 'Bibliography', 'mansinghka2014venture']); return false;">BIB</a>
+
+    
+
+<span id="mansinghka2014venture_materials">
+
+  
+
+  <pre id="mansinghka2014venture_bibtex" class="pre pre-scrollable collapse">@article{mansinghka2014venture,
+  title = {Venture: a higher-order probabilistic programming platform with programmable inference},
+  author = {Mansinghka, Vikash and Selsam, Daniel and Perov, Yura},
+  journal = {arXiv preprint arXiv:1404.0099},
+  year = {2014}
+}
+</pre>
+
+</span>
+</li></ol>
+
+      </div>
+      <div class="footer row">
+        <p>
+    &copy; Frank Wood 2014-2018
+    built using 
+    <a href="http://jekyllrb.com">jekyll</a>, 
+    <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
+    <a href="http://getbootstrap.com">bootstrap</a>. 
+    Website design by <a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a>
+</p> 
+       
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <a href="https://bitbucket.org/probprog/anglican/">Fork me on BitBucket</a>
+    </div>
+  </body>
+</html>

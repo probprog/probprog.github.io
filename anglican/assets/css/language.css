@@ -1,0 +1,46 @@
+@media (min-width: 992px) {
+  div.sidebar {
+    width: 185px;
+  }
+}
+@media (min-width: 992px) {
+	div.sidebar-container {
+    float: right;
+  }
+  div.sidebar-fixed {
+    position: fixed;
+    top: 0;
+    padding-top: 30px;
+  }
+  div.sidebar {
+    width: 152px;
+  }
+}
+div.sidebar-container {
+  padding: 0px;
+}
+div.sidebar {
+  float: none;
+}
+table.usage td {
+  padding-right: 3px;
+  vertical-align: text-top;
+}
+table.usage td + td {
+  font-style: italic
+}
+div.language_more {
+  overflow: hidden;
+}
+div.language_more h3 {
+  margin-top: 0;
+}
+div.language_example > div.highlight > pre {
+  white-space: pre;
+  word-wrap: normal;
+  overflow: auto;
+}
+div.language_example > div.highlight > pre > code {
+  white-space: pre;
+  word-wrap: normal;
+}
