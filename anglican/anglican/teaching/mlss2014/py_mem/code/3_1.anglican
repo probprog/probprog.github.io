@@ -1,0 +1,5 @@
+
+[observe-csv
+  "http://www.robots.ox.ac.uk/~fwood/anglican/teaching/mlss2014/py_mem/data.csv"
+  (apply normal (country-parameters $1)) $4]
+  

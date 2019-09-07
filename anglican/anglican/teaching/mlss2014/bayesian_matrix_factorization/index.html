@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/anglican/assets/ico/anglican_logo.ico">
+
+    <title>The Anglican Probabilistic Programming System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/anglican/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/anglican/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/anglican/assets/css/jwvdm.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/anglican/assets/js/bootstrap.min.js"></script>
+    <link href="/anglican/assets/css/syntax.css" rel="stylesheet">
+    <link href="/anglican/assets/css/ribbon.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/anglican/assets/js/html5shiv.js"></script>
+      <script src="/anglican/assets/js/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61399035-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="row">
+	<a href="/anglican"> 
+		<img class="logo" src="/anglican/assets/images/anglican_logo.png" height="30px" align="bottom"> 
+		<span class="title">
+			Anglican
+		</span>
+		</a>
+    <ul class="nav nav-pills pull-right">
+      
+      <li >
+        <a href="/anglican/index.html" title="">Home</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/examples/index.html" title="">Examples</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/language/index.html" title="">Language</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/inference/index.html" title="">Inference</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+      <li >
+        <a href="/anglican/literature/index.html" title="">Literature</a>
+      </li>
+      <!-- class="active"><a href="/">About</a></li> -->
+      <!-- <li><a href="/projects">Projects</a></li> -->
+      <!-- <li><a href="/publications">Publications</a></li> -->
+      
+    </ul>
+</div>
+
+<script>
+  $()
+</script>
+       
+      </div>
+      <div class="content row">
+        <p>Probabilistic programming systems abstract model specification from inference.  Inference, in general, is provided automatically.  Initial development of models is generally easy.
+Subsequent modifications to the same are extremely straightforward.</p>
+
+<p>Coding probabilistic matrix factorization illustrates this:</p>
+
+<ul>
+  <li><a href="questions.pdf">Exercise</a></li>
+</ul>
+
+<p>A slightly larger data set consists of  10 movies and 20 users.  The movie ids are</p>
+
+<ol>
+  <li>Toy Story (1995)</li>
+  <li>Twelve Monkeys (1995)</li>
+  <li>Seven (Se7en) (1995)</li>
+  <li>From Dusk Till Dawn (1996)</li>
+  <li>Four Weddings and a Funeral (1994)</li>
+  <li>Mask, The (1994)</li>
+  <li>Jurassic Park (1993)</li>
+  <li>Snow White and the Seven Dwarfs (1937)</li>
+  <li>Independence Day (ID4) (1996)</li>
+  <li>Pretty Woman (1990)</li>
+</ol>
+
+<p>The dataset is <a href="movies-10.csv">movies-10.csv</a>.  There are two explicitly held out datapoints <a href="holdout.csv">holdout.csv</a> against which predictive comparisons can be made.</p>
+
+<p>Thanks to <a href="http://www.cs.ubc.ca/~ziyuw/">Ziyu Wang</a> for helping to put together this exercise.</p>
+
+      </div>
+      <div class="footer row">
+        <p>
+    &copy; Frank Wood 2014-2018
+    built using 
+    <a href="http://jekyllrb.com">jekyll</a>, 
+    <a href="https://github.com/inukshuk/jekyll-scholar">jekyll-scholar</a> and 
+    <a href="http://getbootstrap.com">bootstrap</a>. 
+    Website design by <a href="http://www.robots.ox.ac.uk/~jwvdm/">Jan Willem van de Meent</a>
+</p> 
+       
+      </div>
+    </div>
+
+    <div class="ribbon">
+      <a href="https://bitbucket.org/probprog/anglican/">Fork me on BitBucket</a>
+    </div>
+  </body>
+</html>
