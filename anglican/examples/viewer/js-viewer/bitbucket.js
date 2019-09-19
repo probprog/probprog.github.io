@@ -6,5 +6,5 @@
 
 var getFromBitbucket = function (user, repo, path, revision, callback) {
     //$.get("https://bitbucket.org/api/1.0/repositories/" + user + "/" + repo + "/raw/" + revision + "/" + path, callback);
-    $.get("https://bitbucket.org/!api/2.0/repositories/" + user + "/" + repo + "/src/" + revision + "/" + path, callback);
+    $.get("https://bitbucket.org/!api/2.0/repositories/" + user "/" + repo + "/src/" + revision "/" + path, callback);
 };
